@@ -137,26 +137,26 @@ const contactInfos = [
                     <div class="">
                         <div class="lg:mx-0 md:mx-0 mx-[26px]">
                             <img alt="contact us" src="../assets/chinese_pc/help/contact_us_pc.png" class="lg:block md:block hidden" />
-                            <div class="lg:hidden md:hidden flex flex-row mt-[32px]">
-                                <div>
+                            <div class="lg:hidden md:hidden grid grid-cols-5 mt-[32px]">
+                                <div class="col-span-3">
                                     <img alt="contact us" src="../assets/chinese_mobile/help/contact_us_mobile.png"
-                                        class="mx-auto" />
-                                    <p class="text-[#0C31B1] text-[20px] font-medium leading-[21px] text-left
-                                        mt-2">凤凰社区在线客服：</p>
+                                        class="mx-auto contact_mobile_img" />
+                                    <p class="text-[#0C31B1] text-[20px] font-medium leading-[21px] mt-2
+                                        lg:text-left md:text-left text-center contact_mobile">凤凰社区在线客服：</p>
                                 </div>
-                                <div class="flex flex-1 flex-col justify-center ml-[5px]">
+                                <div class="col-span-2 flex flex-1 flex-col justify-center ml-[5px]">
                                     <button class="text-[16px] text-white font-medium leading-[24px] py-1
                                         rounded-[30px] text-center consult-btn w-[120px]">立即咨询</button>
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <p class="text-[24px] text-[#0C31B1] leading-[21px] text-left mt-[20px]
-                                lg:block md:block hidden">
+                            <p class="text-[24px] text-[#0C31B1] leading-[21px] mt-[20px]
+                                lg:block md:block hidden lg:text-left md:text-left text-center">
                                 凤凰社区在线客服：
                             </p>
                             <p class="text-[14px] text-[#666] leading-[21px] font-medium lg:mt-[20px] md:mt-[21px] mt-[22px] 
-                                text-left lg:pl-0 md:pl-0 pl-[26px]">
+                                lg:text-left md:text-left text-center lg:pl-0 md:pl-0 pl-[26px] contact_mobile">
                                 智能接待，随时回复，为你提供快速便捷的服务体验！
                             </p>
                             <div class="text-left">
@@ -166,13 +166,13 @@ const contactInfos = [
                         </div>
                     </div>
                     <div class="grid lg:grid-cols-6 md:grid-cols-6 grid-cols-3 
-                        lg:gap-10 md:gap-6 gap-12 lg:ml-[64px] md:ml-[20px] mx-auto lg:mt-0 md:mt-0 mt-[30px]">
+                        lg:gap-10 md:gap-6 gap-1 lg:ml-[64px] md:ml-[20px] lg:mt-0 md:mt-0">
                         <div v-for="item in contactInfos" :key="item.id"
-                            class="flex flex-1 flex-col justify-center">
+                            class="flex flex-1 flex-col justify-center mt-[30px]">
                             <img :alt="item.name" :src="item.logo_pc"
                                 class="lg:block md:block hidden" />
                             <img :alt="item.name" :src="item.logo_mobile"
-                                class="lg:hidden md:hidden block" />
+                                class="lg:hidden md:hidden block w-[35px] h-[35px] mx-auto" />
                             <p class="text-themeGreyText1 text-[12px] leading-[21px] font-medium uppercase
                                 lg:mt-[11px] md:mt-[11px] mt-[7px]">{{ item.name }}</p>
                         </div>
@@ -200,6 +200,15 @@ const contactInfos = [
 @media (max-width: 767px) {
     .faq-box {
         box-shadow: 8px 9px 10px rgba(85, 118, 166, 0.09);
+    }
+}
+@media (max-width: 425px) {
+    .contact_mobile_img {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    .contact_mobile {
+        text-align: left !important;
     }
 }
 </style>
