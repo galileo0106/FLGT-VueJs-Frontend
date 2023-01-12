@@ -61,8 +61,8 @@ const contactInfos = [
                         <input placeholder="搜素帮助内容" 
                             class="py-[7px] px-[12px] text-[14px] text-[#86909C]
                                 border border-[#C4C4C4] border-r-0 w-full"/>
-                        <button class="text-[14px] text-[#86909C] bg-white w-1/6
-                            border border-[#C4C4C4] border-l-0">搜素</button>
+                        <button class="text-[14px] text-[#86909C] bg-white w-1/4
+                            border border-[#C4C4C4] border-l-0 font-bold">搜素</button>
                     </div>
                 </div>
                 <p class="lg:text-[16px] md:text-[14px] text-[12px] text-[#666] font-medium mt-[30px]
@@ -127,7 +127,8 @@ const contactInfos = [
             </div>
         </div>
 
-        <div class="lg:h-[700px] h-full bg-chinese_pc_banner_1 lg:pt-[80px] md:pt-[50px] pt-[20px] text-center">
+        <div class="lg:h-[700px] h-full lg:bg-contact_us_bg_pc md:bg-contact_us_bg_pc bg-white
+            lg:pt-[80px] md:pt-[50px] pt-[20px] text-center">
             <h3 class="lg:text-[48px] md:text-[32px] text-[18px] text-[#25277A] font-bold">联系我们</h3>
             <p class="lg:text-[16px] md:text-[14px] text-[12px] text-[#15C3CA] font-bold">contact us</p>
 

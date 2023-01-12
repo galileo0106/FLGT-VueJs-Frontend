@@ -50,6 +50,7 @@ module.exports = {
 
         help_bg_pc: "url('../../src/assets/chinese_pc/help/help_bg_pc.png')",
         help_bg_mobile: "url('../../src/assets/chinese_mobile/help/help_bg_mobile.png')",
+        contact_us_bg_pc: "linear-gradient(to right, #f9f6fd40 0%, #e0dffe40 36.98%, #c3dbff40 78.1%, #f3eaff40 100%)",
       },
       boxShadow: {
         btn1: "-6px 8px 4px 0px rgba(240, 33, 72, 0.25)",
