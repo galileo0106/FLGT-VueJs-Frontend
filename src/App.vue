@@ -12,5 +12,16 @@
 </template>
 
 <style>
+.bg-gradient-to-r {
+    background-image: none !important;
+}
 
+.to-indigo-400 {
+    --tw-gradient-to: none !important;
+}
+
+.from-blue-400 {
+    --tw-gradient-from: none !important;
+    --tw-gradient-stops: none !important;
+}
 </style>
