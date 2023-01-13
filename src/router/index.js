@@ -4,6 +4,7 @@ import Download from "../views/download.vue";
 import Mining from "../views/mining.vue";
 import Team from "../views/team.vue";
 import Help from "../views/help.vue";
+import Blog from "../views/blog.vue";
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     path: "/team",
     name: "Team",
     component: Team
+  },
+  {
+    path: "/blog",
+    name: "Blog",
+    component: Blog
   },
   {
     path: "/help",

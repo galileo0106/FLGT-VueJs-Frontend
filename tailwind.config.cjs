@@ -48,6 +48,9 @@ module.exports = {
         team_bg_pc: "url('../../src/assets/chinese_pc/team/team_bg_pc.png')",
         team_mobile_pc: "url('../../src/assets/chinese_mobile/team/team_img_mobile.png')",
 
+        blog_bg_pc: "url('../../src/assets/chinese_pc/blog/blog_bg_pc.png')",
+        blog_bg_mobile: "url('../../src/assets/chinese_mobile/blog/blog_bg_mobile.png')",
+
         help_bg_pc: "url('../../src/assets/chinese_pc/help/help_bg_pc.png')",
         help_bg_mobile: "url('../../src/assets/chinese_mobile/help/help_bg_mobile.png')",
         contact_us_bg_pc: "linear-gradient(to right, #f9f6fd40 0%, #e0dffe40 36.98%, #c3dbff40 78.1%, #f3eaff40 100%)",
