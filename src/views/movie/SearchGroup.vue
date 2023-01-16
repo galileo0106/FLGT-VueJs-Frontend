@@ -111,31 +111,6 @@ const searchTypeList = [
         ]
     },
 ]
-
-const testList = [
-        {id: 1, name: "全部"},
-        {id: 2, name: "剧情"},
-        {id: 3, name: "动作"},
-        {id: 4, name: "喜剧"},
-        {id: 5, name: "爱情"},
-        {id: 6, name: "惊悚"},
-        {id: 7, name: "犯罪"},
-        {id: 8, name: "悬疑"},
-        {id: 9, name: "战争"},
-        {id: 10, name: "科幻"},
-        {id: 11, name: "恐怖"},
-        {id: 12, name: "家庭"},
-        {id: 13, name: "战争"},
-        {id: 14, name: "冒险"},
-        {id: 15, name: "动画"},
-        {id: 16, name: "历史"},
-        {id: 17, name: "歌舞"},
-        {id: 18, name: "运动"},
-        {id: 19, name: "音乐"},
-        {id: 20, name: "伦理"},
-        {id: 21, name: "记录"},
-        {id: 22, name: "西部"},
-]
 </script>
 
 <template>
@@ -203,13 +178,9 @@ const testList = [
                 isDragging: false,
                 cursorPos: [0, 0],
                 el: null,
-                showSearchGroup: true, 
                 searchTypeId: '',
                 searchTypeDetailId: '',
             };
-        },
-        created: function() {
-            console.log(this.showSearchGroup)
         },
         mounted() {
             window.addEventListener("mouseup", this.onMouseUp);
