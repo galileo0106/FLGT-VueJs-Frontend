@@ -41,6 +41,12 @@ module.exports = {
         download_show_pc: "url('../../src/assets/chinese_pc/download/download_show_pc.png')",
         download_show_mobile: "url('../../src/assets/chinese_mobile/download/download_show_mobile.png')",
 
+        movie_bg_pc: "url('../../src/assets/chinese_pc/movie/movie_bg_pc.png')",
+        movie_bg_mobile: "linear-gradient(#30304A 0%, #18171C 100%)",
+        movie_carousel1_pc: "linear-gradient(to right, rgba(18, 24, 42, 0) 11.01%, #12182A 19.54%, rgba(18, 24, 43, 0.5846) 26.92%, rgba(19, 24, 45, 0) 49.89%, rgba(20, 24, 46, 0.6591) 75.91%, #14182F 83.56%, rgba(20, 24, 46, 0.28) 91.63%)",
+        movie_carousel_img1_pc: "url('../../src/assets/chinese_pc/movie/movie_carousel1_pc.png')",
+        movie_carousel_img1_mobile: "url('../../src/assets/chinese_mobile/movie/movie_carousel1_mobile.png')",
+
         mining_bg_pc: "url('../../src/assets/chinese_pc/mining/mining_bg_pc.png')",
         mining_bg_mobile: "url('../../src/assets/chinese_mobile/mining/mining_bg_mobile.png')",
         issuance_bg_pc: "url('../../src/assets/chinese_pc/mining/ming_bg_part2_pc.png')",

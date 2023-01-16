@@ -77,7 +77,7 @@ import { ref } from 'vue'
             </div>
         </div> -->
     </div>
-    <div class="bg-[#170550] fixed z-[10] w-full top-[7%]">
+    <div class="bg-[#170550] fixed z-[10] w-full">
         <ul :class="showMenu ? 'flex' : 'hidden'" class="flex-col lg:hidden md:hidden">
             <li v-for="(item, index) in navbarList" :key="index" class="px-5 py-3 text-white hover:bg-[#948fa380]">
                 <router-link class="nav-link" :active='$route.name ==item.name' @click="() => toggleNav(item.path)"
@@ -148,7 +148,7 @@ export default {
         var list = navbarList._rawValue;
         return {
             showMenu: false,
-            selectedMenuName: list.filter(item => item.path == window.location.pathname) ? 
+            selectedMenuName: list.filter(item => item.path == window.location.pathname).length > 0 ? 
                     list.filter(item => item.path == window.location.pathname)[0].title : "",
         };
     },
@@ -164,7 +164,7 @@ export default {
     computed: {
         selectedMenu() {
             var list = navbarList._rawValue;
-            return list.filter(item => item.path == window.location.pathname) ? 
+            return list.filter(item => item.path == window.location.pathname).length > 0 ? 
                     list.filter(item => item.path == window.location.pathname)[0].title : "";
         }
     }

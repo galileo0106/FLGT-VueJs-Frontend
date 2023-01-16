@@ -12,4 +12,7 @@
 </template>
 
 <style>
+.carousel__prev, .carousel__next {
+  color: white !important;
+}
 </style>
