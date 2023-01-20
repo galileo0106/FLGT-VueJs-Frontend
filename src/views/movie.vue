@@ -333,7 +333,10 @@ const mobileMovieList = [
                             <img :alt="item.title" :src="item.img_pc" class="rounded-[8px] w-full" />
                             <div class="block">
                                 <span class="my-1 lg:text-[18px] md:text-[14px] lg:leading-[25px] md:leading-[20px] font-bold
-                                    text-white text-left">{{ item.title }}</span>
+                                    text-white text-left">
+                                    <router-link class="nav-link" :to="'/movie/' + item.id" 
+                                        :id="item.id">{{ item.title }}</router-link>
+                                </span>
                                 <span class="my-[7px] lg:text-[14px] md:text-[10px] lg:leading-[19.6px] md:leading-[15px]
                                     text-[#FF9900] font-medium float-right">{{ item.score }}</span>
                             </div>
@@ -355,7 +358,10 @@ const mobileMovieList = [
                             <img :alt="item.title" :src="item.img_pc" class="rounded-[8px] w-full" />
                             <div class="block">
                                 <span class="my-1 lg:text-[18px] md:text-[14px] lg:leading-[25px] md:leading-[20px] font-bold
-                                    text-white text-left">{{ item.title }}</span>
+                                    text-white text-left">
+                                    <router-link class="nav-link" :to="'/movie/' + item.id" 
+                                        :id="item.id">{{ item.title }}</router-link>
+                                </span>
                                 <span class="my-[7px] lg:text-[14px] md:text-[10px] lg:leading-[19.6px] md:leading-[15px]
                                     text-[#FF9900] font-medium float-right">{{ item.score }}</span>
                             </div>
@@ -377,7 +383,10 @@ const mobileMovieList = [
                             <img :alt="item.title" :src="item.img_pc" class="rounded-[8px] w-full" />
                             <div class="block">
                                 <span class="my-1 lg:text-[18px] md:text-[14px] lg:leading-[25px] md:leading-[20px] font-bold
-                                    text-white text-left">{{ item.title }}</span>
+                                    text-white text-left">
+                                    <router-link class="nav-link" :to="'/movie/' + item.id" 
+                                        :id="item.id">{{ item.title }}</router-link>
+                                </span>
                                 <span class="my-[7px] lg:text-[14px] md:text-[10px] lg:leading-[19.6px] md:leading-[15px]
                                     text-[#FF9900] font-medium float-right">{{ item.score }}</span>
                             </div>
@@ -400,7 +409,10 @@ const mobileMovieList = [
                     <div v-for="item in mobileMovieList" :key="item.id" class="mt-2">
                         <img :alt="item.title" :src="item.img_mobile" class="rounded-[8px] w-full" />
                         <p class="text-center text-[11px] font-medium text-[#F2F2F2] 
-                            overflow_text leading-[15px] mt-1">{{ item.title }}</p>
+                            overflow_text leading-[15px] mt-1">
+                            <router-link class="nav-link" :to="'/movie/' + item.id" 
+                                :id="item.id">{{ item.title }}</router-link>
+                        </p>
                     </div>
                 </div>
             </div>

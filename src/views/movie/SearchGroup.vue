@@ -115,7 +115,7 @@ const searchTypeList = [
 
 <template>
     <div v-if="showSearchGroup" class="lg:pt-[40px] md:pt-[25px] pt-[10px]">
-        <div class="lg:bg-black md:bg-black bg-transparent pt-[20px]">
+        <div class="lg:bg-[#00000026] md:bg-[#00000026] bg-transparent pt-[20px]">
             <div v-for="item in searchTypeList" :key="item.id" class="lg:pb-[30px] md:pb-[20px] pb-[10px]">
                 <div class="grid grid-cols-7 lg:hidden md:hidden">
                     <div class="col-span-2">

@@ -14,8 +14,8 @@
                 <div class="flex flex-row">
                     <div class="w-full">
                         <input type="text" placeholder="Please enter" 
-                            class="border border-[#DFDFDF] focus:border-[#F02148] outline-[#F02148] px-[10px] py-[6px] 
-                                rounded-[2px] w-full input-custom" />
+                            class="border border-[#DFDFDF] focus:border-[#F02148] outline-[#F02148] px-[10px] py-[7.5px] 
+                                rounded-[2px] w-full input-custom text-[14px] leading-[22px]" />
                     </div>
                     <div class="w-[108px] ml-[10px]">
                         <button class="text-[14px] leading-[22px] font-bold search-btn
