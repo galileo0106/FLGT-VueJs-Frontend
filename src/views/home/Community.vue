@@ -1,10 +1,10 @@
 <script setup>
-import { ref } from "vue";
 const datas = [
-  {id: "1", name: "存储和分布节", value: 2800, unit: "+", icon: "/src/assets/chinese_pc/btn-node.svg"},
-  {id: "2", name: "社区", value: 2500, unit: "万", icon: "/src/assets/chinese_pc/btn-community.svg"},
-  {id: "3", name: "网红博主", value: 800, unit: "多万", icon: "/src/assets/chinese_pc/btn-internet.svg"},
-  {id: "4", name: "版权合作方", value: 1500, unit: "多家", icon: "/src/assets/chinese_pc/btn-copyright.svg"},
+  { id: "1", name: "storageAndDistributionNodes", value: 2800, unit: "plus", 
+    icon: "/src/assets/chinese_pc/btn-node.svg"},
+  {id: "2", name: "community", value: 2500, unit: "million", icon: "/src/assets/chinese_pc/btn-community.svg"},
+  {id: "3", name: "internetCelebrityBlogger", value: 800, unit: "moreThan", icon: "/src/assets/chinese_pc/btn-internet.svg"},
+  {id: "4", name: "copyrightPartner", value: 1500, unit: "many", icon: "/src/assets/chinese_pc/btn-copyright.svg"},
 ]
 </script>
 
@@ -14,7 +14,7 @@ const datas = [
     <div class="h-full lg:py-[66px] md:py-[40px] py-[20px]">
       <div class="title">
         <div class="text-white font-medium lg:text-[42px] md:text-[30px] text-[18px] text-center">
-          凤凰社区
+          {{ $t("home.phoenixCommunity") }}
         </div>
         <div class="title-border mt-[21px]"></div>
       </div>
@@ -23,14 +23,14 @@ const datas = [
         <div v-for="item in datas" :key="item.id" class="flex justify-center">
           <div>
             <div class="px-5 md:px-0">
-              <img :src=item.icon :alt=item.name class="mx-auto" />
+              <img :src="item.icon" :alt="item.name" class="mx-auto" />
             </div>
             <p class="text-white mb-0 text-md text-center font-medium
               lg:text-[32px] md:text-[24px] text-[16px]">
-              {{item.value}} {{item.unit}}
+              {{item.value}} {{$t("home." + item.unit) }}
             </p>
             <p class="text-white text-center 
-              lg:text-[18px] md:text-[15px] text-[12px] font-medium">{{item.name}}</p>
+              lg:text-[18px] md:text-[15px] text-[12px] font-medium">{{$t("home." + item.name) }}</p>
           </div>
         </div>
       </div>
@@ -39,25 +39,25 @@ const datas = [
         <div class="mb-[18px] md:mb-[37px] flex md:block justify-start">
           <button class="btn_community text-white text-center lg:py-3 md:py-3 py-2
             lg:text-[24px] md:text-[19px] text-[14px]">
-            去中心化短视频社交
+            {{ $t("home.decentralizedShortVideoSocial") }}
           </button>
         </div>
         <div class="mb-[18px] md:mb-[37px] flex md:block justify-end">
           <button class="btn_community text-white text-center lg:py-3 md:py-3 py-2
             lg:text-[24px] md:text-[19px] text-[14px]">
-            海里文件链上存储
+            {{ $t("home.massFileChainStorage") }}
           </button>
         </div>
         <div class="mb-[18px] md:mb-[37px] flex md:block justify-start">
           <button class="btn_community text-white text-center lg:py-3 md:py-3 py-2
             lg:text-[24px] md:text-[19px] text-[14px]">
-            去中心化交易所
+            {{ $t("home.decentralizedExchange") }}
           </button>
         </div>
         <div class="mb-[18px] md:mb-[37px] flex md:block justify-end">
           <button class="btn_community text-white text-center lg:py-3 md:py-3 py-2
             lg:text-[24px] md:text-[19px] text-[14px]">
-            统一身份证系统
+            {{ $t("home.unifiedIDSystem") }}
           </button>
         </div>
       </div>

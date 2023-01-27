@@ -1,42 +1,61 @@
 <template>
     <div class="language-select ml-5" :tabindex="tabindex" @blur="open = false">
         <div class="selected" :class="{ open: open }" @click="open = !open">
-            {{ selected }}
+            {{ selectedLangName }}
         </div>
         <div class="items" :class="{ selectHide: !open }">
             <div class="px-3 py-2" :class="selected == option ? 'text-red' : ''"
-             v-for="(option, i) of options" :key="i"
-                @click="selected = option; open = false;">
-                {{ option }}
+             v-for="option of options" :key="option.id"
+                @click="() => handleLanguage(option)">
+                {{ option.name }}
             </div>
         </div>
     </div>
 </template>
   
 <script>
+import en from '../../assets/lang/en.json';
+import zh from '../../assets/lang/zh.json';
     export default {
         props: {
-        options: {
-            type: Array,
-            required: true,
-        },
-        default: {
-            type: String,
-            required: false,
-            default: null,
-        },
-        tabindex: {
-            type: Number,
-            required: false,
-            default: 0,
-        },
+            default: {
+                type: String,
+                required: false,
+                default: null,
+            },
+            tabindex: {
+                type: Number,
+                required: false,
+                default: 0,
+            },
         },
         data() {
+            var lang = localStorage.getItem("lang");
             return {
-                selected: this.default ? this.default : this.options.length > 0 ? this.options[0] : null,
+                options: [
+                    {id: 1, name: '中文', value: 'zh'}, {id: 2, name: 'English', value: 'en'}
+                ],
+                selected: 'zh',
+                selectedLangName: lang == "zh" ? '中文' : lang == "en" ? "English" : "",
                 open: false,
+                activeLanguage: this.$i18n.locale
             };
         },
+        methods: {
+            handleLanguage: function(option) {
+                this.selected = option.value;
+                this.selectedLangName = option.name;
+                this.open = false;
+                
+                var lang = option.value;
+                this.activeLanguage = lang; // update CSS class in selector
+                this.$i18n.locale = lang;
+                this.$i18n.setLocaleMessage(lang, lang == "en" ? en : lang == "zh" ? zh : null);
+                // persist selected language
+                localStorage.setItem("lang", lang);
+                window.location.reload();
+            }
+        }
     };
 </script>
   
@@ -53,9 +72,6 @@
     color: #333;
     cursor: pointer;
     user-select: none;
-}
-  
-.language-select .selected.open {
 }
   
 .language-select .selected:after {

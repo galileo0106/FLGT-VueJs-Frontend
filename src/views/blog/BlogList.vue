@@ -7,7 +7,7 @@
             <div class="col-span-1 lg:ml-[10px] md:ml-[10px] md:mr-0 mx-[50px]">
                 <select class="bg-gray-50 border border-[#DFDFDF] rounded-[2px] text-[14px] leading-[22px]
                     text-themeGreyText1 block w-full p-[10px]">
-                    <option selected>所有类型</option>
+                    <option selected>{{ $t("blog.allTypes") }}</option>
                 </select>
             </div>
             <div class="lg:col-span-2 md:col-span-2 col-span-1 lg:mx-[10px] md:mx-[10px] mx-[50px] lg:my-0 md:my-0 my-[20px]">
@@ -19,7 +19,7 @@
                     </div>
                     <div class="w-[108px] ml-[10px]">
                         <button class="text-[14px] leading-[22px] font-bold search-btn
-                            text-white p-[8px] text-center w-full focus:outline-[#F02148]">搜素</button>
+                            text-white p-[8px] text-center w-full focus:outline-[#F02148]">{{ $t("blog.search") }}</button>
                     </div>
                 </div>
             </div>
@@ -37,11 +37,11 @@
                             lg:h-[50px] md:h-[45px] h-[37px]
                             lg:leading-[25px] md:leading-[22px] leading-[18px] text-[#141414]"
                             href="/blog/detail">
-                            {{ item.data.title }}
+                            {{ $t("blog." + item.data.title) }}
                         </a>
                         <p class="lg:text-[15px] lg:leading-[27px] text-[#868383] font-medium mt-[14px]
                             lg:block md:block hidden blog_overflow_description">
-                            {{ item.data.description }}
+                            {{ $t("blog." + item.data.description) }}
                         </p>
                         <p class="lg:text-[14px] md:text-[13px] text-[12px] font-medium leading-[22px] text-[#696969] mt-[10px]">
                             {{ item.data.createdDate }}

@@ -1,6 +1,4 @@
 <script setup>
-import { ref } from 'vue'
-
 </script>
 
 <template>
@@ -9,25 +7,25 @@ import { ref } from 'vue'
             <div class="px-[26px]">
                 <div class="grid grid-cols-3 gap-4">
                     <div class="mx-auto">
-                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-white lg:mb-[16px] md:mb-[11px] mb-[6px]">生态系统</p>
-                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">凤凰社区</p>
-                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">凤凰基金会</p>
-                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">生态系统支持方案</p>
-                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">生态系统资助计划</p>
-                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">凤凰品牌资产</p>
+                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-white lg:mb-[16px] md:mb-[11px] mb-[6px]">{{ $t("footer.ecosystem") }}</p>
+                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">{{ $t("footer.phoenixCommunity") }}</p>
+                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">{{ $t("footer.phoenixFoundation") }}</p>
+                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">{{ $t("footer.ecosystemSupportProgram") }}</p>
+                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">{{ $t("footer.ecosystemFundingProgram") }}</p>
+                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">{{ $t("footer.phoenixBrandAssets") }}</p>
                     </div>
                     <div class="mx-auto">
-                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-white lg:mb-[16px] md:mb-[11px] mb-[6px]">开发者</p>
-                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">开始体验</p>
-                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">相关文档</p>
-                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">教程</p>
-                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">设置本地环境</p>
+                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-white lg:mb-[16px] md:mb-[11px] mb-[6px]">{{ $t("footer.developer") }}</p>
+                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">{{ $t("footer.startToExperience") }}</p>
+                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">{{ $t("footer.relatedDocuments") }}</p>
+                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">{{ $t("footer.tutorial") }}</p>
+                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">{{ $t("footer.setUpTheLocalEnvironment") }}</p>
                     </div>
                     <div class="mx-auto">
-                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-white lg:mb-[16px] md:mb-[11px] mb-[6px]">企业级应用</p>
-                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">主网凤凰网</p>
-                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">私人凤凰网</p>
-                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">企业级应用</p>
+                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-white lg:mb-[16px] md:mb-[11px] mb-[6px]">{{ $t("footer.enterpriseApplication") }}</p>
+                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">{{ $t("footer.mainnetPhoenixCom") }}</p>
+                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">{{ $t("footer.privatePhoenixNetwork") }}</p>
+                        <p class="lg:text-[18px] md:text-[15px] text-[12px] text-[#ffffff80] lg:mb-[16px] md:mb-[11px] mb-[6px]">{{ $t("footer.enterpriseApplication") }}</p>
                     </div>
                 </div>
             </div>
@@ -36,7 +34,7 @@ import { ref } from 'vue'
                     <div class="text-center">
                         <img src="../../assets/chinese_pc/fenghuang_icon.svg" alt="fenghuang" class="inline"/>
                         <span class="lg:text-[20px] md:text-[18px] text-[16px] 
-                            icon_title lg:ml-1 md:ml-2 ml-[13px]">凤凰社区</span>
+                            icon_title lg:ml-1 md:ml-2 ml-[13px]">{{ $t("footer.phoenixCommunity") }}</span>
                     </div>
                     <div class="footer_border_bottom lg:my-[20px] md:my-[18px] my-[15px] mx-auto"></div>
                     <div class="text-center lg:block md:block hidden">

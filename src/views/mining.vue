@@ -1,8 +1,3 @@
-<script setup>
-</script>
-
-<style>
-</style>
 <template>
     <div class="w-full font-normal_font">
         <TokensMining/>

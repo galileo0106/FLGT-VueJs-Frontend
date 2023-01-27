@@ -4,7 +4,8 @@
 
 <template>
     <div class="lg:bg-issuance_bg_pc md:bg-issuance_bg_pc bg-[#0A1F71] bg-no-repeat 
-        bg-[length:100%_100%] issuance_bg">
+        bg-[length:100%_100%] issuance_bg"
+        :class="lang == 'en' ? 'h-[450px]' : 'h-[395px]'">
         <div class="container mx-auto">
             <div class="lg:block md:block hidden">
                 <div class="grid grid-cols-5">
@@ -13,93 +14,103 @@
                     </div>
                     <div class="col-span-3">
                         <div class="lg:mt-[60px] md:mt-[40px] lg:pl-[70px] md:pl-[35px] pr-[20px]">
-                            <h3 class="font-bold text-white lg:text-[48px] md:text-[32px]">挖矿与增发</h3>
+                            <h3 class="font-bold text-white lg:text-[48px] md:text-[32px]">
+                                {{ $t("mining.miningAndIssuance") }}
+                            </h3>
 
                             <div>
                                 <div class="grid grid-cols-4 gap-1 lg:mt-[20px] md:mt-[10px]">
                                     <div>
                                         <button class="border-bottom-purple-2 bg-[#15C3CA] px-[16px] text-white text-center w-full
-                                            lg:text-[16px] md:text-[10px] py-[9px]">挖矿</button>
+                                            lg:text-[16px] md:text-[10px] py-[9px]">{{ $t("mining.mining") }}</button>
                                     </div>
                                     <div>
                                         <button class="border-bottom-purple-2 bg-[#15C3CA] px-[16px] text-white text-center w-full
-                                            lg:text-[16px] md:text-[10px] py-[9px]">直接受益</button>
+                                            lg:text-[16px] md:text-[10px] py-[9px]">{{ $t("mining.directBenefit") }}</button>
                                     </div>
                                     <div>
                                         <button class="border-bottom-purple-2 bg-[#15C3CA] px-[16px] text-white text-center w-full
-                                            lg:text-[16px] md:text-[10px] py-[9px]">一级推广收益</button>
+                                            lg:text-[16px] md:text-[10px] py-[9px] truncate" :title="$t('mining.firstlevelPromotionIncome')">
+                                            {{ $t("mining.firstlevelPromotionIncome") }}
+                                        </button>
                                     </div>
                                     <div>
                                         <button class="border-bottom-purple-2 bg-[#15C3CA] px-[16px] text-white text-center w-full
-                                            lg:text-[16px] md:text-[10px] py-[9px]">二级推广收益</button>
+                                            lg:text-[16px] md:text-[10px] py-[9px] truncate" :title="$t('mining.secondlevelPromotionIncome')">
+                                            {{ $t("mining.secondlevelPromotionIncome") }}
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-4 gap-1">
                                     <p class="border-bottom-purple-2 text-white text-center w-full
-                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">节点挖矿
+                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">
+                                        {{ $t("mining.nodeMining") }}
                                     </p>
                                     <p class="border-bottom-purple-2 text-white text-center w-full
-                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">1000-1200FLGT/个/天
+                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">1000-1200FLGT/{{ $t("mining.unitAndDay") }}
                                     </p>
                                     <p class="border-bottom-purple-2 text-white text-center w-full
-                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">150-180FLGT/个/天
+                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">150-180FLGT/{{ $t("mining.unitAndDay") }}
                                     </p>
                                     <p class="border-bottom-purple-2 text-white text-center w-full
-                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">60-72FLGT/个/天
-                                    </p>
-                                </div>
-                                <div class="grid grid-cols-4 gap-1">
-                                    <p class="border-bottom-purple-2 text-white text-center w-full
-                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">主播挖矿
-                                    </p>
-                                    <p class="border-bottom-purple-2 text-white text-center w-full
-                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">1FLGT/小时
-                                    </p>
-                                    <p class="border-bottom-purple-2 text-white text-center w-full
-                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">0.15FLGT/小时
-                                    </p>
-                                    <p class="border-bottom-purple-2 text-white text-center w-full
-                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">0.06FLGT/小时
+                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">60-72FLGT/{{ $t("mining.unitAndDay") }}
                                     </p>
                                 </div>
                                 <div class="grid grid-cols-4 gap-1">
                                     <p class="border-bottom-purple-2 text-white text-center w-full
-                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">博主挖矿
+                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">
+                                        {{ $t("mining.anchorMining") }}
                                     </p>
                                     <p class="border-bottom-purple-2 text-white text-center w-full
-                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">1FLGT/小时
+                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">1FLGT/{{ $t("mining.hour") }}
                                     </p>
                                     <p class="border-bottom-purple-2 text-white text-center w-full
-                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">0.15FLGT/小时
+                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">0.15FLGT/{{ $t("mining.hour") }}
                                     </p>
                                     <p class="border-bottom-purple-2 text-white text-center w-full
-                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">0.06FLGT/小时
+                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">0.06FLGT/{{ $t("mining.hour") }}
                                     </p>
                                 </div>
                                 <div class="grid grid-cols-4 gap-1">
                                     <p class="border-bottom-purple-2 text-white text-center w-full
-                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">推荐VIP
+                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">
+                                        {{ $t("mining.bloggerMining") }}
                                     </p>
                                     <p class="border-bottom-purple-2 text-white text-center w-full
-                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">15FLGT/个
+                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">1FLGT/{{ $t("mining.hour") }}
                                     </p>
                                     <p class="border-bottom-purple-2 text-white text-center w-full
-                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">7FLGT/个
+                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">0.15FLGT/{{ $t("mining.hour") }}
                                     </p>
                                     <p class="border-bottom-purple-2 text-white text-center w-full
-                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">3FLGT/个
+                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">0.06FLGT/{{ $t("mining.hour") }}
+                                    </p>
+                                </div>
+                                <div class="grid grid-cols-4 gap-1">
+                                    <p class="border-bottom-purple-2 text-white text-center w-full
+                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">
+                                        {{ $t("mining.recommendedVIP") }}
+                                    </p>
+                                    <p class="border-bottom-purple-2 text-white text-center w-full
+                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">15FLGT/{{ $t("mining.unit") }}
+                                    </p>
+                                    <p class="border-bottom-purple-2 text-white text-center w-full
+                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">7FLGT/{{ $t("mining.unit") }}
+                                    </p>
+                                    <p class="border-bottom-purple-2 text-white text-center w-full
+                                        lg:text-[14px] md:text-[10px] lg:py-[9px] md:py-[3px]">3FLGT/{{ $t("mining.unit") }}
                                     </p>
                                 </div>
                             </div>
 
                             <div class="lg:mt-[20px] md:mt-[10px] md:mb-[16.5px]">
                                 <button class="remark_btn text-center text-white px-[22px]
-                                    lg:text-[12px] md:text-[10px] font-medium py-[3px]">备注</button>
+                                    lg:text-[12px] md:text-[10px] font-medium py-[3px]">{{ $t("mining.remark") }}</button>
                                 <ol class="list-decimal mt-[5px] text-white pl-[20px]
                                     lg:text-[12px] md:text-[10px]">
-                                    <li>FLGT发行总量500亿，永不增发；</li>
-                                    <li>当平台用户增加的时候，各个功能需要抵押的FLGT逐渐减少；</li>
-                                    <li>社区将持续回购二级市场FLGT，用于持续挖矿。</li>
+                                    <li>{{ $t("mining.remarkDesc1") }}</li>
+                                    <li>{{ $t("mining.remarkDesc2") }}</li>
+                                    <li>{{ $t("mining.remarkDesc3") }}</li>
                                 </ol>
                             </div>
                         </div>
@@ -108,46 +119,56 @@
             </div>
 
             <div class="lg:hidden md:hidden block px-[6px] pt-[26px]">
-                <h3 class="font-bold text-white text-[28px] leading-[52px] text-center">挖矿与增发</h3>
+                <h3 class="font-bold text-white text-[28px] leading-[52px] text-center">
+                    {{ $t("mining.miningAndIssuance") }}
+                </h3>
 
                 <div class="mt-[10px]">
                     <table class="w-full">
                         <thead class="bg-[#F9346C] ">
                             <tr>
                                 <th class="text-[12px] px-[8px] py-[2px] text-white font-medium
-                                    border-[#D587F0] border-r border-b border-l border-t-0">挖矿</th>
+                                    border-[#D587F0] border-r border-b border-l border-t-0">
+                                    {{ $t("mining.mining") }}
+                                </th>
                                 <th class="text-[12px] px-[8px] py-[2px] text-white font-medium
-                                    border-[#D587F0] border-r border-b border-t-0">直接受益</th>
+                                    border-[#D587F0] border-r border-b border-t-0">
+                                    {{ $t("mining.directBenefit") }}
+                                </th>
                                 <th class="text-[12px] px-[8px] py-[2px] text-white font-medium
-                                    border-[#D587F0] border-r border-b border-t-0">一级推广收益</th>
+                                    border-[#D587F0] border-r border-b border-t-0">
+                                    {{ $t("mining.firstlevelPromotionIncome") }}
+                                </th>
                                 <th class="text-[12px] px-[8px] py-[2px] text-white font-medium
-                                    border-[#D587F0] border-r border-b border-t-0">二级推广收益</th>
+                                    border-[#D587F0] border-r border-b border-t-0">
+                                    {{ $t("mining.secondlevelPromotionIncome") }}
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="text-center">
-                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">节点挖矿</td>
-                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">1000-1200FLGT/个/天</td>
-                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">150-180FLGT/个/天</td>
-                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">60-72FLGT/个/天</td>
+                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">{{ $t("mining.nodeMining") }}</td>
+                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">1000-1200FLGT/{{ $t("mining.unitAndDay") }}</td>
+                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">150-180FLGT/{{ $t("mining.unitAndDay") }}</td>
+                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">60-72FLGT/{{ $t("mining.unitAndDay") }}</td>
                             </tr>
                             <tr class="text-center">
-                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">主播挖矿</td>
-                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">1FLGT/小时</td>
-                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">0.15FLGT/小时</td>
-                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">0.06FLGT/小时</td>
+                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">{{ $t("mining.anchorMining") }}</td>
+                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">1FLGT/{{ $t("mining.hour") }}</td>
+                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">0.15FLGT/{{ $t("mining.hour") }}</td>
+                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">0.06FLGT/{{ $t("mining.hour") }}</td>
                             </tr>
                             <tr class="text-center">
-                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">博主挖矿</td>
-                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">1FLGT/小时</td>
-                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">0.15FLGT/小时</td>
-                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">0.06FLGT/小时</td>
+                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">{{ $t("mining.bloggerMining") }}</td>
+                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">1FLGT/{{ $t("mining.hour") }}</td>
+                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">0.15FLGT/{{ $t("mining.hour") }}</td>
+                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">0.06FLGT/{{ $t("mining.hour") }}</td>
                             </tr>
                             <tr class="text-center">
-                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">推荐VIP</td>
-                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">15FLGT/个</td>
-                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">7FLGT/个</td>
-                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">3FLGT/个</td>
+                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">{{ $t("mining.recommendedVIP") }}</td>
+                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">15FLGT/{{ $t("mining.unity") }}</td>
+                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">7FLGT/{{ $t("mining.unity") }}</td>
+                                <td class="border-[#D587F0] py-[2px] border-l border-r border-b text-[10px] font-medium text-white">3FLGT/{{ $t("mining.unity") }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -160,11 +181,11 @@
                     </div>
                     <div class="px-[15px]">
                         <button class="text-[12px] text-white text-center font-medium py-[2px] px-[22px]
-                            border border-[#F9346C] rounded-[28px]">备注</button>
+                            border border-[#F9346C] rounded-[28px]">{{ $t("mining.remark") }}</button>
                         <ol class="list-decimal mt-[5px] text-white pl-[10px] text-[10px] font-medium pr-[10px]">
-                            <li>FLGT发行总量500亿，永不增发；</li>
-                            <li>当平台用户增加的时候，各个功能需要抵押的FLGT逐渐减少；</li>
-                            <li>社区将持续回购二级市场FLGT，用于持续挖矿。</li>
+                            <li>{{ $t("mining.remarkDesc1") }}</li>
+                            <li>{{ $t("mining.remarkDesc2") }}</li>
+                            <li>{{ $t("mining.remarkDesc3") }}</li>
                         </ol>
                     </div>
                 </div>
@@ -174,8 +195,15 @@
 </template>
 
 <script>
+export default {
+    name: "Issuance",
+    data() {
+        return {
+            lang: localStorage.getItem("lang"),
+        }
+    },
+}
 </script>
-
 
 <style scoped>
 @media (min-width: 1536px) {
@@ -208,11 +236,6 @@
     }
     .img-app {
         top: 0;
-    }
-}
-@media (max-width: 767px) {
-    .issuance_bg {
-        height: 395px;
     }
 }
 

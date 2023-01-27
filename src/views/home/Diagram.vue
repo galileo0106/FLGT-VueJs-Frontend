@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from "vue";
 </script>
 
 <template>
@@ -8,7 +7,7 @@ import { ref } from "vue";
     <div class="lg:py-[33px] md:py-[30px] py-[28px]">
       <div class="title">
         <div class="text-white font-medium lg:text-[42px] md:text-[30px] text-[18px] text-center">
-          线路图
+          {{ $t("home.routeMap") }}
         </div>
         <div class="title-border mt-[21px]"></div>
       </div>

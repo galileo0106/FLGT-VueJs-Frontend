@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from "vue";
 </script>
 
 <template>
@@ -10,10 +9,12 @@ import { ref } from "vue";
                 lg:pl-[calc(calc(50%)-478px)] md:pl-[calc(calc(50%)-278px)] px-[36px] relative">
                 <div class="relative">
                     <div class="">
-                        <p class="text-[#25277A] font-bold text-[32px] lg:hidden md:hidden block">Team Work</p>
+                        <p class="text-[#25277A] font-bold lg:hidden md:hidden block"
+                            :class="lang == 'en' ? 'text-[30px] leading-[48px]' : 'text-[32px] leading-[56px] '">Team Work</p>
                         <p class="text-[#25277A] font-bold
-                            lg:text-[64px] md:text-[52px] text-[38px] text-left">
-                            团队
+                            lg:text-[64px] md:text-[48px] text-left"
+                            :class="lang == 'en' ? 'text-[30px] leading-[48px]' : 'text-[38px] leading-[56px] '">
+                            {{ $t("team.team") }}
                         </p>
                         <p class="text-[#25277A] font-bold lg:text-[80px] md:text-[60px] lg:block md:block hidden
                             lg:leading-[56px] md:leading-[56px]">
@@ -30,13 +31,23 @@ import { ref } from "vue";
                 <div>
                     <p class="lg:w-[413px] md:w-[413px] w-full lg:text-[14px] md:text-[12px] text-[10px] font-medium 
                         lg:text-[#161820] md:text-[#161820] text-[#666]
-                        lg:mt-[27px] md:mt-[27px] mt-[13px]">
-                        凤凰社区团队成员均来自早期数字货币领域投资者和研究者，成员在数字货币领域具有丰富的研发和运营经验。对于 DeFi、NFT、WEB3、元宇宙、区块链底层等概念和投资工 具的设计、架构及实施、及如何构建和数字货币交易衍生品有着深刻的理解。
+                        lg:mt-[27px] md:mt-[27px]" :class="lang == 'en' ? 'mt-0' : 'mt-3'">
+                        {{ $t("team.teamBannerDesc1") }}
                     </p>
                 </div>
             </div>
         </div>
     </div>
 </template>
+<script>
+export default {
+    name: "OperationsTeam",
+    data() {
+        return {
+            lang: localStorage.getItem("lang"),
+        }
+    },
+}
+</script>
 
 <style scoped></style>

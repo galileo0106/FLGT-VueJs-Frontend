@@ -1,11 +1,9 @@
 <script setup>
-import { ref } from "vue";
-
 const download_datas = [
-    { id: 1, qrCodeImg: "/src/assets/chinese_pc/download/download_qr_code_pc.svg", title: "Android版"},
-    { id: 2, qrCodeImg: "/src/assets/chinese_pc/download/download_qr_code_pc.svg", title: "IOS版"},
-    { id: 3, qrCodeImg: "/src/assets/chinese_pc/download/download_qr_code_pc.svg", title: "Google Play"},
-    { id: 4, qrCodeImg: "/src/assets/chinese_pc/download/download_qr_code_pc.svg", title: "Testflinght"},
+    { id: 1, qrCodeImg: "/src/assets/chinese_pc/download/download_qr_code_pc.svg", title: "androidVersion"},
+    { id: 2, qrCodeImg: "/src/assets/chinese_pc/download/download_qr_code_pc.svg", title: "iosVersion"},
+    { id: 3, qrCodeImg: "/src/assets/chinese_pc/download/download_qr_code_pc.svg", title: "googlePlay"},
+    { id: 4, qrCodeImg: "/src/assets/chinese_pc/download/download_qr_code_pc.svg", title: "testflinght"},
 ]
 </script>
 
@@ -14,13 +12,13 @@ const download_datas = [
         lg:h-[638px] md:h-[500px] h-[400px] w-full z-[-2] bg-[length:100%_100%] relative">
         <div class="h-full lg:py-[136px] md:py-[60px] py-[16px] relative container mx-auto">
             <div class="lg:pl-[calc(calc(50%)-478px)] md:pl-[100px] pl-[24px]">
-                <div class="font-[700] lg:text-[48px] md:text-[39px] text-[30px] text-white text-left
-                    leading-[56px]">
-                    凤凰社区客户端下载
+                <div class="font-[700] lg:text-[48px] md:text-[39px] text-white text-left" 
+                    :class="lang == 'en' ? 'leading-[30px] text-[25px]' : 'leading-[56px] text-[30px]'">
+                    {{ $t("download.phoenixCommunityClientDownload") }}
                 </div>
-                <div class="lg:leading-[64px] md:leading-[40px] leading-[16px]">
-                    <p class="lg:text-[16px] text-[12px] text-white font-medium ">
-                        短视频社交、POV挖矿、钱包、电影、交易所、节点挖矿、GameFi、NFT交易所
+                <div class="lg:leading-[64px] md:leading-[40px] leading-[18px]">
+                    <p class="lg:text-[16px] text-[12px] text-white font-medium pr-2">
+                        {{ $t("download.bannerContent") }}
                     </p>
                 </div>
                 <div class="mt-[60px] lg:block md:block hidden">
@@ -28,11 +26,13 @@ const download_datas = [
                         <div v-for="item in download_datas" :key="item.id" class="mr-[50px]">
                             <button class="w-[100px] bg-transparent gr_code_btn text-white
                                 lg:text-[14px] md:text-[12px] text-[10px] font-bold text-center leading-[24px]">
-                                {{ item.title }}
+                                {{ $t("download."+ item.title) }}
                             </button>
                             <img :src=item.qrCodeImg alt="qr_code_pc"
                                 class="my-[10px]" />
-                            <p class="text-[14px] leading-[24px] text-white font-[400] text-center">扫码下载</p>
+                            <p class="text-[14px] leading-[24px] text-white font-[400] text-center">
+                                {{ $t("download.scanCodeToDownload") }}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -50,12 +50,14 @@ const download_datas = [
                         <div v-for="item in download_datas" :key="item.id">
                             <button class="w-[63px] bg-transparent gr_code_btn text-white
                                 text-[10px] font-bold text-center">
-                                {{ item.title }}
+                                {{ $t("download."+ item.title) }}
                             </button>
                             <img src="../../assets/chinese_mobile/download/download_qr_code_mobile.svg" 
                                 alt="qr_code_pc" class="mt-[6px] mb-1" />
                             <button class="download_btn_mobile text-white text-center text-[10px]
-                                leading-[14px] font-medium py-[3.5px] w-[63px]">点击下载</button>
+                                leading-[14px] font-medium py-[3.5px] w-[63px]">
+                                {{ $t("download.scanCodeToDownload") }}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -63,7 +65,16 @@ const download_datas = [
         </div>
     </div>
 </template>
-
+<script>
+export default {
+    name: "OperationsTeam",
+    data() {
+        return {
+            lang: localStorage.getItem("lang"),
+        }
+    },
+}
+</script>
 <style scoped>
 .gr_code_btn {
     border: 1px solid #D9D9D9;

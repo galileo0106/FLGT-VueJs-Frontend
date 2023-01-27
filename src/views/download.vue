@@ -1,11 +1,6 @@
 <script setup>
-import DownloadApp from "./download/DownloadApp.vue";
-import FAQ from "./download/FAQ.vue";
-
 </script>
 
-<style>
-</style>
 <template>
     <div class="w-full font-normal_font">
       <DownloadApp/>
@@ -15,3 +10,16 @@ import FAQ from "./download/FAQ.vue";
       <FAQ />
     </div>
 </template>
+
+<script>
+import DownloadApp from "./download/DownloadApp.vue";
+import FAQ from "./download/FAQ.vue";
+
+export default {
+  name: "Download",
+  components: {
+      DownloadApp,
+      FAQ
+  }
+}
+</script>

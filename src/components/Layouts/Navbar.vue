@@ -3,88 +3,108 @@ import { ref } from 'vue'
 </script>
 
 <template>
-    <div class="lg:flex md:flex flex-row lg:justify-between justify-center 2xl:px-[16%] xl:px-[12%] px-[2%] items-center h-[60px] lg:bg-white bg-white hidden">
-        <div class="h-full">
-            <div class="flex items-center lg:justify-center justify-start lg:w-fit w-full h-full">
-                <nav class="lg:flex md:flex hidden items-center h-full">
-                    <router-link class="border-0 nav-link" to="/home">
-                        <img src='../../assets/logo.svg' alt="logo" class="px-7"/>
-                    </router-link>     
-                    <ul class="flex flex-row h-full my-auto">
-                        <li v-for="(item, index) in navbarList" :key="index" class="lg:px-7 md:px-3 link flex items-center">
-                            <router-link class="nav-link" :active='$route.name ==item.name'
-                                :to="item.path" :id="item.path">{{ item.title }}</router-link>
-                        </li>
-                    </ul>
-                </nav>
+    <header class="sticky top-0 z-30 w-full px-2 bg-white shadow-xl">
+        <div class="lg:flex md:flex flex-row lg:justify-between justify-center 2xl:px-[16%] xl:px-[12%] px-[2%] items-center h-[60px] lg:bg-white bg-white hidden">
+            <div class="h-full">
+                <div class="flex items-center lg:justify-center justify-start lg:w-fit w-full h-full">
+                    <nav class="lg:flex md:flex hidden items-center h-full">
+                        <router-link class="border-0 nav-link" to="/home">
+                            <img src='../../assets/logo.svg' alt="logo" class=""/>
+                        </router-link>
+                        <ul class="flex flex-row h-full my-auto">
+                            <li v-for="(item, index) in navbarList" :key="index" class="lg:px-7 md:px-3 link flex items-center">
+                                <router-link class="nav-link" :active='$route.path.startsWith(item.path)'
+                                    :class="$route.path.startsWith(item.path) ? 'router-link-active' : ''"
+                                    :to="item.path" :id="item.path" @click="() => handleMenu(item.name)">
+                                    {{ $t("menu." + item.name) }}
+                                </router-link>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="items-center lg:justify-center justify-end lg:w-fit md:w-1/4 w-full lg:flex md:flex hidden ">
+                <a class="bg-gradient-to-r from-[#F02148] to-[#FC4E2B] h-6 text-white lg:px-[22px] md:px-2 rounded-[4px]"
+                    href="/login">
+                    {{ $t("menu.login") }}
+                </a>
+                <button></button>
+                <LanguageSelect class="select"/>
             </div>
         </div>
-        <div class="items-center lg:justify-center justify-end lg:w-fit md:w-1/4 w-full lg:flex md:flex hidden ">
-            <a class="bg-gradient-to-r from-[#F02148] to-[#FC4E2B] h-6 text-white px-[22px] rounded-[4px]"
-                href="/login">
-                登录
-            </a>
-            <button></button>
-            <LanguageSelect :options="['中文', 'English']" :default="'中文'" class="select"/>
-        </div>
-    </div>
-    <div class="lg:hidden md:hidden flex flex-row relative justify-center items-center h-[44px] bg-[#170550] px-[5%]">
-        <div class="grid grid-cols-2">
-            <div class="relative">
-                <img src="../../assets/logo.svg" alt="logo" class="h-[30px] w-[22.5px] absolute right-0" />
-            </div>
-            <div class="text-left py-1">
-                <span class="text-[18px] text-white px-3">
-                    {{ selectedMenuName }}
-                </span>
-            </div>
-            <div class="absolute right-0">
-                <div @click="() => toggleNav('')" class="flex md:hidden">
-                    <button type="button" class="focus:outline-none mx-4 p-[5px]">
-                    <div class="space-y-1.5">
-                        <div class="w-8 h-[3px] bg-white"></div>
-                        <div class="w-8 h-[3px] bg-white"></div>
-                        <div class="w-8 h-[3px] bg-white"></div>
+    </header>
+    <header class="sticky top-0 z-30 w-full shadow-xl lg:hidden md:hidden">
+        <div class="flex flex-row relative justify-center items-center h-[44px] bg-[#170550] px-[5%] w-full">
+            <div class="grid grid-cols-2">
+                <div class="relative">
+                    <img src="../../assets/logo.svg" alt="logo" class="h-[30px] w-[22.5px] absolute right-0" />
+                </div>
+                <div class="text-left py-1">
+                    <span class="text-[18px] text-white px-3">
+                        {{ $t("menu." + selectedMenuName) }}
+                    </span>
+                </div>
+                <div class="absolute right-0">
+                    <div @click="() => toggleNav('')" class="flex md:hidden">
+                        <button type="button" class="focus:outline-none mx-4 p-[5px]">
+                            <div class="space-y-1.5">
+                                <div class="w-8 h-[3px] bg-white"></div>
+                                <div class="w-8 h-[3px] bg-white"></div>
+                                <div class="w-8 h-[3px] bg-white"></div>
+                            </div>
+                        </button>
                     </div>
-
-                    </button>
                 </div>
             </div>
         </div>
-    </div>
+    </header>
 
-    <nav id="mobile-navigation" class="fixed top-0 right-0 bottom-0 left-0 backdrop-blur-sm z-10"
+    <nav id="mobile-navigation" class="fixed top-[43px] right-0 bottom-0 left-0 backdrop-blur-sm z-10"
         v-if="showMenu">
         <ul class="absolute top-0 right-0 bottom-0 w-[240px] py-5 px-4 bg-[#252A3D] 
-                drop-shadow-2xl z-10 transition-all text-[#94A4BD]">
+                drop-shadow-2xl z-10 transition-all text-[#94A4BD] overflow-y-auto">
             <li class="border-b border-[#ffffff1a] pb-[20px]">
                 <div class="flex justify-between">
                     <div>
                         <i class="far fa-user-circle text-[25px]"></i>
-                        <span class="ml-1 text-[14px] leading-[22px]">陌生人</span> 
+                        <span class="ml-1 text-[14px] leading-[22px]">
+                            {{ $t("menu.stranger") }}
+                        </span> 
                     </div>
                     <div>
                         <button class="text-white mobile_login_btn w-[76px] rounded text-[12px] leading-[16px] font-medium
-                            py-1 px-[11px]" @click="handleLoginPage">
-                            登录/注册
+                            py-1 px-2" @click="handleLoginPage">
+                            {{ $t("menu.login") }} 
+                            {{ activeLanguage == 'en' ? '&' : '/' }} 
+                            {{ $t("menu.register") }}
                         </button>
                     </div>
                 </div>
             </li>
-            <li class="">
-                <a href="#" class="block p-4">下载APP</a>
+            <li class="" v-for="(item, index) in navbarList" :key="index">
+                <a :href="item.path" class="block p-3">
+                    <span :class="$route.path.startsWith(item.path) ? 'text-white border-b border-white pb-1' : ''">
+                        {{ $t("menu." + item.name) }}
+                    </span>
+                </a>
             </li>
-            <li class="">
-                <a href="#" class="block p-4">消息</a>
+            <li class="relative" @click="handleLanguage">
+                <a href="#" class="block p-3">简体中文</a>
+                <i class="fas fa-caret-down absolute right-[20px] top-[15px]"></i>
             </li>
-            <li class="">
-                <a href="#" class="block p-4">白皮书</a>
+            <li class="pl-2" v-if="showLangSelect" @click="() => selectLanguage('zh')">
+                <a href="#" class="block p-3">
+                    <span :class="activeLanguage == 'zh' ? 'text-white border-b border-white pb-1' : ''">
+                        简体中文
+                    </span>
+                </a>
             </li>
-            <li class="">
-                <a href="#" class="block p-4">帮助</a>
-            </li>
-            <li class="">
-                <a href="#" class="block p-4">简体中文</a>
+            <li class="pl-2" v-if="showLangSelect" @click="() => selectLanguage('en')">
+                <a href="#" class="block p-3">
+                    <span :class="activeLanguage == 'en' ? 'text-white border-b border-white pb-1' : ''">
+                        English
+                    </span>
+                </a>
             </li>
         </ul>
 
@@ -106,7 +126,9 @@ import { ref } from 'vue'
                 </svg>
             </button>
         </div>
-        <h3 class="text-[18px] text-[#333] leading-[23.8px] font-bold text-center mt-[27px]">登录注册获得更多精彩</h3>
+        <h3 class="text-[18px] text-[#333] leading-[23.8px] font-bold text-center mt-[27px]">
+            {{ $t("login.mobileLoginTitle") }}
+        </h3>
         <div class="login-form px-[38px]">
             <div class="flex flex-row mt-[40px]">
                 <div>
@@ -118,30 +140,34 @@ import { ref } from 'vue'
                 </div>
                 <div class="w-[2px] h-[20px] bg-[#D9D9D9] mx-4 my-auto"></div>
                 <div>
-                    <input type="text" placeholder="请输入手机号" v-model="phoneNumber"
+                    <input type="text" :placeholder="$t('login.enterPhoneNum')" v-model="phoneNumber"
                         class="border-none text-[#999] text-[16px] leading-[22.4px] py-[9px]
                             w-full outline-none" />
                 </div>
             </div>
             <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
             <div class="mt-[15px] relative">
-                <input type="text" placeholder="请输入验证码" v-model="verifyCode"
+                <input type="text" :placeholder="$t('login.enterVerifyCode')" v-model="verifyCode"
                     class="border-none text-[#999] text-[16px] leading-[22.4px] py-2 w-full outline-none" />
-                <a class="absolute right-0 top-[10px] text-[#F02148] text-[16px] leading-[22.4px]">获取验证码</a>
+                <a class="absolute right-0 top-[10px] text-[#F02148] text-[16px] leading-[22.4px]">
+                    {{ $t('login.getVerificationCode') }}
+                </a>
             </div>
             <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
-            <div class="mt-[30px] text-left">
-                <input type="radio" class="mr-1" />
-                <label class="text-[14px] leading-[20px] text-[#333]">
-                    已阅读并同意
-                    <a class="text-[#0057FF]">《用户协议》</a>和
-                    <a class="text-[#0057FF]">《隐私政策》</a></label>
+            <div class="mt-[30px] flex flex-row" @click="() => { this.checkAgree = !this.checkAgree }">
+                <p v-if="!checkAgree" class="border rounded-full text-[#999] w-[18px] h-[18px] mr-2"></p>
+                <img v-if="checkAgree" src="../../assets/chinese_mobile/checkbox_input.svg" alt="checkbox"
+                    class="mr-2 w-[18px] h-[18px]" />
+                <label class="text-[13px] leading-[20px] text-[#333]">
+                    {{ $t('login.mobileAgreeText') }}
+                    <a class="text-[#0057FF]">{{ $t('login.userAgree') }}</a>{{ $t('login.agreeAndText') }}
+                    <a class="text-[#0057FF]">{{ $t('login.privacyAgree') }}</a></label>
             </div>
             <div class="mt-[40px]">
                 <button class="w-full rounded-[48px] login-btn text-white py-[10px]
                     text-[16px] leading-[22.4px] text-center font-bold"
-                    :class="(verifyCode != '' && phoneNumber != '') ? 'opacity-100' : 'opacity-50'"
-                    @click="signin">登录</button>
+                    :class="(verifyCode != '' && phoneNumber != '' && checkAgree) ? 'opacity-100' : 'opacity-50'"
+                    @click="signin">{{ $t('login.login') }}</button>
             </div>
         </div>
     </div>
@@ -159,24 +185,24 @@ import { ref } from 'vue'
             <p class="text-right text-[#333] text-[14px] leading-[20px] py-[17px] pr-4">{{ country.value }}</p>
         </div>
     </div>
-    <!-- <div class="bg-[#170550] fixed z-[10] w-full">
-        <ul :class="showMenu ? 'flex' : 'hidden'" class="flex-col lg:hidden md:hidden">
-            <li v-for="(item, index) in navbarList" :key="index" class="px-5 py-3 text-white hover:bg-[#948fa380]">
-                <router-link class="nav-link" :active='$route.name ==item.name' @click="() => toggleNav(item.path)"
-                    :to="item.path" :id="item.path">{{ item.title }}</router-link>
-            </li>
-        </ul>
-    </div> -->
+    
+    <a @click="scrollTop" v-show="visible"
+        class="fixed z-[1000] bottom-8 right-8 border-0 w-8 h-8 rounded-full 
+            drop-shadow-md login-btn text-white text-2xl font-bold text-center lg:block md:block hidden">
+        <i class="fas fa-angle-up"></i>
+    </a>
 </template>
 
 <script>
 import LanguageSelect from "../Common/LanguageSelect.vue";
+import en from '../../assets/lang/en.json';
+import zh from '../../assets/lang/zh.json';
 const navbarList = ref([
     {
         title: '首页',
         href: '#',
         path: '/home',
-        name: '',
+        name: 'home',
     },
     {
         title: '下载',
@@ -212,7 +238,7 @@ const navbarList = ref([
         title: '白皮书',
         href: '#',
         path: '/whitePaper',
-        name: '',
+        name: 'whitePaper',
     },
     {
         title: '帮助',
@@ -228,14 +254,16 @@ export default {
     },
     data() {
         var list = navbarList._rawValue;
-        var menuName = list.filter(item => window.location.pathname.includes(item.path)).length > 0 ? 
-                    list.filter(item => window.location.pathname.includes(item.path))[0].title : "";
+        var menuName = list.filter(item => window.location.pathname.startsWith(item.path)).length > 0 ? 
+                    list.filter(item => window.location.pathname.startsWith(item.path))[0].name : "";
+        console.log(menuName);
         return {
             showMenu: false,
             showLoginPage: false,
             selectedMenuName: menuName,
             showCountryList: false,
             selectedCountry: "+86",
+            checkAgree: false,
             countryList: [
                 { id: 1, name: "中国大陆", value: "+86" },
                 { id: 2, name: "中国台湾", value: "+886" },
@@ -255,15 +283,15 @@ export default {
             phoneNumber: "",
             verifyCode: "",
             isLogin: false,
+            showLangSelect: false,
+            language: localStorage.getItem('lang'),
+            activeLanguage: this.$i18n.locale,
+            visible: false
         };
     },
     methods: {
-        toggleNav: function (path) {
+        toggleNav: function () {
             this.showMenu = !this.showMenu;
-            var list = navbarList._rawValue;
-            var selectedMenuName = list.filter(item => item.path == path).length > 0 ? 
-                    list.filter(item => item.path == path)[0].title : this.selectedMenuName;
-            this.selectedMenuName = selectedMenuName;
         },
         handleLoginPage: function() {
             this.showMenu = false;
@@ -277,13 +305,44 @@ export default {
         handleCountry: function(value) {
             this.selectedCountry = value;
             this.showCountryList = !this.showCountryList;
+        },
+        handleLanguage: function() {
+            this.showLangSelect = !this.showLangSelect;
+        },
+        selectLanguage: function(lang) {
+            this.activeLanguage = lang; // update CSS class in selector
+            this.$i18n.locale = lang;
+            this.$i18n.setLocaleMessage(lang, lang == "en" ? en : lang == "zh" ? zh : null);
+            // persist selected language
+            localStorage.setItem("lang", lang);
+            window.location.reload();
+        },
+        scrollTop: function () {
+            this.intervalId = setInterval(() => {
+                if (window.pageYOffset === 0) {
+                clearInterval(this.intervalId)
+                }
+                window.scroll(0, window.pageYOffset - 100)
+            }, 20)
+        },
+        scrollListener: function (e) {
+            this.visible = window.scrollY > 150
+        },
+        handleMenu: function(name) {
+            this.selectedMenuName = name;
         }
+    },
+    mounted: function () {
+        window.addEventListener('scroll', this.scrollListener)
+    },
+    beforeDestroy: function () {
+        window.removeEventListener('scroll', this.scrollListener)
     },
     computed: {
         selectedMenu() {
             var list = navbarList._rawValue;
-            return list.filter(item => item.path == window.location.pathname).length > 0 ? 
-                    list.filter(item => item.path == window.location.pathname)[0].title : "";
+            return list.filter(item => window.location.pathname.startsWith(item.path)).length > 0 ? 
+                    list.filter(item => window.location.pathname.startsWith(item.path))[0].name : "";
         }
     }
   };
@@ -308,5 +367,11 @@ export default {
 }
 .login-btn {
     background: linear-gradient(to right, #F02148 8.34%, #FF5B21 100%);
+}
+
+.check-icon {
+    background: -webkit-linear-gradient(to right, #F02148 8.34%, #FF5B21 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 </style>

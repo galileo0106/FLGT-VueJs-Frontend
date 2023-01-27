@@ -1,41 +1,39 @@
 <script setup>
-import { ref } from "vue";
-
 const nodePartners = [
     { 
         id: 1, 
-        name: "阿里云", 
+        name: "nodeDescTitle1", 
         logo_pc: "/src/assets/chinese_pc/team/ali_logo_pc.svg",
         logo_mobile: "/src/assets/chinese_mobile/team/ali_logo_mobile.svg",
-        description: "凤凰社区携手阿里云全面开启数字化转型，打造区块链开放短视频社交平台。"
+        description: "nodeDescContent1"
     },
     { 
         id: 2, 
-        name: "华为云", 
+        name: "nodeDescTitle2", 
         logo_pc: "/src/assets/chinese_pc/team/huawei_logo_pc.svg",
         logo_mobile: "/src/assets/chinese_mobile/team/huawei_logo_mobile.svg",
-        description: "华为云为凤凰社区提供服务，响应速度提升百倍。让客户享受流畅体验。"
+        description: "nodeDescContent2"
     },
     { 
         id: 3, 
-        name: "腾讯云", 
+        name: "nodeDescTitle3", 
         logo_pc: "/src/assets/chinese_pc/team/tencent_logo_pc.svg",
         logo_mobile: "/src/assets/chinese_mobile/team/tencent_cloud_logo_mobile.svg",
-        description: "凤凰社区卓越的合作伙伴之一，辅助实现核心业务系统。"
+        description: "nodeDescContent3"
     },
     { 
         id: 4, 
-        name: "Microsoft Azure", 
+        name: "nodeDescTitle4", 
         logo_pc: "/src/assets/chinese_pc/team/azure_logo_pc.svg",
         logo_mobile: "/src/assets/chinese_mobile/team/azure_logo_mobile.svg",
-        description: "凤凰社区携手AZURE全面开启数字化转型，打造区块链开放短视频社交平台。"
+        description: "nodeDescContent4"
     },
     { 
         id: 5, 
-        name: "谷歌云", 
+        name: "nodeDescTitle5", 
         logo_pc: "/src/assets/chinese_pc/team/google_cloud_logo_pc.svg",
         logo_mobile: "/src/assets/chinese_mobile/team/google_cloud_logo_mobile.svg",
-        description: "谷歌云为凤凰社区提供服务，响应速度提升百倍。让客户享受流畅体验。"
+        description: "nodeDescContent5"
     },
 ]
 </script>
@@ -46,7 +44,9 @@ const nodePartners = [
             bg-[length:100%_100%] text-center lg:pb-[60px] md:pb-[50px] pb-[40px]">
             <div class="w-full relative lg:pt-[80px] md:pt-[50px] pt-[20px]">
                 <h3 class="lg:text-[48px] md:text-[32px] text-[18px] 
-                    lg:text-[#25277A] md:text-[#25277A] text-white font-bold">节点伙伴</h3>
+                    lg:text-[#25277A] md:text-[#25277A] text-white font-bold">
+                    {{ $t("team.nodePartner") }}
+                </h3>
                 <p class="lg:text-[16px] md:text-[14px] text-[12px] text-[#15C3CA] font-bold uppercase">Node partner</p>
             </div>
 
@@ -62,9 +62,11 @@ const nodePartners = [
                                 </div>
                                 <div class="col-span-3 pl-[20px]">
                                     <div class="py-[10px]">
-                                        <p class="lg:text-[20px] md:text-[15px] font-bold text-[#25277A] uppercase">{{ item.name }}</p>
+                                        <p class="lg:text-[20px] md:text-[15px] font-bold text-[#25277A] uppercase">
+                                            {{ $t("team." + item.name) }}
+                                        </p>
                                         <p class="lg:text-[14px] md:text-[10px] justify-start text-[#101218] lg:mt-[20px] md:mt-[10px]">
-                                            {{ item.description }}
+                                            {{ $t("team." + item.description) }}
                                         </p>
                                     </div>
                                 </div>

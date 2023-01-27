@@ -1,8 +1,6 @@
 <script setup>
 </script>
 
-<style>
-</style>
 <template>
     <div class="w-full font-normal_font">
         <div class="lg:bg-blog_bg_pc md:bg-blog_bg_pc bg-blog_bg_mobile bg-no-repeat 
@@ -11,12 +9,12 @@
                 <div class="lg:px-0 md:px-[35px] px-[35px]">
                     <p class="lg:text-[64px] md:text-[44px] text-[32px] leading-14 
                         text-themeGradient font-bold lg:tracking-[5px] tracking-0">
-                        博客Blog
+                        {{ $t("blog.blogTitle") }}
                     </p>
                     <p class="lg:w-[847px] w-full mx-auto
                         lg:text-[20px] md:text-[17px] text-[14px] lg:mt-[40px] md:mt-[20px] mt-[6px]
                         lg:leading-[30px] md:leading-[25px] leading-[21px] font-medium text-justify text-white">
-                        通过我们的博客，您可以了解到我们实时动态、⼤事件、研发与运营进展和价值观。凝聚全球共识，推动社区的繁荣。您也可以关注我们Facebook，Twitter，TikTok、Discord、和Telegram频道等了解最新动态。
+                        {{ $t("blog.blogDesc") }}
                     </p>
                 </div>
             </div>

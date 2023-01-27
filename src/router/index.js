@@ -15,62 +15,62 @@ import ForgetPassword from "../views/Sign/ForgetPassword.vue";
 const routes = [
   {
     path: "/home",
-    name: "Home",
+    name: "home",
     component: Home,
   },
   {
     path: "/download",
-    name: "Download",
+    name: "download",
     component: Download
   },
   {
     path: "/movie",
-    name: "Movie",
+    name: "movie",
     component: Movie
   },
   {
     path: "/movie/:id",
-    name: "MovieDetail",
+    name: "movieDetail",
     component: PlayMovie
   },
   {
     path: "/mining",
-    name: "Mining",
+    name: "mining",
     component: Mining
   },
   {
     path: "/team",
-    name: "Team",
+    name: "team",
     component: Team
   },
   {
     path: "/blog",
-    name: "Blog",
+    name: "blog",
     component: Blog
   },
   {
     path: "/blog/detail",
-    name: "BlogDetail",
+    name: "blogDetail",
     component: BlogDetail
   },
   {
     path: "/help",
-    name: "Help",
+    name: "help",
     component: Help
   },
   {
     path: "/register",
-    name: "Signup",
+    name: "signup",
     component: Signup
   },
   {
     path: "/login",
-    name: "Signin",
+    name: "signin",
     component: Login
   },
   {
     path: "/resetPassword",
-    name: "ResetPassword",
+    name: "resetPassword",
     component: ForgetPassword
   },
 ];

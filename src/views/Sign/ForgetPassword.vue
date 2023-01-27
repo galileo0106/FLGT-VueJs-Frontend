@@ -10,10 +10,12 @@
                         <img src="../../assets/logo.svg" alt="fenghuang icon"
                             class="inline mr-[6px] w-[20px]" />
                         <h3 class="lg:text-[20px] md:text-[15px] text-[12px] leading-[23.8px] text-black font-bold lg:mr-[20px] md:mr-[15px] mr-[10px]
-                            inline">凤凰社区</h3>
+                            inline">
+                            {{ $t("login.phoenixCommunity") }}
+                        </h3>
                         <div class="bg-[#D9D9D9] lg:h-[12px] md:h-[6px] h-[6px] m-auto w-[1px] inline-block"></div>
                         <p class="lg:ml-[20px] md:ml-[15px] ml-[10px] text-[#333] lg:text-[16px] md:text-[12px] text-[10px] leading-[23.8px] font-medium
-                            inline">{{ step == 4 ? '重置密码' : '找回密码' }}</p>
+                            inline">{{ step == 4 ? $t("login.resetPassword") : $t("login.retrievePassword") }}</p>
                     </div>
                     <div class="lg:my-[50px] md:my-[35px] my-[20px] mx-auto">
                         <div v-if="step != 4" class="w-full py-6">
@@ -24,7 +26,9 @@
                                             <span class="text-center text-white w-full">1</span>
                                         </div>
                                     </div>
-                                    <div class="lg:text-[14px] md:text-[12px] text-[10px] text-center text-[#999] leading-[19.6px]">安全验证</div>
+                                    <div class="lg:text-[14px] md:text-[12px] text-[10px] text-center text-[#999] leading-[19.6px]">
+                                        {{ $t("login.safetyVerification") }}
+                                    </div>
                                 </div>
                                 <div class="w-1/3">
                                     <div class="relative mb-2" @click="() => selectStep(2)">
@@ -38,7 +42,9 @@
                                             <span class="text-center text-white w-full">2</span>
                                         </div>
                                     </div>
-                                    <div class="lg:text-[14px] md:text-[12px] text-[10px] text-center text-[#999] leading-[19.6px]">找回密码</div>
+                                    <div class="lg:text-[14px] md:text-[12px] text-[10px] text-center text-[#999] leading-[19.6px]">
+                                        {{ $t("login.retrievePassword") }}
+                                    </div>
                                 </div>
                                 <div class="w-1/3">
                                     <div class="relative mb-2" @click="() => selectStep(3)">
@@ -53,7 +59,9 @@
                                             <span class="text-center text-white w-full">3</span>
                                         </div>                                        
                                     </div>
-                                    <div class="lg:text-[14px] md:text-[12px] text-[10px] text-center text-[#999] leading-[19.6px]">操作成功</div>
+                                    <div class="lg:text-[14px] md:text-[12px] text-[10px] text-center text-[#999] leading-[19.6px]">
+                                        {{ $t("login.successfulOperation") }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +69,9 @@
                         <div v-if="step == 1">
                             <div class="lg:mt-[60px] md:mt-[40px] mt-[20px] lg:w-[450px] md:w-[350px] w-[300px] mx-auto">
                                 <div class="inline-block mr-4">
-                                    <label class="text-[#666] lg:text-[18px] md:text-[14px] text-[10px] leading-[23.8px] font-medium">账号</label>
+                                    <label class="text-[#666] lg:text-[18px] md:text-[14px] text-[10px] leading-[23.8px] font-medium">
+                                        {{ $t("login.account") }}
+                                    </label>
                                 </div>
                                 <div class="lg:px-[20px] md:px-[15px] px-[10px] inline-block border border-[#D9D9D9]">
                                     <div class="flex flex-row">
@@ -76,7 +86,7 @@
                                         </div>
                                         <div class="w-[2px] h-[20px] bg-[#D9D9D9] m-auto"></div>
                                         <div>
-                                            <input type="text" placeholder="请输入手机号/邮箱" v-model="account"
+                                            <input type="text" :placeholder="$t('login.phoneNumber')" v-model="account"
                                                 class="border-none text-[#666] lg:text-[14px] md:text-[12px] text-[10px]
                                                     lg:leading-[19.6px] md:leading-[14px] lg:p-[10px] md:p-[8px] p-1 px-[10px] w-full outline-none" />
                                         </div>
@@ -88,7 +98,7 @@
                                     <button @click="setNewPassword"
                                         class="rounded-[48px] text-white bg-[#C7C9CC] w-full
                                             lg:text-[16px] md:text-[13px] text-[10px] py-[10px] text-center mx-auto">
-                                            找回密码
+                                            {{ $t("login.retrievePassword") }}
                                     </button>
                                 </div>
                             </div>
@@ -97,29 +107,29 @@
                             <div class="lg:mt-[40px] md:mt-[30px] mt-[20px] text-center hidden">
                                 <h3 class="lg:text-[20px] md:text-[16px] text-[14px] leading-[28px] text-black font-medium mr-2">
                                     <i class="fa fa-check text-[#3DCC47] text-[24px]"></i>
-                                    验证邮件已发送成功
+                                    {{ $t("login.verifySuccesMsg") }}
                                 </h3>
                                 <p class="lg:mt-[25px] md:mt-[20px] mt-[15px] lg:text-[16px] md:text-[14px] text-[12px]
                                     leading-[24px] text-[#222]">
-                                    请尽快到Hamejie268@flgt.com邮箱完成验证<br/>
-                                    验证邮件七天内有效,收到验证邮件<br/>
-                                    建议您到邮件垃圾箱找找看或点此<a class="text-[#0B57FC]">重试</a>
+                                    {{ $t("login.verifySuccessContent1") }}<br/>
+                                    {{ $t("login.verifySuccessContent2") }}<br/>
+                                    {{ $t("login.verifySuccessContent3") }}<a class="text-[#0B57FC] ml-1">{{ $t("login.retry") }}</a>
                                 </p>
                             </div>
                             <div class="lg:mt-[60px] md:mt-[40px] mt-[20px] lg:w-[400px] md:w-[300px] w-[250px] mx-auto">
                                 <div class="lg:px-[20px] md:px-[15px] px-[10px] inline-block border border-[#D9D9D9] relative w-full rounded">
-                                    <input type="text" placeholder="请输入验证码" v-model="code"
+                                    <input type="text" :placeholder="$t('login.enterVerifyCode')" v-model="code"
                                         class="border-none text-[#666] lg:text-[14px] md:text-[12px] text-[10px]
                                             lg:leading-[19.6px] md:leading-[14px] lg:p-[10px] md:p-[8px] p-1 px-[10px] w-full outline-none" />
-                                    <p class="absolute right-[20px] lg:top-[10px] md:top-[8px] top-[4px] lg:text-[14px] md:text-[12px] text-[10px] leading-[19.6px]
-                                        text-[#F02148]">60秒后重新获取</p>
+                                    <p class="absolute right-[20px] lg:top-[10px] md:top-[6px] top-[4px] lg:text-[14px] md:text-[12px] text-[10px] leading-[19.6px]
+                                        text-[#F02148]">{{ $t('login.retryAgain') }}</p>
                                 </div>
                                 <div class="lg:mt-[40px] md:mt-[30px] mt-[20px]">
                                     <div class="lg:w-[300px] md:w-[250px] w-[200px] mx-auto">
                                         <button @click="setCode"
                                             class="rounded-[48px] text-white bg-[#C7C9CC] w-full
                                                 lg:text-[16px] md:text-[13px] text-[10px] py-[10px] text-center mx-auto">
-                                                下一步
+                                                {{ $t('login.next') }}
                                         </button>
                                     </div>
                                 </div>
@@ -128,14 +138,14 @@
                         <div v-if="step == 3">
                             <div class="lg:mt-[20px] md:mt-[15px] mt-[10px] lg:w-[400px] md:w-[300px] w-[250px] mx-auto">
                                 <div class="lg:px-[20px] md:px-[15px] px-[10px] inline-block border border-[#D9D9D9] relative w-full rounded">
-                                    <input type="text" placeholder="请输入登录密码" v-model="loginPassword"
+                                    <input type="text" :placeholder="$t('login.enterPassword')" v-model="loginPassword"
                                         class="border-none text-[#666] lg:text-[14px] md:text-[12px] text-[10px]
                                             lg:leading-[19.6px] md:leading-[14px] lg:p-[10px] md:p-[8px] p-1 px-[10px] w-full outline-none" />
                                     <i class="fa fa-eye absolute right-[20px] top-[10px]
                                         lg:text-[14px] md:text-[12px] text-[10px] leading-[19.6px] text-[#000000e6]"></i>
                                 </div>
                                 <div class="lg:px-[20px] md:px-[15px] px-[10px] lg:mt-[20px] md:mt-[15px] mt-[10px] inline-block border border-[#D9D9D9] relative w-full rounded">
-                                    <input type="text" placeholder="再次输入登录密码" v-model="confirmLoginPassword"
+                                    <input type="text" :placeholder="$t('login.enterConfirmPassword')" v-model="confirmLoginPassword"
                                         class="border-none text-[#666] lg:text-[14px] md:text-[12px] text-[10px]
                                             lg:leading-[19.6px] md:leading-[14px] lg:p-[10px] md:p-[8px] p-1 px-[10px] w-full outline-none" />
                                     <i class="fa fa-eye absolute right-[20px] top-[10px]
@@ -146,7 +156,7 @@
                                         <button @click="setLoginPassword"
                                             class="rounded-[48px] text-white bg-[#C7C9CC] w-full
                                                 lg:text-[16px] md:text-[13px] text-[10px] py-[10px] text-center mx-auto">
-                                                下一步
+                                                {{ $t('login.next') }}
                                         </button>
                                     </div>
                                 </div>
@@ -158,11 +168,12 @@
                                     class="mx-auto" />
                                 <p class="lg:mt-[20px] md:mt-[15px] mt-[10px] lg:text-[18px] md:text-[15px] text-[12px]
                                     leading-[25.2px] text-[#333] font-bold text-center">
-                                    新密码设置成功，请牢记您的新密码
+                                    {{ $t('login.resetPasswordSuccess') }}
                                 </p>
                                 <div class="lg:w-[300px] md:w-[250px] w-[200px] mx-auto lg:mt-[55px] md:mt-[40px] mt-[30px]">
                                     <button class="rounded-[48px] gradient_div text-white py-[10px]
-                                        text-[16px] leading-[22.4px] text-center font-bold w-full">去登陆
+                                        text-[16px] leading-[22.4px] text-center font-bold w-full">
+                                        <a href="/login">{{ $t('login.toLogin') }}</a>
                                     </button>
                                 </div>
                             </div>
