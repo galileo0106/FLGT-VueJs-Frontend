@@ -4,38 +4,38 @@ const contactInfos = [
     {
         id: 1,
         name: "twitter",
-        logo_pc: "/src/assets/chinese_pc/help/twitter_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/help/twitter_logo_mobile.svg",
+        logo_pc: new URL("/src/assets/chinese_pc/help/twitter_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/help/twitter_logo_mobile.svg", import.meta.url).href,
     },
     {
         id: 2,
         name: "facebook",
-        logo_pc: "/src/assets/chinese_pc/help/facebook_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/help/facebook_logo_mobile.svg",
+        logo_pc: new URL("/src/assets/chinese_pc/help/facebook_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/help/facebook_logo_mobile.svg", import.meta.url).href,
     },
     {
         id: 3,
         name: "discord",
-        logo_pc: "/src/assets/chinese_pc/help/discord_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/help/discord_logo_mobile.svg",
+        logo_pc: new URL("/src/assets/chinese_pc/help/discord_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/help/discord_logo_mobile.svg", import.meta.url).href,
     },
     {
         id: 4,
         name: "Telegram",
-        logo_pc: "/src/assets/chinese_pc/help/telegram_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/help/telegram_logo_mobile.svg",
+        logo_pc: new URL("/src/assets/chinese_pc/help/telegram_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/help/telegram_logo_mobile.svg", import.meta.url).href,
     },
     {
         id: 5,
         name: "youtube",
-        logo_pc: "/src/assets/chinese_pc/help/youtube_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/help/youtube_logo_mobile.svg",
+        logo_pc: new URL("/src/assets/chinese_pc/help/youtube_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/help/youtube_logo_mobile.svg", import.meta.url).href,
     },
     {
         id: 6,
         name: "mail",
-        logo_pc: "/src/assets/chinese_pc/help/mail_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/help/mail_logo_mobile.svg",
+        logo_pc: new URL("/src/assets/chinese_pc/help/mail_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/help/mail_logo_mobile.svg", import.meta.url).href,
     },
 ]
 </script>
@@ -44,9 +44,9 @@ const contactInfos = [
 </style>
 <template>
     <div class="w-full font-normal_font">
-        <div class="lg:bg-help_bg_pc md:bg-help_bg_pc bg-white bg-no-repeat 
+        <div class="lg:bg-help_bg_pc md:bg-help_bg_pc bg-white bg-no-repeat
             lg:h-[340px] md:h-[340px] h-[200px] w-full z-[-2] bg-[length:100%_100%]">
-            <div class="h-full lg:py-[77px] md:py-[60px] py-[20px] 
+            <div class="h-full lg:py-[77px] md:py-[60px] py-[20px]
                 lg:pl-[calc(calc(50%)-478px)] md:pl-[calc(calc(50%)-278px)] pl-[20px] pr-[20px] relative">
                 <div class="absolute right-[2%]">
                     <img src="../assets/chinese_mobile/help/help_bg_mobile.png" alt="help mobile"
@@ -58,7 +58,7 @@ const contactInfos = [
                 </div>
                 <div class="lg:w-[455px] md:w-[350px] lg:mt-[40px] md:mt-[20px] lg:block md:block hidden">
                     <div class="flex flex-row">
-                        <input :placeholder="$t('help.searchHelpContent')" 
+                        <input :placeholder="$t('help.searchHelpContent')"
                             class="py-[7px] px-[12px] text-[14px] text-[#86909C]
                                 border border-[#C4C4C4] border-r-0 w-full"/>
                         <button class="text-[14px] text-[#86909C] bg-white w-1/4
@@ -100,10 +100,10 @@ const contactInfos = [
                 </div>
 
                 <div class="lg:border md:border border-[#25252540] lg:mt-[43px] md:mt-[30px] mt-[20px] faq-box">
-                    <div class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 bg-white py-[20px] 
+                    <div class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 bg-white py-[20px]
                         lg:rounded-none md:rounded-none rounded-[6px]">
                         <div class="lg:px-[80px] md:px-[40px] px-[30px]">
-                            <ul class="lg:text-[20px] md:text-[17px] text-[14px] font-medium text-themeGreyText1 
+                            <ul class="lg:text-[20px] md:text-[17px] text-[14px] font-medium text-themeGreyText1
                                 lg:list-none md:list-none list-disc pl-[20px]">
                                 <li class="lg:leading-[50px] md:leading-[37px] leading-[28px]">{{ $t("help.feedbackQ1") }}</li>
                                 <li class="lg:leading-[50px] md:leading-[37px] leading-[28px]">{{ $t("help.feedbackQ2") }}</li>
@@ -167,7 +167,7 @@ const contactInfos = [
                                 lg:block md:block hidden lg:text-left md:text-left text-center">
                                 {{ $t("help.serviceTitle") }}
                             </p>
-                            <p class="lg:text-[14px] md:text-[10px] text-[14px] text-[#666] lg:leading-[21px] md:leading-[14px] leading-[21px] font-medium lg:mt-[20px] md:mt-[21px] mt-[22px] 
+                            <p class="lg:text-[14px] md:text-[10px] text-[14px] text-[#666] lg:leading-[21px] md:leading-[14px] leading-[21px] font-medium lg:mt-[20px] md:mt-[21px] mt-[22px]
                                 lg:text-left md:text-left text-center lg:pl-0 md:pl-0 pl-[26px] contact_mobile">
                                 {{ $t("help.serviceContent") }}
                             </p>
@@ -179,7 +179,7 @@ const contactInfos = [
                             </div>
                         </div>
                     </div>
-                    <div class="grid lg:grid-cols-6 md:grid-cols-6 grid-cols-3 
+                    <div class="grid lg:grid-cols-6 md:grid-cols-6 grid-cols-3
                         lg:gap-10 md:gap-6 gap-1 lg:ml-[64px] md:ml-[20px] lg:mt-0 md:mt-0">
                         <div v-for="item in contactInfos" :key="item.id"
                             class="flex flex-1 flex-col justify-center mt-[30px]">

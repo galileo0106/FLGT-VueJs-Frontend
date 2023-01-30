@@ -20,7 +20,7 @@ const shortcutKeywords = [
 </script>
 
 <template>
-  <div class="w-full font-normal_font">
+  <div class="w-full font-normal_font" v-if="loggedUser">
     <div v-if="!showSearchGroup">
         <Carousel :wrap-around="true" :breakpoints="breakpoints" :autoplay="3000999">
             <Slide v-for="item in movieSlides" :key="item.id">
@@ -151,6 +151,19 @@ const shortcutKeywords = [
         </div>
     </div>
   </div>
+  <div v-else class="w-full font-normal_font">
+    <div class="lg:bg-movie_bg_pc md:bg-movie_bg_pc bg-movie_bg_mobile h-full lg:pb-[60px] md:pb-[40px] pb-[20px]">
+        <div class="lg:w-[1024px] md:w-[760px] w-full mx-auto lg:px-[10px] md:px-[10px] px-[28px] h-[300px]">
+            <div class="table h-[300px] overflow-hidden mx-auto">
+                <div class="table-cell align-middle">
+                    <div class="text-white text-center font-bold text-[30px]">
+                        {{ $t("menu.loginFirst") }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -175,7 +188,8 @@ export default {
                 regionId: 0,
                 timeId: 0,
                 offset: 0,
-            }
+            },
+            loggedUser: localStorage.getItem("username"),
         };
     },
     mounted() {

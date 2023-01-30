@@ -10,7 +10,9 @@
         "help": "帮助",
         "login": "登录",
         "stranger": "陌生人",
-        "register": "注册"
+        "register": "注册",
+        "phoenix": "凤凰",
+        "loginFirst": "请先登录。"
     },
     "footer": {
         "ecosystem": "生态系统",

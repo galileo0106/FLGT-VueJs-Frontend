@@ -1,59 +1,59 @@
 <script setup>
 const contentPartners = [
-    { 
-        id: 1, 
-        name: "contentDesc1", 
-        logo_pc: "/src/assets/chinese_pc/team/warner_bros_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/team/warner_bros_logo_mobile.svg",
+    {
+        id: 1,
+        name: "contentDesc1",
+        logo_pc: new URL("/src/assets/chinese_pc/team/warner_bros_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/team/warner_bros_logo_mobile.svg", import.meta.url).href,
         description: "Warner Bros. Entertainment, Inc."
     },
-    { 
-        id: 2, 
-        name: "contentDesc2", 
-        logo_pc: "/src/assets/chinese_pc/team/century_studios_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/team/century_studios_logo_mobile.svg",
+    {
+        id: 2,
+        name: "contentDesc2",
+        logo_pc: new URL("/src/assets/chinese_pc/team/century_studios_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/team/century_studios_logo_mobile.svg", import.meta.url).href,
         description: "20th Century Studios"
     },
-    { 
-        id: 3, 
-        name: "contentDesc3", 
-        logo_pc: "/src/assets/chinese_pc/team/mgm_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/team/mgm_logo_mobile.svg",
+    {
+        id: 3,
+        name: "contentDesc3",
+        logo_pc: new URL("/src/assets/chinese_pc/team/mgm_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/team/mgm_logo_mobile.svg", import.meta.url).href,
         description: "Metro-Goldwyn-Mayer Pictures"
     },
-    { 
-        id: 4, 
-        name: "contentDesc4", 
-        logo_pc: "/src/assets/chinese_pc/team/united_artists_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/team/united_artists_logo_mobile.svg",
+    {
+        id: 4,
+        name: "contentDesc4",
+        logo_pc: new URL("/src/assets/chinese_pc/team/united_artists_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/team/united_artists_logo_mobile.svg", import.meta.url).href,
         description: "United Artists Releasing"
     },
-    { 
-        id: 5, 
-        name: "contentDesc5", 
-        logo_pc: "/src/assets/chinese_pc/team/columbia_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/team/columbia_logo_mobile.svg",
+    {
+        id: 5,
+        name: "contentDesc5",
+        logo_pc: new URL("/src/assets/chinese_pc/team/columbia_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/team/columbia_logo_mobile.svg", import.meta.url).href,
         description: "Columbia Pictures"
     },
-    { 
-        id: 6, 
-        name: "contentDesc6", 
-        logo_pc: "/src/assets/chinese_pc/team/universal_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/team/universal_logo_mobile.svg",
+    {
+        id: 6,
+        name: "contentDesc6",
+        logo_pc: new URL("/src/assets/chinese_pc/team/universal_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/team/universal_logo_mobile.svg", import.meta.url).href,
         description: "Universal Studios"
     },
-    { 
-        id: 7, 
-        name: "contentDesc7", 
-        logo_pc: "/src/assets/chinese_pc/team/paramount_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/team/paramount_logo_mobile.svg",
+    {
+        id: 7,
+        name: "contentDesc7",
+        logo_pc: new URL("/src/assets/chinese_pc/team/paramount_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/team/paramount_logo_mobile.svg", import.meta.url).href,
         description: "Paramount Pictures Corporation"
     },
-    { 
-        id: 8, 
-        name: "contentDesc8", 
-        logo_pc: "/src/assets/chinese_pc/team/disney_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/team/disney_logo_mobile.svg",
+    {
+        id: 8,
+        name: "contentDesc8",
+        logo_pc: new URL("/src/assets/chinese_pc/team/disney_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/team/disney_logo_mobile.svg", import.meta.url).href,
         description: "Walt Disney Studios"
     },
 ]
@@ -64,7 +64,7 @@ const contentPartners = [
         <div class="h-full w-full content_partner_bg bg-white
             bg-[length:100%_100%] text-center lg:pb-[60px] md:pb-[50px] pb-[40px]">
             <div class="w-full relative lg:pt-[80px] md:pt-[50px] pt-[20px]">
-                <h3 class="lg:text-[48px] md:text-[32px] text-[18px] 
+                <h3 class="lg:text-[48px] md:text-[32px] text-[18px]
                     lg:text-white md:text-white text-[#25277A] font-bold">{{ $t("team.contentPartner") }}</h3>
                 <p class="lg:text-[16px] md:text-[14px] text-[12px] text-[#15C3CA] font-bold uppercase">content partner</p>
             </div>

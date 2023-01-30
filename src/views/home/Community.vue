@@ -1,15 +1,14 @@
 <script setup>
 const datas = [
-  { id: "1", name: "storageAndDistributionNodes", value: 2800, unit: "plus", 
-    icon: "/src/assets/chinese_pc/btn-node.svg"},
-  {id: "2", name: "community", value: 2500, unit: "million", icon: "/src/assets/chinese_pc/btn-community.svg"},
-  {id: "3", name: "internetCelebrityBlogger", value: 800, unit: "moreThan", icon: "/src/assets/chinese_pc/btn-internet.svg"},
-  {id: "4", name: "copyrightPartner", value: 1500, unit: "many", icon: "/src/assets/chinese_pc/btn-copyright.svg"},
+  { id: "1", name: "storageAndDistributionNodes", value: 2800, unit: "plus", icon: new URL("/src/assets/chinese_pc/btn-node.svg", import.meta.url).href},
+  {id: "2", name: "community", value: 2500, unit: "million", icon: new URL("/src/assets/chinese_pc/btn-community.svg", import.meta.url).href},
+  {id: "3", name: "internetCelebrityBlogger", value: 800, unit: "moreThan", icon: new URL("/src/assets/chinese_pc/btn-internet.svg", import.meta.url).href},
+  {id: "4", name: "copyrightPartner", value: 1500, unit: "many", icon: new URL("/src/assets/chinese_pc/btn-copyright.svg", import.meta.url).href},
 ]
 </script>
 
 <template>
-  <div class="bg-community_mobile_page md:bg-community_page lg:bg-community_page bg-no-repeat 
+  <div class="bg-community_mobile_page md:bg-community_page lg:bg-community_page bg-no-repeat
     lg:h-[800px] md:h-[100%] h-[400px] bg-[length:100%_100%]">
     <div class="h-full lg:py-[66px] md:py-[40px] py-[20px]">
       <div class="title">
@@ -29,7 +28,7 @@ const datas = [
               lg:text-[32px] md:text-[24px] text-[16px]">
               {{item.value}} {{$t("home." + item.unit) }}
             </p>
-            <p class="text-white text-center 
+            <p class="text-white text-center
               lg:text-[18px] md:text-[15px] text-[12px] font-medium">{{$t("home." + item.name) }}</p>
           </div>
         </div>
@@ -64,7 +63,7 @@ const datas = [
     </div>
   </div>
 </template>
- 
+
 <style scoped>
 .title-border{
   background: radial-gradient(circle, #1F9CBC 20%, rgba(25, 161, 190, 0) 0%, #1F9CBC 18.78%, #7D4192 79.79%, rgba(125, 65, 146, 0) 97.05%);

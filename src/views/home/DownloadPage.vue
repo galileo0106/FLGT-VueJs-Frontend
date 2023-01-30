@@ -1,9 +1,9 @@
 <script setup>
 const datas = [
-  {qrCode: "/src/assets/chinese_mobile/qr_code_mobile.svg", id: "1", name: "androidVersion", url: "下载网址: https://www.fenghuang.com"}, 
-  {qrCode: "/src/assets/chinese_mobile/qr_code_mobile.svg", id: "2", name: "iosVersion", url: "下载网址: https://www.fenghuang.com"}, 
-  {qrCode: "/src/assets/chinese_mobile/qr_code_mobile.svg", id: "3", name: "googlePlay", url: "下载网址: https://www.fenghuang.com"},
-  {qrCode: "/src/assets/chinese_mobile/qr_code_mobile.svg", id: "4", name: "testflinght", url: "下载网址: https://www.fenghuang.com"},
+  {qrCode: new URL("/src/assets/chinese_mobile/qr_code_mobile.svg", import.meta.url).href, id: "1", name: "androidVersion", url: "下载网址: https://www.fenghuang.com"},
+  {qrCode: new URL("/src/assets/chinese_mobile/qr_code_mobile.svg", import.meta.url).href, id: "2", name: "iosVersion", url: "下载网址: https://www.fenghuang.com"},
+  {qrCode: new URL("/src/assets/chinese_mobile/qr_code_mobile.svg", import.meta.url).href, id: "3", name: "googlePlay", url: "下载网址: https://www.fenghuang.com"},
+  {qrCode: new URL("/src/assets/chinese_mobile/qr_code_mobile.svg", import.meta.url).href, id: "4", name: "testflinght", url: "下载网址: https://www.fenghuang.com"},
 ]
 
 </script>
@@ -18,7 +18,7 @@ const datas = [
         <div class="title-border mt-[21px]"></div>
       </div>
       <div class="lg:block md:block hidden">
-        <div class="grid lg:grid-cols-5 md:grid-cols-4 grid-cols-4 lg:mt-[51px] md:mt-[40px] mt-[34px] 
+        <div class="grid lg:grid-cols-5 md:grid-cols-4 grid-cols-4 lg:mt-[51px] md:mt-[40px] mt-[34px]
           lg:gap-10 md:gap-0 gap-0">
           <div class="lg:col-span-2 md:col-span-1 col-span-1 float-right block">
             <div class="text-right">
@@ -125,7 +125,7 @@ const datas = [
     </div>
   </div>
 </template>
- 
+
 <style scoped>
 .title-border{
   background: radial-gradient(circle,  #F02148 0%, #ff5b2100 100%);

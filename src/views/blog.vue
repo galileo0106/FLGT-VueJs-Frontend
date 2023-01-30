@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
     <div class="w-full font-normal_font">
         <div class="lg:bg-blog_bg_pc md:bg-blog_bg_pc bg-blog_bg_mobile bg-no-repeat 

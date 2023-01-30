@@ -10,7 +10,9 @@
         "help": "Help",
         "login": "Sign In",
         "stranger": "Stranger",
-        "register": "Register"
+        "register": "Register",
+        "phoenix": "Phoenix",
+        "loginFirst": "Please Login First"
     },
     "footer": {
         "ecosystem": "Ecosystem",

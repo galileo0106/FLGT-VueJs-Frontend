@@ -1,38 +1,38 @@
 <script setup>
 const nodePartners = [
-    { 
-        id: 1, 
-        name: "nodeDescTitle1", 
-        logo_pc: "/src/assets/chinese_pc/team/ali_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/team/ali_logo_mobile.svg",
+    {
+        id: 1,
+        name: "nodeDescTitle1",
+        logo_pc: new URL("/src/assets/chinese_pc/team/ali_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/team/ali_logo_mobile.svg", import.meta.url).href,
         description: "nodeDescContent1"
     },
-    { 
-        id: 2, 
-        name: "nodeDescTitle2", 
-        logo_pc: "/src/assets/chinese_pc/team/huawei_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/team/huawei_logo_mobile.svg",
+    {
+        id: 2,
+        name: "nodeDescTitle2",
+        logo_pc: new URL("/src/assets/chinese_pc/team/huawei_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/team/huawei_logo_mobile.svg", import.meta.url).href,
         description: "nodeDescContent2"
     },
-    { 
-        id: 3, 
-        name: "nodeDescTitle3", 
-        logo_pc: "/src/assets/chinese_pc/team/tencent_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/team/tencent_cloud_logo_mobile.svg",
+    {
+        id: 3,
+        name: "nodeDescTitle3",
+        logo_pc: new URL("/src/assets/chinese_pc/team/tencent_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/team/tencent_cloud_logo_mobile.svg", import.meta.url).href,
         description: "nodeDescContent3"
     },
-    { 
-        id: 4, 
-        name: "nodeDescTitle4", 
-        logo_pc: "/src/assets/chinese_pc/team/azure_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/team/azure_logo_mobile.svg",
+    {
+        id: 4,
+        name: "nodeDescTitle4",
+        logo_pc: new URL("/src/assets/chinese_pc/team/azure_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/team/azure_logo_mobile.svg", import.meta.url).href,
         description: "nodeDescContent4"
     },
-    { 
-        id: 5, 
-        name: "nodeDescTitle5", 
-        logo_pc: "/src/assets/chinese_pc/team/google_cloud_logo_pc.svg",
-        logo_mobile: "/src/assets/chinese_mobile/team/google_cloud_logo_mobile.svg",
+    {
+        id: 5,
+        name: "nodeDescTitle5",
+        logo_pc: new URL("/src/assets/chinese_pc/team/google_cloud_logo_pc.svg", import.meta.url).href,
+        logo_mobile: new URL("/src/assets/chinese_mobile/team/google_cloud_logo_mobile.svg", import.meta.url).href,
         description: "nodeDescContent5"
     },
 ]
@@ -43,7 +43,7 @@ const nodePartners = [
         <div class="h-full w-full lg:bg-white md:bg-white node_partner_bg
             bg-[length:100%_100%] text-center lg:pb-[60px] md:pb-[50px] pb-[40px]">
             <div class="w-full relative lg:pt-[80px] md:pt-[50px] pt-[20px]">
-                <h3 class="lg:text-[48px] md:text-[32px] text-[18px] 
+                <h3 class="lg:text-[48px] md:text-[32px] text-[18px]
                     lg:text-[#25277A] md:text-[#25277A] text-white font-bold">
                     {{ $t("team.nodePartner") }}
                 </h3>
@@ -52,7 +52,7 @@ const nodePartners = [
 
             <div class="lg:w-[995px] md:w-[760px] w-full lg:px-[35px] md:px-[35px] px-[20px] mx-auto">
                 <div class="grid grid-cols-3 gap-4 lg:mt-[60px] md:mt-[40px] mt-[20px]">
-                    <div v-for="item in nodePartners" :key="item.id" 
+                    <div v-for="item in nodePartners" :key="item.id"
                         class="node_partner_div text-left mb-[20px]">
                         <div class="lg:block md:block hidden">
                             <div class="grid grid-cols-5 p-[20px]">

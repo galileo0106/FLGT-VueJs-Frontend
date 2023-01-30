@@ -25,10 +25,34 @@ import { ref } from 'vue'
             </div>
             <div class="items-center lg:justify-center justify-end lg:w-fit md:w-1/4 w-full lg:flex md:flex hidden ">
                 <a class="bg-gradient-to-r from-[#F02148] to-[#FC4E2B] h-6 text-white lg:px-[22px] md:px-2 rounded-[4px]"
-                    href="/login">
+                    href="/login" v-if="!this.loggedUser">
                     {{ $t("menu.login") }}
                 </a>
-                <button></button>
+                <div class="px-3">
+                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdownInformation" v-if="this.loggedUser"
+                        class="text-white focus:outline-none text-center inline-flex items-center" type="button"
+                        @click="() => { this.openLogDropdown = !this.openLogDropdown }">
+                        <img src="../../assets/profile_icon.png" width="30" height="30" alt="avatar"
+                            class="border border-[#7d7c7c] rounded-full mt-2" />
+                    </button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdown" class="z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                        :class="openLogDropdown ? 'block' : 'hidden'">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                            <li>
+                                <p class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    {{ this.loggedUser }}
+                                </p>
+                            </li>
+                        </ul>
+                        <div class="py-2">
+                            <p class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                                @click="signout">
+                                Sign Out
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <LanguageSelect class="select"/>
             </div>
         </div>
@@ -41,7 +65,7 @@ import { ref } from 'vue'
                 </div>
                 <div class="text-left py-1">
                     <span class="text-[18px] text-white px-3">
-                        {{ $t("menu." + selectedMenuName) }}
+                        {{ selectedMenuName ? $t("menu." + selectedMenuName) : $t("menu.phoenix") }}
                     </span>
                 </div>
                 <div class="absolute right-0">
@@ -286,7 +310,9 @@ export default {
             showLangSelect: false,
             language: localStorage.getItem('lang'),
             activeLanguage: this.$i18n.locale,
-            visible: false
+            visible: false,
+            loggedUser: localStorage.getItem("username"),
+            openLogDropdown: false,
         };
     },
     methods: {
@@ -330,6 +356,12 @@ export default {
         },
         handleMenu: function(name) {
             this.selectedMenuName = name;
+        },
+        signout: function() {
+            this.loggedUser = "";
+            localStorage.removeItem("username");
+            this.openLogDropdown = false;
+            window.location.href = "/";
         }
     },
     mounted: function () {

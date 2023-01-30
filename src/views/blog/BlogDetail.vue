@@ -1,13 +1,10 @@
-<script setup>
-</script>
-
 <template>
     <div class="w-full font-normal_font">
-        <div class="lg:bg-blog_bg_pc md:bg-blog_bg_pc bg-blog_bg_mobile bg-no-repeat 
+        <div class="lg:bg-blog_bg_pc md:bg-blog_bg_pc bg-blog_bg_mobile bg-no-repeat
             lg:h-[638px] md:h-[520px] h-[342px] w-full bg-[length:100%_100%] relative">
             <div class="h-full lg:py-[105px] md:py-[60px] py-[26px] relative container mx-auto text-center">
                 <div class="lg:px-0 md:px-[35px] px-[35px]">
-                    <p class="lg:text-[64px] md:text-[44px] text-[32px] leading-14 
+                    <p class="lg:text-[64px] md:text-[44px] text-[32px] leading-14
                         text-themeGradient font-bold lg:tracking-[5px] tracking-0">
                         {{ $t("blog.blogTitle") }}
                     </p>
@@ -36,7 +33,7 @@
                     lg:text-black md:text-black text-[#141414] blog_overflow_title h-[50px]">
                     {{ $t("blog.blogItemTitle1") }}
                 </h3>
-                <p class="lg:text-[#666] md:text-[#666] text-[#696969] font-medium 
+                <p class="lg:text-[#666] md:text-[#666] text-[#696969] font-medium
                     lg:text-[18px] md:text-[16px] text-[14px] leading-[26px] lg:my-[30px] md:my-[20px] my-[10px]">
                     2023-01-13
                 </p>
@@ -50,7 +47,7 @@
                         src="../../assets/chinese_pc/blog/blog_detail_img_pc.png"/>
                     <img class="lg:hidden md:hidden block mx-auto mt-[10px] mb-[30px]" alt="blog detail img"
                         src="../../assets/chinese_mobile/blog/blog_detail_img_mobile.png"/>
-                    
+
                     <div class="lg:mb-[120px] md:mb-[75px] mb-[30px]">
                         <p class="lg:hidden md:hidden block text-[16px] text-black leading-[30px] indent-[32px]
                             text-left">

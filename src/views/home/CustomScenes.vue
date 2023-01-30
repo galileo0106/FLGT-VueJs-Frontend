@@ -3,12 +3,12 @@ import { ref } from "vue";
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
 import CarouselItem from './carousel_item.vue';
 const customScenes = [
-  {id: "1", title: "shortVideo", url: "/src/assets/chinese_pc/short_video.svg", content: "scenesDetail1"}, 
-  {id: "2", title: "movie", url: "/src/assets/chinese_pc/movie_illustration.svg", content: "scenseDetail2"}, 
-  {id: "3", title: "shopping", url: "/src/assets/chinese_pc/shopping_illustration.svg", content: "scenseDetail3"}, 
-  {id: "4", title: "wallet", url: "/src/assets/chinese_pc/money_bag_illustration.svg", content: "scenseDetail4"}, 
-  {id: "5", title: "exchange", url: "/src/assets/chinese_pc/exchange.svg", content: "scenesDetail5"}, 
-  {id: "6", title: "crowdfunding", url: "/src/assets/chinese_pc/crowdfunding_illustration.svg", content: "scenesDetail6"}, 
+  {id: "1", title: "shortVideo", url: new URL("/src/assets/chinese_pc/short_video.svg", import.meta.url).href, content: "scenesDetail1"},
+  {id: "2", title: "movie", url: new URL("/src/assets/chinese_pc/movie_illustration.svg", import.meta.url).href, content: "scenseDetail2"},
+  {id: "3", title: "shopping", url: new URL("/src/assets/chinese_pc/shopping_illustration.svg", import.meta.url).href, content: "scenseDetail3"},
+  {id: "4", title: "wallet", url: new URL("/src/assets/chinese_pc/money_bag_illustration.svg", import.meta.url).href, content: "scenseDetail4"},
+  {id: "5", title: "exchange", url: new URL("/src/assets/chinese_pc/exchange.svg", import.meta.url).href, content: "scenesDetail5"},
+  {id: "6", title: "crowdfunding", url: new URL("/src/assets/chinese_pc/crowdfunding_illustration.svg", import.meta.url).href, content: "scenesDetail6"},
 ]
 
 const carousel = [{slide: CarouselItem, id: "1"}, {slide: CarouselItem, id: "2"}]
@@ -16,7 +16,7 @@ const carousel = [{slide: CarouselItem, id: "1"}, {slide: CarouselItem, id: "2"}
 </script>
 
 <template>
-  <div class="bg-download_page bg-no-repeat w-full z-[0] relative 
+  <div class="bg-download_page bg-no-repeat w-full z-[0] relative
     lg:bg-[length:100%_100%] md:bg-contain bg-[length:100%_420px]">
     <div class="h-full lg:py-[66px] md:py-[40px] py-[20px] container m-auto px-5">
       <div class="title">
@@ -60,7 +60,7 @@ const carousel = [{slide: CarouselItem, id: "1"}, {slide: CarouselItem, id: "2"}
     </div>
   </div>
 </template>
- 
+
 <script>
 export default {
     name: "CustomScenes",

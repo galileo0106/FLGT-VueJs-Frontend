@@ -12,24 +12,7 @@
                                 class="inline mr-[6px]" />
                             {{ $t("login.phoenixCommunity") }}
                         </p>
-                        <div v-if="isLogin" class="lg:mt-[50px] md:mt-[20px]">
-                            <img src="../../assets/chinese_pc/sign/register_success_pc.svg" alt="register success" 
-                                class="mx-auto" />
-                            <p class="mt-[10px] text-[20px] leading-[28px] text-[#333] text-center">
-                                {{ $t("login.registerSUccess") }}
-                            </p>
-                            <p class="text-[14px] leading-[23.8px] text-[#666]">
-                                {{ $t("login.successText") }}
-                            </p>
-                            <div class="lg:mt-[60px] md:mt-[40px]">
-                                <button class="w-full rounded-[48px] login-btn text-white py-[10px]
-                                    text-[16px] leading-[22.4px] text-center font-bold"
-                                    @click="register">
-                                    {{ $t("login.loginNow") }}
-                                </button>
-                            </div>
-                        </div>
-                        <div v-else>
+                        <div>
                             <ul class="nav nav-tabs flex flex-row md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4 relative 
                                 lg:mt-[33px] md:mt-[15px]" 
                                 id="tabs-tab" role="tablist">
@@ -73,9 +56,10 @@
                                     id="tabs-password" role="tabpanel" aria-labelledby="tabs-password-tab">
                                     <div class="flex flex-row">
                                         <div>
-                                            <select class="bg-transparent text-[#666] 
+                                            <select class="bg-transparent text-[#666]
                                                 lg:text-[14px] md:text-[10px] text-medium lg:leading-[19.6px] md:leading-[14px]
-                                                lg:py-[10px] md:py-[5px] lg:mr-[10px] md:mr-[5px] outline-none">
+                                                lg:py-[10px] md:py-[5px] lg:mr-[10px] md:mr-[5px] outline-none" 
+                                                v-model="passwordLogin.country">
                                                 <option v-for="item in countryList" :key="item.id" :value="item.value">
                                                     {{ item.name }}
                                                 </option>
@@ -83,14 +67,14 @@
                                         </div>
                                         <div class="w-[2px] h-[20px] bg-[#D9D9D9] m-auto"></div>
                                         <div>
-                                            <input type="text" :placeholder="$t('login.phoneNumber')" 
+                                            <input type="text" :placeholder="$t('login.phoneNumber')" v-model="passwordLogin.username"
                                                 class="border-none text-[#666] lg:text-[14px] md:text-[10px] 
                                                     lg:leading-[19.6px] md:leading-[14px] lg:p-[10px] md:p-[5px] w-full outline-none" />
                                         </div>
                                     </div>
                                     <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
                                     <div class="mt-[15px]">
-                                        <input type="text" :placeholder="$t('login.enterPwd')" 
+                                        <input type="password" :placeholder="$t('login.enterPwd')" v-model="passwordLogin.password"
                                             class="border-none text-[#666] lg:text-[14px] md:text-[10px] lg:leading-[19.6px] md:leading-[14px]
                                              lg:py-[10px] md:py-[5px] w-full outline-none" />
                                     </div>
@@ -111,15 +95,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="lg:mt-[30px] md:mt-[15px] flex flex-row" @click="() => { this.checkAgreePwd = !this.checkAgreePwd }">
-                                        <input type="checkbox" class="mr-1" :value="checkAgreePwd" @change="() => { this.checkAgreePwd = !this.checkAgreePwd }" />
+                                    <div class="lg:mt-[30px] md:mt-[15px] flex flex-row" 
+                                        @click="() => { this.passwordLogin.checkAgreePwd = !this.passwordLogin.checkAgreePwd }">
+                                        <input type="checkbox" class="mr-1" v-model="passwordLogin.checkAgreePwd" />
                                         <p class="lg:text-[12px] md:text-[9px] leading-[20px] text-[#333] text-left">
                                             {{ $t("login.agreeText") }}<a class="text-[#0057FF]">{{ $t("login.userAgree") }}</a>{{ $t("login.agreeAndText") }}<a class="text-[#0057FF]">{{ $t("login.privacyAgree") }}</a></p>
                                     </div>
                                     <div class="mt-[10px]">
                                         <button class="w-full rounded-[48px] login-btn text-white lg:py-[10px] md:py-[5px]
                                             lg:text-[16px] md:text-[12px] leading-[22.4px] text-center font-bold"
-                                            :class="checkAgreePwd ? 'opacity-100' : 'opacity-50'" :disabled={checkAgreePwd}
+                                            :class="passwordLogin.checkAgreePwd ? 'opacity-100' : 'opacity-50'"
                                             @click="register">{{ $t("login.login") }}</button>
                                     </div>
                                 </div>
@@ -137,14 +122,14 @@
                                         </div>
                                         <div class="w-[2px] h-[20px] bg-[#D9D9D9] m-auto"></div>
                                         <div>
-                                            <input type="text" :placeholder="$t('login.enterPhoneNum')"
+                                            <input type="text" :placeholder="$t('login.enterPhoneNum')" v-model="smsLogin.username"
                                                 class="border-none text-[#666] lg:text-[14px] md:text-[10px] lg:leading-[19.6px] md:leading-[14px]
                                                  lg:p-[10px] md:p-[5px] w-full outline-none" />
                                         </div>
                                     </div>
                                     <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
                                     <div class="mt-[15px] relative">
-                                        <input type="text" :placeholder="$t('login.enterVerifyCode')"
+                                        <input type="text" :placeholder="$t('login.enterVerifyCode')" v-model="smsLogin.verifyCode"
                                             class="border-none text-[#666] lg:text-[14px] md:text-[10px] lg:leading-[19.6px] md:leading-[14px]
                                              lg:py-[10px] md:py-[5px] w-full outline-none" />
                                         <a class="absolute right-0 lg:top-[10px] md:top-[4px] text-[#F02148] lg:text-[14px] md:text-[10px] leading-[19.6px]"
@@ -175,7 +160,7 @@
                                         </a><br/>{{ $t("login.scanQRcodeToLogin") }}
                                     </p>
                                     <div class="lg:mt-[20px] md:mt-[10px] lg:w-[150px] md:w-[100px] lg:h-[150px] md:h-[100px] mx-auto border border-[#BEBEBE] p-[20px]">
-                                        <img src="../../assets/chinese_pc/sign/login_qr_code_pc.png" alt="qr code image" />
+                                        <img src="../../assets/chinese_pc/sign/login_qr_code_pc.png" alt="qr code image" id="qrCode" />
                                     </div>
                                 </div>
                             </div>
@@ -193,22 +178,34 @@ export default {
     data() {
         return {
             selectedTab: "password",
-            isLogin: false,
             checkAgreeMsg: false,
-            checkAgreePwd: false,
             countryList: [
-                { id: 1, name: "中国大陆+86", value: "中国大陆+86" },
-                { id: 2, name: "中国台湾+886", value: "中国台湾+886" },
-                { id: 3, name: "中国香港+852", value: "中国香港+852" },
-                { id: 4, name: "中国澳门+853", value: "中国澳门+853" },
-                { id: 5, name: "美国+1", value: "美国+1" },
-                { id: 6, name: "英国+44", value: "英国+44" },
-                { id: 7, name: "澳大利亚+61", value: "澳大利亚+61" },
-                { id: 8, name: "俄罗斯+7", value: "俄罗斯+7" },
-                { id: 9, name: "南非+27", value: "南非+27" },
-                { id: 10, name: "荷兰+31", value: "荷兰+31" },
-                { id: 11, name: "比利时+32", value: "比利时+32" },
-            ]
+                { id: 1, name: "中国大陆+86", value: "86" },
+                { id: 2, name: "中国台湾+886", value: "886" },
+                { id: 3, name: "中国香港+852", value: "852" },
+                { id: 4, name: "中国澳门+853", value: "853" },
+                { id: 5, name: "美国+1", value: "1" },
+                { id: 6, name: "英国+44", value: "44" },
+                { id: 7, name: "澳大利亚+61", value: "61" },
+                { id: 8, name: "俄罗斯+7", value: "7" },
+                { id: 9, name: "南非+27", value: "27" },
+                { id: 10, name: "荷兰+31", value: "31" },
+                { id: 11, name: "比利时+32", value: "32" },
+            ],
+            passwordLogin: {
+                checkAgreePwd: false,
+                country: "86",
+                username: "",
+                password: "",
+            },
+            smsLogin: {
+                username: "",
+                verifyCode: "",
+            },
+            qrLogin: {
+                qrCode: "",
+            }
+
         }
     },
     methods: {
@@ -216,8 +213,9 @@ export default {
             this.selectedTab = tab;
         },
         register: function() {
-            this.isLogin = !this.isLogin;
-        }
+            localStorage.setItem("username", this.passwordLogin.username);
+            window.location.href = "/";
+        },        
     }
 }
 </script>

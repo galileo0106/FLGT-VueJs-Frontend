@@ -1,18 +1,18 @@
 <script setup>
 const download_datas = [
-    { id: 1, qrCodeImg: "/src/assets/chinese_pc/download/download_qr_code_pc.svg", title: "androidVersion"},
-    { id: 2, qrCodeImg: "/src/assets/chinese_pc/download/download_qr_code_pc.svg", title: "iosVersion"},
-    { id: 3, qrCodeImg: "/src/assets/chinese_pc/download/download_qr_code_pc.svg", title: "googlePlay"},
-    { id: 4, qrCodeImg: "/src/assets/chinese_pc/download/download_qr_code_pc.svg", title: "testflinght"},
+    { id: 1, qrCodeImg: new URL("/src/assets/chinese_pc/download/download_qr_code_pc.svg", import.meta.url).href, title: "androidVersion"},
+    { id: 2, qrCodeImg: new URL("/src/assets/chinese_pc/download/download_qr_code_pc.svg", import.meta.url).href, title: "iosVersion"},
+    { id: 3, qrCodeImg: new URL("/src/assets/chinese_pc/download/download_qr_code_pc.svg", import.meta.url).href, title: "googlePlay"},
+    { id: 4, qrCodeImg: new URL("/src/assets/chinese_pc/download/download_qr_code_pc.svg", import.meta.url).href, title: "testflinght"},
 ]
 </script>
 
 <template>
-    <div class="lg:bg-download_bg_pc md:bg-download_bg_pc bg-download_bg_mobile bg-no-repeat 
+    <div class="lg:bg-download_bg_pc md:bg-download_bg_pc bg-download_bg_mobile bg-no-repeat
         lg:h-[638px] md:h-[500px] h-[400px] w-full z-[-2] bg-[length:100%_100%] relative">
         <div class="h-full lg:py-[136px] md:py-[60px] py-[16px] relative container mx-auto">
             <div class="lg:pl-[calc(calc(50%)-478px)] md:pl-[100px] pl-[24px]">
-                <div class="font-[700] lg:text-[48px] md:text-[39px] text-white text-left" 
+                <div class="font-[700] lg:text-[48px] md:text-[39px] text-white text-left"
                     :class="lang == 'en' ? 'leading-[30px] text-[25px]' : 'leading-[56px] text-[30px]'">
                     {{ $t("download.phoenixCommunityClientDownload") }}
                 </div>
@@ -52,7 +52,7 @@ const download_datas = [
                                 text-[10px] font-bold text-center">
                                 {{ $t("download."+ item.title) }}
                             </button>
-                            <img src="../../assets/chinese_mobile/download/download_qr_code_mobile.svg" 
+                            <img src="../../assets/chinese_mobile/download/download_qr_code_mobile.svg"
                                 alt="qr_code_pc" class="mt-[6px] mb-1" />
                             <button class="download_btn_mobile text-white text-center text-[10px]
                                 leading-[14px] font-medium py-[3.5px] w-[63px]">
