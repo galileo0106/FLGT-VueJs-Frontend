@@ -555,6 +555,7 @@
 <script>
 import { VideoPlayer } from '@videojs-player/vue'
 import 'video.js/dist/video-js.css'
+import CONSTANT from '../../components/Common/Constant';
 export default {
     name: 'PlayMovie',
     components: {
@@ -612,7 +613,7 @@ export default {
     },
     methods: {
         getMovie(id) {
-            this.axios.get("http://20.198.170.39:8000/api/v1/film?id=" + id).then((res) => {
+            this.axios.get(CONSTANT.API_URL + "/api/v1/film?id=" + id).then((res) => {
                 if(res.status == 200) {
                     this.movie.detail = res.data.data;
                     this.movieUrl = this.videoUrl(res.data.data.url);
@@ -629,7 +630,7 @@ export default {
                 timeId: 0,
                 offset: this.offset,
             };
-            this.axios.post("http://20.198.170.39:8000/api/v1/user-films", params).then((res) => {
+            this.axios.post(CONSTANT.API_URL + "/api/v1/user-films", params).then((res) => {
                 if(res.status == 200) {
                     var tempList = this.movieList;
                     tempList.push.apply(tempList, res.data.data);

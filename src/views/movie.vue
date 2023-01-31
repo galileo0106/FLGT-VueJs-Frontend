@@ -20,7 +20,7 @@ const shortcutKeywords = [
 </script>
 
 <template>
-  <div class="w-full font-normal_font" v-if="loggedUser">
+  <div class="w-full font-normal_font" v-if="loggedUser.accessToken">
     <div v-if="!showSearchGroup">
         <Carousel :wrap-around="true" :breakpoints="breakpoints" :autoplay="3000999">
             <Slide v-for="item in movieSlides" :key="item.id">
@@ -33,8 +33,8 @@ const shortcutKeywords = [
     </div>
     <div class="lg:bg-movie_bg_pc md:bg-movie_bg_pc bg-movie_bg_mobile h-full lg:pb-[60px] md:pb-[40px] pb-[20px]">
         <div class="lg:w-[1024px] md:w-[760px] w-full mx-auto lg:px-[10px] md:px-[10px] px-[28px]">
-            <SearchGroup :showSearchGroup="showSearchGroup" :getMovieList="this.getMovieList" 
-                @searchData="this.getSearchData" />
+            <SearchGroup :showSearchGroup="showSearchGroup" :getMovieList="getMovieList" 
+                @searchData="getSearchData" />
             <!-- start search & shortcut buttons -->
             <div class="lg:pt-[30px] md:pt-[25px] pt-[20px]">
                 <div class="lg:grid md:grid grid-cols-10 hidden">
@@ -189,7 +189,9 @@ export default {
                 timeId: 0,
                 offset: 0,
             },
-            loggedUser: localStorage.getItem("username"),
+            loggedUser: {
+                accessToken: localStorage.getItem("token") ? localStorage.getItem("token") : null
+            },
         };
     },
     mounted() {
@@ -211,7 +213,7 @@ export default {
             } else {
                 params = this.searchParams;
             }
-            this.axios.post("http://20.198.170.39:8000/api/v1/user-films", params).then((res) => {
+            this.axios.post(CONSTANT.API_URL + "/api/v1/user-films", params).then((res) => {
                 if(res.status == 200) {
                     var tempList = this.movieList;
                     tempList.push.apply(tempList, res.data.data);

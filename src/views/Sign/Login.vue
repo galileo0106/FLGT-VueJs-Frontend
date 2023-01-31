@@ -3,8 +3,13 @@
         <div class="bg-sign_bg_pc bg-[length:100%_100%] w-full lg:h-[695px] md:h-[695px] h-[450px] pt-[156px]">
             <div class="lg:w-[931px] md:w-[710px] h-[440px] mx-auto lg:block md:block hidden">
                 <div class="flex flex-row box_shadow">
-                    <div>
+                    <div class="relative">
                         <img src="../../assets/chinese_pc/sign/login_left_img_pc.png" alt="left image" />
+                        <div class="absolute text-white text-[40px] leading-[56px] top-[62px] left-[68px]">
+                            <p>Hello,</p>
+                            <p>{{ $t("login.welcomeText") }}</p>
+                            <p class="text-[14px] leading-[21px] w-[327px]">{{ $t("login.welcomeContent") }}</p>
+                        </div>
                     </div>
                     <div class="lg:w-[360px] md:w-[280px] p-[30px] bg-white text-center">
                         <p class="lg:text-[20px] md:text-[16px] font-bold leading-[23.8px] text-black">
@@ -54,23 +59,10 @@
                                 <div class="tab-pane fade text-white lg:mt-[30px] md:mt-[25px]" 
                                     :class="selectedTab == 'password' ? 'show active block' : 'hidden'"
                                     id="tabs-password" role="tabpanel" aria-labelledby="tabs-password-tab">
-                                    <div class="flex flex-row">
-                                        <div>
-                                            <select class="bg-transparent text-[#666]
-                                                lg:text-[14px] md:text-[10px] text-medium lg:leading-[19.6px] md:leading-[14px]
-                                                lg:py-[10px] md:py-[5px] lg:mr-[10px] md:mr-[5px] outline-none" 
-                                                v-model="passwordLogin.country">
-                                                <option v-for="item in countryList" :key="item.id" :value="item.value">
-                                                    {{ item.name }}
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div class="w-[2px] h-[20px] bg-[#D9D9D9] m-auto"></div>
-                                        <div>
-                                            <input type="text" :placeholder="$t('login.phoneNumber')" v-model="passwordLogin.username"
-                                                class="border-none text-[#666] lg:text-[14px] md:text-[10px] 
-                                                    lg:leading-[19.6px] md:leading-[14px] lg:p-[10px] md:p-[5px] w-full outline-none" />
-                                        </div>
+                                    <div class="">
+                                        <input type="text" :placeholder="$t('login.phoneNumber')" v-model="passwordLogin.username"
+                                            class="border-none text-[#666] lg:text-[14px] md:text-[10px] 
+                                                lg:leading-[19.6px] md:leading-[14px] lg:py-[10px] md:py-[5px] w-full outline-none" />
                                     </div>
                                     <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
                                     <div class="mt-[15px]">
@@ -79,6 +71,9 @@
                                              lg:py-[10px] md:py-[5px] w-full outline-none" />
                                     </div>
                                     <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
+                                    <div class="pt-3 text-[#F02148] text-[12px] text-left">
+                                        {{ this.passwordLogin.errorMsg }}
+                                    </div>
                                     <div class="mt-[15px]">
                                         <div class="grid grid-cols-2">
                                             <div class="col-span-1 text-left">
@@ -105,7 +100,8 @@
                                         <button class="w-full rounded-[48px] login-btn text-white lg:py-[10px] md:py-[5px]
                                             lg:text-[16px] md:text-[12px] leading-[22.4px] text-center font-bold"
                                             :class="passwordLogin.checkAgreePwd ? 'opacity-100' : 'opacity-50'"
-                                            @click="register">{{ $t("login.login") }}</button>
+                                            :disabled="!passwordLogin.checkAgreePwd ? true : false"
+                                            @click="login">{{ $t("login.login") }}</button>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade text-white lg:mt-[30px] md:mt-[25px]" 
@@ -147,7 +143,7 @@
                                         <button class="w-full rounded-[48px] login-btn text-white lg:py-[10px] md:py-[5px]
                                             lg:text-[16px] md:text-[12px] leading-[22.4px] text-center font-bold"
                                             :class="checkAgreeMsg ? 'opacity-100' : 'opacity-50'" :disabled={checkAgreeMsg}
-                                            @click="register">{{ $t("login.login") }}</button>
+                                            @click="smsLogin">{{ $t("login.login") }}</button>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade text-white mt-[30px]" 
@@ -194,9 +190,9 @@ export default {
             ],
             passwordLogin: {
                 checkAgreePwd: false,
-                country: "86",
                 username: "",
                 password: "",
+                errorMsg: "",
             },
             smsLogin: {
                 username: "",
@@ -212,10 +208,26 @@ export default {
         handleTab: function(tab) {
             this.selectedTab = tab;
         },
-        register: function() {
-            localStorage.setItem("username", this.passwordLogin.username);
-            window.location.href = "/";
-        },        
+        login: function() {
+            var params = {
+                username: this.passwordLogin.username,
+                password: this.passwordLogin.password
+            }
+            this.axios.post("http://10.10.10.29:8000/v1/user/login", params).then((res) => {
+                if(res.data.error) {
+                    this.passwordLogin.errorMsg = res.data.error;
+                } else {
+                    localStorage.setItem("token", res.data.data.auth.access_token);
+                    localStorage.setItem("username", res.data.data.user.username);
+                    localStorage.setItem("password", res.data.data.user.password);
+                    localStorage.setItem("avatar", res.data.data.user.avatar);
+                    window.location.href = "/";
+                }
+            });
+        },
+        smsLogin: function() {
+            console.log("here");
+        }
     }
 }
 </script>

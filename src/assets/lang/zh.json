@@ -298,6 +298,7 @@
         "userAgree": "《用户协议》",
         "privacyAgree": "《隐私政策》",
         "login": "登录",
+        "signout": "退出",
         "registerSuccess": "注册成功",
         "enterPhoneNum": "请输入手机号",
         "enterVerifyCode": "请输入验证码",

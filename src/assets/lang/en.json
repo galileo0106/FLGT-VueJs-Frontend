@@ -298,6 +298,7 @@
         "userAgree": "《User Agree》",
         "privacyAgree": "《PrivacyAgree》",
         "login": "Login",
+        "signout": "Sign Out",
         "registerSuccess": "Register Success",
         "enterPhoneNum": "Please enter phone number",
         "enterVerifyCode": "Please enter verification code",
