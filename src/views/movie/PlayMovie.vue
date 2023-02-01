@@ -27,7 +27,7 @@
                                         <i class="fa fa-heart mr-[7px]"></i>
                                         {{ movie.detail.likes }}
                                     </span>
-                                    <span class="text-[#A0A0A0] text-[12px] leading-[16.8px] font-medium 
+                                    <span class="text-[#A0A0A0] text-[12px] leading-[16.8px] font-medium
                                         lg:ml-[40px] md:ml-[20px]">
                                         <i class="fa fa-share mr-[7px]"></i>
                                         分享
@@ -35,17 +35,17 @@
                                 </div>
                             </div>
                             <div class="pt-[10px] pb-[40px]">
-                                <ul class="nav nav-tabs flex flex-row md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" 
+                                <ul class="nav nav-tabs flex flex-row md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4"
                                     id="tabs-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
                                         <p class="text-white cursor-pointer lg:text-center md:text-center text-left
-                                            nav-link block font-medium lg:text-[20px] md:text-[18px] text-[16px] 
+                                            nav-link block font-medium lg:text-[20px] md:text-[18px] text-[16px]
                                             lg:leading-[28px] md:leading-[25px] leading-[22.4px] uppercase
-                                            border-x-0 border-t-0 lg:px-3 md:px-3 px-0 lg:mr-0 md:mr-0 mr-[40px]" 
-                                            :class="selectedTab1 == 'desc' ? 
-                                                ' lg:text-[#F02148] md:text-[#F02148] text-white' : 
+                                            border-x-0 border-t-0 lg:px-3 md:px-3 px-0 lg:mr-0 md:mr-0 mr-[40px]"
+                                            :class="selectedTab1 == 'desc' ?
+                                                ' lg:text-[#F02148] md:text-[#F02148] text-white' :
                                                 'lg:text-white md:text-white text-[#999]'"
-                                            id="tabs-desc-tab" data-bs-toggle="pill" 
+                                            id="tabs-desc-tab" data-bs-toggle="pill"
                                             data-bs-target="#tabs-desc" role="tab" aria-controls="tabs-desc"
                                             aria-selected="true" @click="() => handleTab1('desc')">
                                             简介 <small></small>
@@ -56,22 +56,22 @@
                                     <li class="nav-item lg:px-6 md:px-3 px-0 flex" role="presentation">
                                         <span>
                                             <span class=" text-white cursor-pointer lg:text-center md:text-center text-left
-                                                nav-link block font-medium lg:text-[20px] md:text-[18px] text-[16px] 
+                                                nav-link block font-medium lg:text-[20px] md:text-[18px] text-[16px]
                                                 lg:leading-[28px] md:leading-[25px] leading-[22.4px] uppercase
-                                                border-x-0 border-t-0" 
-                                                :class="selectedTab1 == 'discuss' ? 
-                                                    ' lg:text-[#F02148] md:text-[#F02148] text-white' : 
+                                                border-x-0 border-t-0"
+                                                :class="selectedTab1 == 'discuss' ?
+                                                    ' lg:text-[#F02148] md:text-[#F02148] text-white' :
                                                     'lg:text-white md:text-white text-[#999]'"
                                                 id="tabs-discuss-tab" data-bs-toggle="pill" d
-                                                ata-bs-target="#tabs-discuss" role="tab" aria-controls="tabs-discuss" 
+                                                ata-bs-target="#tabs-discuss" role="tab" aria-controls="tabs-discuss"
                                                 aria-selected="false" @click="() => handleTab1('discuss')">
-                                                讨论 
+                                                讨论
                                             </span>
                                             <div class="border-red-gradient border-b border-[#F02148] w-[20px] mx-auto"
                                                 :class="selectedTab1 == 'discuss' ? 'block': 'hidden'"></div>
                                         </span>
                                         <small class="ml-1 pt-2"
-                                            :class="selectedTab1 == 'discuss' ? 'lg:text-[#F02148] md:text-[#F02148] text-white' : 
+                                            :class="selectedTab1 == 'discuss' ? 'lg:text-[#F02148] md:text-[#F02148] text-white' :
                                                 'lg:text-white md:text-white text-[#999]'">
                                             {{ movie.discuss.count }}
                                         </small>
@@ -80,7 +80,7 @@
                                 <div class="tab-content" id="tabs-tabContent">
                                     <div class="tab-pane fade text-white" :class="selectedTab1 == 'desc' ? 'show active block' : 'hidden'"
                                         id="tabs-desc" role="tabpanel" aria-labelledby="tabs-desc-tab">
-                                        <div class="lg:mt-[40px] md:mt-[20px] lg:mx-[20px] md:mx-[15px] mx-[10px] 
+                                        <div class="lg:mt-[40px] md:mt-[20px] lg:mx-[20px] md:mx-[15px] mx-[10px]
                                             h-[70px] overflow-y-auto w-[95%]">
                                             <span class="text-[14px] leading-[21px] text-white description"
                                                 :class="!showAllDesc ? 'overflow_text_2' : ''">
@@ -92,7 +92,7 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade text-white h-[570px] overflow-y-auto px-4 w-full lg:min-w-[800px] md:min-w-[500px]" 
+                                    <div class="tab-pane fade text-white h-[570px] overflow-y-auto px-4 w-full lg:min-w-[800px] md:min-w-[500px]"
                                         :class="selectedTab1 == 'discuss' ? 'show active block' : 'hidden'"
                                         id="tabs-discuss" role="tabpanel" aria-labelledby="tabs-discuss-tab">
                                         <div class="lg:my-[20px] md:my-[15px] my-[10px] py-[10px] flex px-[13px]">
@@ -104,14 +104,14 @@
                                                     text-[#ffffff80] p-[10px] w-full outline-none" placeholder="参与讨论" />
                                             </div>
                                             <div class="mr-[23px]">
-                                                <button class="bg-[#2C2C2C] rounded lg:text-[14px] md:text-[12px] text-[10px] text-white font-medium leading-[19.6px] 
+                                                <button class="bg-[#2C2C2C] rounded lg:text-[14px] md:text-[12px] text-[10px] text-white font-medium leading-[19.6px]
                                                     lg:w-[60px] md:w-[50px] py-[9px] px4">
                                                     发布
                                                 </button>
                                             </div>
                                         </div>
                                         <div class="w-full bg-[#ffffff1a] h-[1px]"></div>
-                                        <div v-for="discuss in movie.discuss.list" :key="discuss.id" 
+                                        <div v-for="discuss in movie.discuss.list" :key="discuss.id"
                                             class="mt-[20px] flex flex-row">
                                             <div class="mr-2">
                                                 <img :src="discuss.avatar" :alt="discuss.name" class="w-[36px] h-[36px]" />
@@ -143,7 +143,7 @@
                                                     <p class="text-[#FF9900] text-[14px] font-medium leading-[19.6px] mb-[9px]">{{ discuss.name }}</p>
                                                     <p class="text-white text-[14px] font-medium leading-[19.6px] mb-[11px]">{{ discuss.content }}</p>
                                                 </div>
-                                                <div class="grid grid-cols-4 lg:border-[#ffffff1a] md:border-[#ffffff1a] border-[#515151] 
+                                                <div class="grid grid-cols-4 lg:border-[#ffffff1a] md:border-[#ffffff1a] border-[#515151]
                                                     border-b-[0.2px]  pb-[24px]">
                                                     <div class="text-left">
                                                         <span class="text-[#666] text-[12px] leading-[16.3px] font-medium">
@@ -166,17 +166,17 @@
                     </div>
                     <div class="lg:max-w-[300px] w-full lg:py-[20px] md:py-[15px] py-[10px] lg:px-4 md:px-3 px-2
                         overflow-y-auto" :class="selectedTab1 == 'desc' ? 'h-[702px]' : 'h-[1181px]'">
-                        <ul class="nav nav-tabs flex flex-row md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" 
+                        <ul class="nav nav-tabs flex flex-row md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4"
                             id="tabs-tab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <p class="text-white cursor-pointer lg:text-center md:text-center text-left
-                                    nav-link block font-medium lg:text-[20px] md:text-[18px] text-[16px] 
+                                    nav-link block font-medium lg:text-[20px] md:text-[18px] text-[16px]
                                     lg:leading-[28px] md:leading-[25px] leading-[22.4px] uppercase
-                                    border-x-0 border-t-0 lg:px-3 md:px-3 px-0 lg:mr-0 md:mr-0 mr-[40px]" 
-                                    :class="selectedTab2 == 'volumn' ? 
-                                        ' lg:text-[#F02148] md:text-[#F02148] text-white' : 
+                                    border-x-0 border-t-0 lg:px-3 md:px-3 px-0 lg:mr-0 md:mr-0 mr-[40px]"
+                                    :class="selectedTab2 == 'volumn' ?
+                                        ' lg:text-[#F02148] md:text-[#F02148] text-white' :
                                         'lg:text-white md:text-white text-[#999]'"
-                                    id="tabs-volumn-tab" data-bs-toggle="pill" 
+                                    id="tabs-volumn-tab" data-bs-toggle="pill"
                                     data-bs-target="#tabs-volumn" role="tab" aria-controls="tabs-volumn"
                                     aria-selected="true" @click="() => handleTab2('volumn')">
                                     剧集
@@ -187,14 +187,14 @@
                             <li class="nav-item lg:px-6 md:px-3 px-0 flex" role="presentation">
                                 <span>
                                     <span class=" text-white cursor-pointer lg:text-center md:text-center text-left
-                                        nav-link block font-medium lg:text-[20px] md:text-[18px] text-[16px] 
+                                        nav-link block font-medium lg:text-[20px] md:text-[18px] text-[16px]
                                         lg:leading-[28px] md:leading-[25px] leading-[22.4px] uppercase
-                                        border-x-0 border-t-0" 
-                                        :class="selectedTab2 == 'detail' ? 
-                                            ' lg:text-[#F02148] md:text-[#F02148] text-white' : 
+                                        border-x-0 border-t-0"
+                                        :class="selectedTab2 == 'detail' ?
+                                            ' lg:text-[#F02148] md:text-[#F02148] text-white' :
                                             'lg:text-white md:text-white text-[#999]'"
                                         id="tabs-detail-tab" data-bs-toggle="pill" d
-                                        ata-bs-target="#tabs-detail" role="tab" aria-controls="tabs-detail" 
+                                        ata-bs-target="#tabs-detail" role="tab" aria-controls="tabs-detail"
                                         aria-selected="false" @click="() => handleTab2('detail')">
                                         详情
                                     </span>
@@ -208,7 +208,7 @@
                                 id="tabs-volumn" role="tabpanel" aria-labelledby="tabs-volumn-tab">
                                 <div class="lg:mt-[20px] md:mt-[15px] mt-[10px]">
                                     <div class="w-[55px] inline-block mr-[10px] mt-[10px]" v-for="i in movie.detail.sort" :key="i">
-                                        <button class="rounded-[2px] text-[16px] leading-[22.4px] py-2 w-full" 
+                                        <button class="rounded-[2px] text-[16px] leading-[22.4px] py-2 w-full"
                                             :class="selectedVolumn == i ? 'bg-[#f0214840] text-[#F02148]' : 'bg-[#333] text-white'"
                                             @click="() => handleVolumn(i)">
                                             {{ i }}集
@@ -216,7 +216,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade text-whiteoverflow-y-auto px-4" 
+                            <div class="tab-pane fade text-whiteoverflow-y-auto px-4"
                                 :class="selectedTab2 == 'detail' ? 'show active block' : 'hidden'"
                                 id="tabs-detail" role="tabpanel" aria-labelledby="tabs-detail-tab">
                                 <div class="lg:mt-5 md:mt-4 mt-3">
@@ -286,28 +286,28 @@
 
                 <div class="lg:hidden md:hidden block">
                     <div class="relative">
-                        <video-player controls class="w-full h-[210px]" 
-                            :poster="coverUrl" 
+                        <video-player controls class="w-full h-[210px]"
+                            :poster="coverUrl"
                             :src="movieUrl"
                             aspectRatio="16:9"/>
-                        <div class="absolute top-[6px] right-[12px] bg-[#00000080] text-white 
+                        <div class="absolute top-[6px] right-[12px] bg-[#00000080] text-white
                             text-[12px] leading-[16.8px] font-medium py-[2px] px-2 rounded-[24px]
                             lg:hidden md:hidden block">
                             3秒后跳过
                         </div>
                     </div>
                     <div class="pt-[10px] px-4 pb-[7px]">
-                        <ul class="nav nav-tabs flex flex-row md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4 relative" 
+                        <ul class="nav nav-tabs flex flex-row md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4 relative"
                             id="tabs-tab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <p class="text-white cursor-pointer lg:text-center md:text-center text-left
-                                    nav-link block font-medium lg:text-[20px] md:text-[18px] text-[16px] 
+                                    nav-link block font-medium lg:text-[20px] md:text-[18px] text-[16px]
                                     lg:leading-[28px] md:leading-[25px] leading-[22.4px] uppercase
-                                    border-x-0 border-t-0 lg:px-3 md:px-3 px-0 lg:mr-0 md:mr-0" 
-                                    :class="selectedMobileTab == 'desc' ? 
-                                        ' lg:text-[#F02148] md:text-[#F02148] text-white' : 
+                                    border-x-0 border-t-0 lg:px-3 md:px-3 px-0 lg:mr-0 md:mr-0"
+                                    :class="selectedMobileTab == 'desc' ?
+                                        ' lg:text-[#F02148] md:text-[#F02148] text-white' :
                                         'lg:text-white md:text-white text-[#999]'"
-                                    id="tabs-desc-tab" data-bs-toggle="pill" 
+                                    id="tabs-desc-tab" data-bs-toggle="pill"
                                     data-bs-target="#tabs-desc" role="tab" aria-controls="tabs-desc"
                                     aria-selected="true" @click="() => handleMobileTab('desc')">
                                     详情 <small></small>
@@ -318,27 +318,27 @@
                             <li class="nav-item pl-[40px] flex" role="presentation">
                                 <span>
                                     <span class=" text-white cursor-pointer lg:text-center md:text-center text-left
-                                        nav-link block font-medium lg:text-[20px] md:text-[18px] text-[16px] 
+                                        nav-link block font-medium lg:text-[20px] md:text-[18px] text-[16px]
                                         lg:leading-[28px] md:leading-[25px] leading-[22.4px] uppercase
-                                        border-x-0 border-t-0" 
-                                        :class="selectedMobileTab == 'discuss' ? 
-                                            ' lg:text-[#F02148] md:text-[#F02148] text-white' : 
+                                        border-x-0 border-t-0"
+                                        :class="selectedMobileTab == 'discuss' ?
+                                            ' lg:text-[#F02148] md:text-[#F02148] text-white' :
                                             'lg:text-white md:text-white text-[#999]'"
                                         id="tabs-discuss-tab" data-bs-toggle="pill" d
-                                        ata-bs-target="#tabs-discuss" role="tab" aria-controls="tabs-discuss" 
+                                        ata-bs-target="#tabs-discuss" role="tab" aria-controls="tabs-discuss"
                                         aria-selected="false" @click="() => handleMobileTab('discuss')">
-                                        讨论 
+                                        讨论
                                     </span>
                                     <div class="border-red-gradient border-b border-[#F02148] w-[20px] mx-auto"
                                         :class="selectedMobileTab == 'discuss' ? 'block': 'hidden'"></div>
                                 </span>
                                 <small class="ml-1 pt-2"
-                                    :class="selectedMobileTab == 'discuss' ? 'lg:text-[#F02148] md:text-[#F02148] text-white' : 
+                                    :class="selectedMobileTab == 'discuss' ? 'lg:text-[#F02148] md:text-[#F02148] text-white' :
                                         'lg:text-white md:text-white text-[#999]'">
                                     {{ movie.discuss.count }}
                                 </small>
                             </li>
-                            <span class="absolute top-[10px] right-0 text-[#B2B2B2] text-[12px] leading-[16.8px] font-medium 
+                            <span class="absolute top-[10px] right-0 text-[#B2B2B2] text-[12px] leading-[16.8px] font-medium
                                 lg:ml-[40px] md:ml-[20px] lg:hidden md:hidden block">
                                 <i class="fa fa-heart mr-[7px] text-[15px]"></i>
                                 {{ movie.detail.likes ? movie.detail.likes.toFixed(1): 0 }}
@@ -400,7 +400,7 @@
                                     </div>
                                     <div class="lg:hidden md:hidden"
                                         :class="movie.detail.isIpfs == 1 ? 'hidden' : 'block'">
-                                        <h3 class="text-[16px] text-white border-left-red-gradient border-l-[4px] 
+                                        <h3 class="text-[16px] text-white border-left-red-gradient border-l-[4px]
                                             pl-[2px] mt-[16px] mb-[11px]">
                                             选集
                                         </h3>
@@ -411,7 +411,7 @@
                                             <div v-for="i in movie.detail.isIpfs" :key="i"
                                                 style="scroll-snap-align: start;" class="mr-2">
                                                 <button @click="() => handleVolumn(i)"
-                                                    class="rounded-[4px] text-[16px] leading-[22.4px] py-1 px-[10px] w-full font-bold border" 
+                                                    class="rounded-[4px] text-[16px] leading-[22.4px] py-1 px-[10px] w-full font-bold border"
                                                     :class="selectedVolumn == i ? 'border-[#F02148] text-[#F02148]' : 'border-[#666] text-white'">
                                                     {{ i }}
                                                 </button>
@@ -420,10 +420,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade text-white h-[570px] overflow-y-auto w-full relative" 
+                            <div class="tab-pane fade text-white h-[570px] overflow-y-auto w-full relative"
                                 :class="selectedMobileTab == 'discuss' ? 'show active block' : 'hidden'"
                                 id="tabs-discuss" role="tabpanel" aria-labelledby="tabs-discuss-tab">
-                                <div v-for="discuss in movie.discuss.list" :key="discuss.id" 
+                                <div v-for="discuss in movie.discuss.list" :key="discuss.id"
                                     class="mt-[20px] flex flex-row border-b-[0.2px] pb-[24px] px-4
                                         lg:border-[#ffffff1a] md:border-[#ffffff1a] border-[#515151]">
                                     <div class="mr-2">
@@ -477,7 +477,7 @@
 
                 <div class="lg:mt-[52px] md:mt-[36px] mt-[20px] px-[10px]">
                     <div>
-                        <h3 class="lg:text-[32px] md:text-[24px] text-[16px] lg:leading-[44.8px] md:leading-[35px] leading-[22.4px] 
+                        <h3 class="lg:text-[32px] md:text-[24px] text-[16px] lg:leading-[44.8px] md:leading-[35px] leading-[22.4px]
                             text-white lg:mb-[20px] md:mb-[15px] mb-[10px] font-bold">猜你喜欢</h3>
                         <div class="grid lg:grid-cols-6 md:lg:grid-cols-5 grid-cols-3 gap-3">
                             <div v-for="item in movieList" :key="item.id"
@@ -497,7 +497,7 @@
                                             overflow_text leading-[15px] mt-1 truncate">{{ item.title }}</span>
                                         <span class="my-[7px] lg:text-[14px] md:text-[10px] lg:leading-[19.6px] md:leading-[15px]
                                             text-[#F02148] font-medium text-right
-                                            lg:relative md:relative absolute 
+                                            lg:relative md:relative absolute
                                             lg:bottom-0 md:bottom-0 right-[5px] bottom-[30px]">{{ item.grade.toFixed(1) }}</span>
                                     </div>
                                     <div class="block">
@@ -524,17 +524,17 @@
     <div v-show="isModalVisible">
         <transition name="modal-fade">
             <div class="modal-backdrop">
-                <div class="modal" 
+                <div class="modal"
                     role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
                     <div class="bg-[#2C2C2C] rounded-[8px] box-shadow">
-                        <header class="modal-header text-white text-center text-[18px] leading-[26px] font-medium 
+                        <header class="modal-header text-white text-center text-[18px] leading-[26px] font-medium
                             mx-auto py-[10px]" id="modalTitle">
                             <slot name="header">
                                 简介
                             </slot>
                         </header>
 
-                        <section class="modal-body text-white text-[14px] leading-[22px] px-5 pb-[40px] h-[200px] overflow-y-auto" 
+                        <section class="modal-body text-white text-[14px] leading-[22px] px-5 pb-[40px] h-[200px] overflow-y-auto"
                             id="modalDescription">
                             <slot name="body">
                                 {{ movie.detail.desc }}
@@ -554,7 +554,7 @@
 
 <script>
 import { VideoPlayer } from '@videojs-player/vue'
-import 'video.js/dist/video-js.css'
+import 'video.js/dist/video-js.css';
 import CONSTANT from '../../components/Common/Constant';
 export default {
     name: 'PlayMovie',
@@ -618,6 +618,7 @@ export default {
                     this.movie.detail = res.data.data;
                     this.movieUrl = this.videoUrl(res.data.data.url);
                     this.coverUrl = this.cover(res.data.data.cover);
+                    window.scrollTo(0,0);
                 }
             });
         },
@@ -659,14 +660,14 @@ export default {
         handleShowDesc: function() {
             this.showAllDesc = !this.showAllDesc;
         },
-        
+
         /** @param {MouseEvent} ev */
         onMouseDown(ev) {
             this.cursorPos = [ev.pageX, ev.pageY];
             this.isDragging = true;
             window.addEventListener("mousemove", this.onMouseHold);
         },
-    
+
         /** @param {MouseEvent} ev */
         onMouseUp(ev) {
             window.removeEventListener("mousemove", this.onMouseHold);
@@ -676,15 +677,15 @@ export default {
         /** @param {MouseEvent} ev */
         onMouseHold(ev) {
             ev.preventDefault();
-    
+
             requestAnimationFrame(() => {
             const delta = [
                 ev.pageX - this.cursorPos[0],
                 ev.pageY - this.cursorPos[1],
             ];
-    
+
             this.cursorPos = [ev.pageX, ev.pageY];
-    
+
             if (!this.$refs.el) return;
             this.$refs.el.scrollBy({
                 left: -delta[0],

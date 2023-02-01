@@ -18,14 +18,14 @@
                             {{ $t("login.phoenixCommunity") }}
                         </p>
                         <div>
-                            <ul class="nav nav-tabs flex flex-row md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4 relative 
-                                lg:mt-[33px] md:mt-[15px]" 
+                            <ul class="nav nav-tabs flex flex-row md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4 relative
+                                lg:mt-[33px] md:mt-[15px]"
                                 id="tabs-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <p class="cursor-pointer lg:text-[18px] md:text-[12px] lg:leading-[23.8px] md:leading-[15px] font-medium py-1 lg:px-3 md:px-1"
                                         :class="selectedTab == 'password' ? 'text-[#F02148]' : 'text-[#333]'"
-                                        id="tabs-password-tab" data-bs-toggle="pill" 
-                                        data-bs-target="#tabs-password" role="tab" aria-controls="tabs-password" 
+                                        id="tabs-password-tab" data-bs-toggle="pill"
+                                        data-bs-target="#tabs-password" role="tab" aria-controls="tabs-password"
                                         aria-selected="false" @click="() => handleTab('password')">
                                         {{ $t("login.passwordLogin") }}
                                     </p>
@@ -35,8 +35,8 @@
                                 <li class="nav-item" role="presentation">
                                     <p class="cursor-pointer lg:text-[18px] md:text-[12px] lg:leading-[23.8px] md:leading-[15px] font-medium py-1 lg:px-3 md:px-1"
                                         :class="selectedTab == 'message' ? 'text-[#F02148]' : 'text-[#333]'"
-                                        id="tabs-message-tab" data-bs-toggle="pill" 
-                                        data-bs-target="#tabs-message" role="tab" aria-controls="tabs-message" 
+                                        id="tabs-message-tab" data-bs-toggle="pill"
+                                        data-bs-target="#tabs-message" role="tab" aria-controls="tabs-message"
                                         aria-selected="false" @click="() => handleTab('message')">
                                         {{ $t("login.smsLogin") }}
                                     </p>
@@ -46,8 +46,8 @@
                                 <li class="nav-item" role="presentation">
                                     <p class="cursor-pointer lg:text-[18px] md:text-[12px] lg:leading-[23.8px] md:leading-[15px] font-medium py-1 lg:px-3 md:px-1"
                                         :class="selectedTab == 'qrCode' ? 'text-[#F02148]' : 'text-[#333]'"
-                                        id="tabs-qrCode-tab" data-bs-toggle="pill" 
-                                        data-bs-target="#tabs-qrCode" role="tab" aria-controls="tabs-qrCode" 
+                                        id="tabs-qrCode-tab" data-bs-toggle="pill"
+                                        data-bs-target="#tabs-qrCode" role="tab" aria-controls="tabs-qrCode"
                                         aria-selected="false" @click="() => handleTab('qrCode')">
                                         {{ $t("login.scanCodeToLogin") }}
                                     </p>
@@ -56,19 +56,32 @@
                                 </li>
                             </ul>
                             <div class="tab-content" id="tabs-tabContent">
-                                <div class="tab-pane fade text-white lg:mt-[30px] md:mt-[25px]" 
+                                <div class="tab-pane fade text-white lg:mt-[30px] md:mt-[25px]"
                                     :class="selectedTab == 'password' ? 'show active block' : 'hidden'"
                                     id="tabs-password" role="tabpanel" aria-labelledby="tabs-password-tab">
                                     <div class="">
                                         <input type="text" :placeholder="$t('login.phoneNumber')" v-model="passwordLogin.username"
-                                            class="border-none text-[#666] lg:text-[14px] md:text-[10px] 
+                                            class="border-none text-[#666] lg:text-[14px] md:text-[10px]
                                                 lg:leading-[19.6px] md:leading-[14px] lg:py-[10px] md:py-[5px] w-full outline-none" />
                                     </div>
                                     <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
-                                    <div class="mt-[15px]">
-                                        <input type="password" :placeholder="$t('login.enterPwd')" v-model="passwordLogin.password"
+                                    <div class="mt-[15px] relative">
+                                        <input type="text" :placeholder="$t('login.enterPwd')" v-model="passwordLogin.password"
+                                            v-if="showPassword"
                                             class="border-none text-[#666] lg:text-[14px] md:text-[10px] lg:leading-[19.6px] md:leading-[14px]
-                                             lg:py-[10px] md:py-[5px] w-full outline-none" />
+                                                lg:py-[10px] md:py-[5px] w-full outline-none" />
+                                        <input type="password" :placeholder="$t('login.enterPwd')" v-model="passwordLogin.password"
+                                            v-else
+                                            class="border-none text-[#666] lg:text-[14px] md:text-[10px] lg:leading-[19.6px] md:leading-[14px]
+                                                lg:py-[10px] md:py-[5px] w-full outline-none" />
+                                        <div class="absolute right-0 top-[10px] text-[#666] cursor-pointer text-[16px] leading-[22.4px]"
+                                            @click="() => { this.showPassword = !this.showPassword }" v-if="showPassword">
+                                            <i class="fa fa-eye"></i>
+                                        </div>
+                                        <div class="absolute right-0 top-[10px] text-[#666] cursor-pointer text-[16px] leading-[22.4px]"
+                                            @click="() => { this.showPassword = !this.showPassword }" v-else>
+                                            <i class="fa fa-eye-slash"></i>
+                                        </div>
                                     </div>
                                     <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
                                     <div class="pt-3 text-[#F02148] text-[12px] text-left">
@@ -90,9 +103,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="lg:mt-[30px] md:mt-[15px] flex flex-row" 
+                                    <div class="flex flex-row cursor-pointer"
+                                        :class="this.passwordLogin.errorMsg ? 'lg:mt-[14px] md:mt-[5px]' : 'lg:mt-[30px] md:mt-[15px]'"
                                         @click="() => { this.passwordLogin.checkAgreePwd = !this.passwordLogin.checkAgreePwd }">
-                                        <input type="checkbox" class="mr-1" v-model="passwordLogin.checkAgreePwd" />
+                                        <input type="checkbox" class="mr-1 cursor-pointer" v-model="passwordLogin.checkAgreePwd" />
                                         <p class="lg:text-[12px] md:text-[9px] leading-[20px] text-[#333] text-left">
                                             {{ $t("login.agreeText") }}<a class="text-[#0057FF]">{{ $t("login.userAgree") }}</a>{{ $t("login.agreeAndText") }}<a class="text-[#0057FF]">{{ $t("login.privacyAgree") }}</a></p>
                                     </div>
@@ -104,12 +118,12 @@
                                             @click="login">{{ $t("login.login") }}</button>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade text-white lg:mt-[30px] md:mt-[25px]" 
+                                <div class="tab-pane fade text-white lg:mt-[30px] md:mt-[25px]"
                                     :class="selectedTab == 'message' ? 'show active block' : 'hidden'"
                                     id="tabs-message" role="tabpanel" aria-labelledby="tabs-message-tab">
                                     <div class="flex flex-row">
                                         <div>
-                                            <select class="bg-transparent text-[#666] lg:text-[14px] md:text-[10px] text-medium leading-[19.6px] 
+                                            <select class="bg-transparent text-[#666] lg:text-[14px] md:text-[10px] text-medium leading-[19.6px]
                                                 lg:py-[10px] md:py-[5px] lg:mr-[10px] md:mr-[5px] outline-none">
                                                 <option v-for="item in countryList" :key="item.id" :value="item.value">
                                                     {{ item.name }}
@@ -134,8 +148,8 @@
                                         </a>
                                     </div>
                                     <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
-                                    <div class="lg:mt-[60px] md:mt-[40px] flex flex-row" @click="() => { this.checkAgreeMsg = !this.checkAgreeMsg }">
-                                        <input type="checkbox" class="mr-1" :value="checkAgreeMsg" @change="() => { this.checkAgreeMsg = !this.checkAgreeMsg }" />
+                                    <div class="lg:mt-[60px] md:mt-[40px] flex flex-row cursor-pointer" @click="() => { this.checkAgreeMsg = !this.checkAgreeMsg }">
+                                        <input type="checkbox" class="mr-1 cursor-pointer" v-model="checkAgreeMsg" @change="() => { this.checkAgreeMsg = !this.checkAgreeMsg }" />
                                         <p class="lg:text-[12px] md:text-[9px] leading-[20px] text-[#333] text-left">
                                             {{ $t("login.agreeText") }}<a class="text-[#0057FF]">{{ $t("login.userAgree") }}</a>{{ $t("login.agreeAndText") }}<a class="text-[#0057FF]">{{ $t("login.privacyAgree") }}</a></p>
                                     </div>
@@ -146,7 +160,7 @@
                                             @click="smsLogin">{{ $t("login.login") }}</button>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade text-white mt-[30px]" 
+                                <div class="tab-pane fade text-white mt-[30px]"
                                     :class="selectedTab == 'qrCode' ? 'show active block' : 'hidden'"
                                     id="tabs-qrCode" role="tabpanel" aria-labelledby="tabs-qrCode-tab">
                                     <p class="text-[#666] lg:text-[14px] md:text-[10px] leading-[19.6px] text-center">
@@ -175,6 +189,7 @@ export default {
         return {
             selectedTab: "password",
             checkAgreeMsg: false,
+            showPassword: false,
             countryList: [
                 { id: 1, name: "中国大陆+86", value: "86" },
                 { id: 2, name: "中国台湾+886", value: "886" },
@@ -219,7 +234,6 @@ export default {
                 } else {
                     localStorage.setItem("token", res.data.data.auth.access_token);
                     localStorage.setItem("username", res.data.data.user.username);
-                    localStorage.setItem("password", res.data.data.user.password);
                     localStorage.setItem("avatar", res.data.data.user.avatar);
                     window.location.href = "/";
                 }

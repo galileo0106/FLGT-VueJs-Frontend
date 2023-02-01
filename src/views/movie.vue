@@ -169,6 +169,7 @@ const shortcutKeywords = [
 <script>
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 import SearchGroup from "../views/movie/SearchGroup.vue";
+import CONSTANT from '../components/Common/Constant';
 
 export default {
     name: 'Home',

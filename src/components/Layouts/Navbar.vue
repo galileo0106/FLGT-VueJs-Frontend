@@ -28,7 +28,7 @@ import { ref } from 'vue'
                     href="/login" v-if="!this.loggedUser.accessToken">
                     {{ $t("menu.login") }}
                 </a>
-                <div class="px-3">
+                <div class="px-3 dropdow-nmenu">
                     <button id="dropdownDefaultButton" data-dropdown-toggle="dropdownInformation" v-if="this.loggedUser.accessToken"
                         class="text-white focus:outline-none text-center inline-flex items-center" type="button"
                         @click="() => { this.openLogDropdown = !this.openLogDropdown }">
@@ -38,17 +38,17 @@ import { ref } from 'vue'
                             class="border border-[#7d7c7c] rounded-full mt-2" />
                     </button>
                     <!-- Dropdown menu -->
-                    <div id="dropdown" class="z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
+                    <div id="dropdown" class="z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-38"
                         :class="openLogDropdown ? 'block' : 'hidden'">
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                             <li>
-                                <p class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                <p class="block px-4 py-2 cursor-pointer">
                                     {{ this.loggedUser.username }}
                                 </p>
                             </li>
                         </ul>
                         <div class="py-2">
-                            <p class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+                            <p class="block px-4 py-2 text-sm text-gray-700 cursor-pointer"
                                 @click="signout">
                                 {{ $t("login.signout") }}
                             </p>
@@ -87,21 +87,33 @@ import { ref } from 'vue'
 
     <nav id="mobile-navigation" class="fixed top-[43px] right-0 bottom-0 left-0 backdrop-blur-sm z-10"
         v-if="showMenu">
-        <ul class="absolute top-0 right-0 bottom-0 w-[240px] py-5 px-4 bg-[#252A3D] 
+        <ul class="absolute top-0 right-0 bottom-0 w-[240px] py-5 px-4 bg-[#252A3D]
                 drop-shadow-2xl z-10 transition-all text-[#94A4BD] overflow-y-auto">
             <li class="border-b border-[#ffffff1a] pb-[20px]">
                 <div class="flex justify-between">
-                    <div>
+                    <div v-if="loggedUser.accessToken">
+                        <img alt="avatar" :src="loggedUser.avatar" class="w-[25px] h-[25px] inline-block" />
+                        <span class="ml-1 text-[14px] leading-[22px]">
+                            {{ loggedUser.username }}
+                        </span>
+                    </div>
+                    <div v-else>
                         <i class="far fa-user-circle text-[25px]"></i>
                         <span class="ml-1 text-[14px] leading-[22px]">
                             {{ $t("menu.stranger") }}
-                        </span> 
+                        </span>
                     </div>
-                    <div>
+                    <div v-if="loggedUser.accessToken">
+                        <button class="text-white mobile_login_btn w-[50px] rounded text-[12px] leading-[16px] font-medium
+                            p-1" @click="signout">
+                            {{ $t("login.signout") }}
+                        </button>
+                    </div>
+                    <div v-else>
                         <button class="text-white mobile_login_btn w-[76px] rounded text-[12px] leading-[16px] font-medium
                             py-1 px-2" @click="handleLoginPage">
-                            {{ $t("menu.login") }} 
-                            {{ activeLanguage == 'en' ? '&' : '/' }} 
+                            {{ $t("menu.login") }}
+                            {{ activeLanguage == 'en' ? '&' : '/' }}
                             {{ $t("menu.register") }}
                         </button>
                     </div>
@@ -142,8 +154,8 @@ import { ref } from 'vue'
             </svg>
         </button>
     </nav>
-    <div v-if="showLoginPage" 
-        class="lg:hidden md:hidden fixed bottom-0 h-[370px] rounded-t-[8px] bg-white w-full backdrop-blur-sm z-10">
+    <div v-if="showLoginPage"
+        class="lg:hidden md:hidden fixed bottom-0 h-[390px] rounded-t-[8px] bg-white w-full backdrop-blur-sm z-10">
         <div class="relative">
             <button class="absolute right-[23px] top-[17px] text-[#333] text-[10px]" @click="handleLoginPage">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-[10px] w-[10px] absolute" fill="none" viewBox="0 0 24 24"
@@ -155,34 +167,43 @@ import { ref } from 'vue'
         <h3 class="text-[18px] text-[#333] leading-[23.8px] font-bold text-center mt-[27px]">
             {{ $t("login.mobileLoginTitle") }}
         </h3>
-        <div class="login-form px-[38px]">
-            <div class="flex flex-row mt-[40px]">
-                <div>
-                    <p class="bg-transparent text-[#333] text-[14px] text-bold leading-[19.6px]
-                            py-[10px] outline-none" @click="() => { this.showCountryList = !this.showCountryList }">
-                        {{ selectedCountry }}
-                        <i class="fa fa-angle-down ml-3 text-[#666] text-[8px]"></i>
-                    </p>
-                </div>
-                <div class="w-[2px] h-[20px] bg-[#D9D9D9] mx-4 my-auto"></div>
-                <div>
-                    <input type="text" :placeholder="$t('login.enterPhoneNum')" v-model="phoneNumber"
-                        class="border-none text-[#999] text-[16px] leading-[22.4px] py-[9px]
-                            w-full outline-none" />
-                </div>
+        <div class="login-form px-[38px]" v-if="!openRegister">
+            <div class="mt-[40px]">
+                <input type="text" :placeholder="$t('login.enterPhoneNum')" v-model="loginParams.phoneNumber"
+                    class="border-none text-[#999] text-[16px] leading-[22.4px] py-[9px]
+                        w-full outline-none" />
             </div>
             <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
             <div class="mt-[15px] relative">
-                <input type="text" :placeholder="$t('login.enterVerifyCode')" v-model="verifyCode"
+                <input type="text" :placeholder="$t('login.enterPwd')" v-model="loginParams.password"
+                    v-if="loginParams.showPassword"
                     class="border-none text-[#999] text-[16px] leading-[22.4px] py-2 w-full outline-none" />
-                <a class="absolute right-0 top-[10px] text-[#F02148] text-[16px] leading-[22.4px]">
-                    {{ $t('login.getVerificationCode') }}
-                </a>
+                <input type="password" :placeholder="$t('login.enterPwd')" v-model="loginParams.password"
+                    v-else
+                    class="border-none text-[#999] text-[16px] leading-[22.4px] py-2 w-full outline-none" />
+                <div class="absolute right-0 top-[10px] text-[#666] cursor-pointer text-[16px] leading-[22.4px]"
+                    @click="() => { this.loginParams.showPassword = !this.loginParams.showPassword }" 
+                    v-if="loginParams.showPassword">
+                    <i class="fa fa-eye"></i>
+                </div>
+                <div class="absolute right-0 top-[10px] text-[#666] cursor-pointer text-[16px] leading-[22.4px]"
+                    @click="() => { this.loginParams.showPassword = !this.loginParams.showPassword }" v-else>
+                    <i class="fa fa-eye-slash"></i>
+                </div>
             </div>
             <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
-            <div class="mt-[30px] flex flex-row" @click="() => { this.checkAgree = !this.checkAgree }">
-                <p v-if="!checkAgree" class="border rounded-full text-[#999] w-[18px] h-[18px] mr-2"></p>
-                <img v-if="checkAgree" src="../../assets/chinese_mobile/checkbox_input.svg" alt="checkbox"
+            <div class="pt-2 text-[#F02148] text-[14px] text-left">
+                {{ loginParams.errorMsg }}
+            </div>
+            <div class="mt-[15px]">
+                <p class="text-[#333] text-[14px] leading-[15.24px] cursor-pointer" 
+                    @click="() => { this.openRegister = !this.openRegister }">
+                    {{ $t("login.registerAccount") }}
+                </p>
+            </div>
+            <div class="mt-[30px] flex flex-row" @click="() => { this.loginParams.checkAgree = !this.loginParams.checkAgree }">
+                <p v-if="!loginParams.checkAgree" class="border rounded-full text-[#999] w-[18px] h-[18px] mr-2"></p>
+                <img v-if="loginParams.checkAgree" src="../../assets/chinese_mobile/checkbox_input.svg" alt="checkbox"
                     class="mr-2 w-[18px] h-[18px]" />
                 <label class="text-[13px] leading-[20px] text-[#333]">
                     {{ $t('login.mobileAgreeText') }}
@@ -192,38 +213,113 @@ import { ref } from 'vue'
             <div class="mt-[40px]">
                 <button class="w-full rounded-[48px] login-btn text-white py-[10px]
                     text-[16px] leading-[22.4px] text-center font-bold"
-                    :class="(verifyCode != '' && phoneNumber != '' && checkAgree) ? 'opacity-100' : 'opacity-50'"
+                    :class="loginParams.checkAgree ? 'opacity-100' : 'opacity-50'"
+                    :disabled="!loginParams.checkAgree ? true : false"
                     @click="signin">{{ $t('login.login') }}</button>
+            </div>
+        </div>
+        <div class="register-form px-[38px]" v-if="openRegister">
+            <div class="mt-[10px]">
+                <input type="text" :placeholder="$t('login.enterPhoneNum')" v-model="registerParams.username"
+                    class="border-none text-[#999] text-[16px] leading-[22.4px] py-[9px]
+                        w-full outline-none" />
+            </div>
+            <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
+            <div class="mt-2 relative">
+                <input type="text" :placeholder="$t('login.enterPwd')" v-model="registerParams.password"
+                    v-if="registerParams.showPassword"
+                    class="border-none text-[#999] text-[16px] leading-[22.4px] py-2 w-full outline-none" />
+                <input type="password" :placeholder="$t('login.enterPwd')" v-model="registerParams.password"
+                    v-else
+                    class="border-none text-[#999] text-[16px] leading-[22.4px] py-2 w-full outline-none" />
+                <div class="absolute right-0 top-[10px] text-[#666] cursor-pointer text-[16px] leading-[22.4px]"
+                    @click="() => { this.registerParams.showPassword = !this.registerParams.showPassword }" 
+                    v-if="registerParams.showPassword">
+                    <i class="fa fa-eye"></i>
+                </div>
+                <div class="absolute right-0 top-[10px] text-[#666] cursor-pointer text-[16px] leading-[22.4px]"
+                    @click="() => { this.registerParams.showPassword = !this.registerParams.showPassword }" v-else>
+                    <i class="fa fa-eye-slash"></i>
+                </div>
+            </div>
+            <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
+            <div class="mt-2">
+                <input type="text" :placeholder="$t('login.enterReferrer')" v-model="registerParams.referrer"
+                    class="border-none text-[#999] text-[16px] leading-[22.4px] py-[9px]
+                        w-full outline-none" />
+            </div>
+            <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
+            <div class="mt-2 relative">
+                <input type="text" :placeholder="$t('login.enterReferrer')" v-model="registerParams.code"
+                    class="border-none text-[#999] text-[16px] leading-[22.4px] py-[9px]
+                        w-full outline-none" />
+                <p class="absolute right-0 top-[10px] text-[#666] cursor-pointer
+                    lg:text-[14px] md:text-[10px] lg:leading-[19.6px] md:leading-[14px]"
+                    @click="getVerifyCode">
+                    {{ $t("login.getVerificationCode") }}
+                </p>
+            </div>
+            <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
+            <div class="mt-1 grid grid-cols-2">
+                <div class="text-left">
+                    <div class="pt-2 text-[#F02148] text-[14px] text-left">
+                        {{ this.registerParams.errorMsg == "enterPhoneNumber" ? $t("login.phoneNumber") : this.registerParams.errorMsg }}
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-[#333] text-[14px] leading-[15.24px] pt-2 cursor-pointer" 
+                        @click="() => { this.openRegister = !this.openRegister }">
+                        {{ $t("login.loginNow") }}
+                    </p>
+                </div>
+            </div>
+            <div class="mt-[15px] flex flex-row" 
+                @click="() => { this.registerParams.checkAgree = !this.registerParams.checkAgree }">
+                <p v-if="!registerParams.checkAgree" class="border rounded-full text-[#999] w-[18px] h-[18px] mr-2"></p>
+                <img v-if="registerParams.checkAgree" src="../../assets/chinese_mobile/checkbox_input.svg" alt="checkbox"
+                    class="mr-2 w-[18px] h-[18px]" />
+                <label class="text-[13px] leading-[20px] text-[#333]">
+                    {{ $t('login.mobileAgreeText') }}
+                    <a class="text-[#0057FF]">{{ $t('login.userAgree') }}</a>{{ $t('login.agreeAndText') }}
+                    <a class="text-[#0057FF]">{{ $t('login.privacyAgree') }}</a></label>
+            </div>
+            <div class="mt-[15px]">
+                <button class="w-full rounded-[48px] login-btn text-white py-[10px]
+                    text-[16px] leading-[22.4px] text-center font-bold"
+                    :class="registerParams.checkAgree ? 'opacity-100' : 'opacity-50'"
+                    :disabled="!registerParams.checkAgree ? true : false"
+                    @click="register">{{ $t('login.login') }}</button>
             </div>
         </div>
     </div>
     <div v-if="isLogin">
-        <div class="bg-[#000000cc] w-[96px] h-[86px] py-[16px] text-center 
+        <div class="bg-[#000000cc] w-[96px] h-[86px] py-[16px] text-center
                 absolute top-[40%] left-[40%] rounded z-10 fade">
             <i class="fa fa-check-circle text-white text-[24px]"></i>
-            <p class="text-[16px] leading-[22px] text-white mt-2">登录成功</p>
+            <p class="text-[16px] leading-[22px] text-white mt-2">{{ $t("login.loginSuccess") }}</p>
         </div>
     </div>
-    <div class="bg-white h-screen z-[20] relative overflow-y-auto lg:hidden md:hidden " v-if="showCountryList">
-        <div v-for="country in countryList" :key="country.id" @click="() => handleCountry(country.value)"
-            class="flex flex-row justify-between border-b border-[#E5E6EB] ml-4">
-            <p class="text-left text-[#333] text-[16px] leading-[22px] py-4">{{ country.name }}</p>
-            <p class="text-right text-[#333] text-[14px] leading-[20px] py-[17px] pr-4">{{ country.value }}</p>
+    <div v-if="isRegister">
+        <div class="bg-[#000000cc] w-[96px] h-[86px] py-[16px] text-center
+                absolute top-[40%] left-[40%] rounded z-10 fade">
+            <i class="fa fa-check-circle text-white text-[24px]"></i>
+            <p class="text-[16px] leading-[22px] text-white mt-2">{{ $t("login.registerSuccess") }}</p>
         </div>
     </div>
-    
+
     <a @click="scrollTop" v-show="visible"
-        class="fixed z-[1000] bottom-8 right-8 border-0 w-8 h-8 rounded-full 
+        class="fixed z-[1000] bottom-8 right-8 border-0 w-8 h-8 rounded-full
             drop-shadow-md login-btn text-white text-2xl font-bold text-center lg:block md:block hidden">
         <i class="fas fa-angle-up"></i>
     </a>
 </template>
 
 <script>
+import { ref } from 'vue'
+
 import LanguageSelect from "../Common/LanguageSelect.vue";
 import en from '../../assets/lang/en.json';
 import zh from '../../assets/lang/zh.json';
-import CONSTANT from "../../components/Common/Constant";
 const navbarList = ref([
     {
         title: '首页',
@@ -281,35 +377,30 @@ export default {
     },
     data() {
         var list = navbarList._rawValue;
-        var menuName = list.filter(item => window.location.pathname.startsWith(item.path)).length > 0 ? 
+        var menuName = list.filter(item => window.location.pathname.startsWith(item.path)).length > 0 ?
                     list.filter(item => window.location.pathname.startsWith(item.path))[0].name : "";
-        console.log(menuName);
         return {
             showMenu: false,
             showLoginPage: false,
             selectedMenuName: menuName,
-            showCountryList: false,
-            selectedCountry: "+86",
-            checkAgree: false,
-            countryList: [
-                { id: 1, name: "中国大陆", value: "+86" },
-                { id: 2, name: "中国台湾", value: "+886" },
-                { id: 3, name: "中国香港", value: "+852" },
-                { id: 4, name: "中国澳门", value: "+853" },
-                { id: 5, name: "美国", value: "+1" },
-                { id: 6, name: "英国", value: "+44" },
-                { id: 7, name: "比利时", value: "+32" },
-                { id: 8, name: "澳大利亚", value: "+61" },
-                { id: 9, name: "法国", value: "+33" },
-                { id: 10, name: "日本", value: "+81" },
-                { id: 11, name: "韩国", value: "+82" },
-                { id: 12, name: "新加坡", value: "+65" },
-                { id: 13, name: "泰国", value: "+66" },
-                { id: 14, name: "中国台湾", value: "+886" },
-            ],
-            phoneNumber: "",
-            verifyCode: "",
+            loginParams: {
+                phoneNumber: "",
+                password: "",
+                errorMsg: "",
+                showPassword: false,
+                checkAgree: false,
+            },
+            registerParams: {
+                username: "",
+                password: "",
+                referrer: "",
+                code: "",
+                showPassword: false,
+                checkAgree: false,
+                errorMsg: ""
+            },
             isLogin: false,
+            isRegister: false,
             showLangSelect: false,
             language: localStorage.getItem('lang'),
             activeLanguage: this.$i18n.locale,
@@ -320,6 +411,7 @@ export default {
                 avatar: localStorage.getItem("avatar"),
             },
             openLogDropdown: false,
+            openRegister: false,
         };
     },
     methods: {
@@ -331,13 +423,28 @@ export default {
             this.showLoginPage = !this.showLoginPage;
         },
         signin: function() {
-            this.showLoginPage = !this.showLoginPage;
-            this.isLogin = true;
-            setTimeout(() => this.isLogin = false, 5000);
-        },
-        handleCountry: function(value) {
-            this.selectedCountry = value;
-            this.showCountryList = !this.showCountryList;
+            var params = {
+                username: this.loginParams.phoneNumber,
+                password: this.loginParams.password
+            }
+            this.axios.post("http://10.10.10.29:8000/v1/user/login", params).then((res) => {
+                if(res.data.error) {
+                    this.loginParams.errorMsg = res.data.error;
+                } else {
+                    localStorage.setItem("token", res.data.data.auth.access_token);
+                    localStorage.setItem("username", res.data.data.user.username);
+                    localStorage.setItem("avatar", res.data.data.user.avatar);
+
+                    this.loggedUser = {
+                        accessToken: res.data.data.auth.access_token,
+                        username: res.data.data.user.username,
+                        avatar: res.data.data.user.avatar,
+                    },
+                    this.showLoginPage = !this.showLoginPage;
+                    this.isLogin = true;
+                    setTimeout(() => this.isLogin = false, 5000);
+                }
+            });
         },
         handleLanguage: function() {
             this.showLangSelect = !this.showLangSelect;
@@ -364,26 +471,75 @@ export default {
         handleMenu: function(name) {
             this.selectedMenuName = name;
         },
+        getVerifyCode: function() {
+            var username = this.registerParams.username;
+            if(username !== "") {
+                var param = {
+                    tel: username,
+                }
+                this.axios.post("http://10.10.10.29:8000/v1/user/sms", param).then((res) => {
+                    if(res.data.error) {
+                        this.registerParams.errorMsg = res.data.error;
+                    }
+                });
+            } else {
+                this.registerParams.errorMsg = "enterPhoneNumber"
+            }
+        },
+        register: function() {
+            var params = {
+                username: this.registerParams.username,
+                password: this.registerParams.password,
+                referrer: this.registerParams.referrer,
+                code: this.registerParams.code,
+            }
+            this.axios.post("http://10.10.10.29:8000/v1/user/tel-register", params).then((res) => {
+                if(res.data.message == "success") {
+                    this.openRegister = false;
+                    this.isRegister = true;
+                    setTimeout(() => this.isRegister = false, 3000);
+                    this.registerParams = {
+                        username: "",
+                        password: "",
+                        referrer: "",
+                        code: "",
+                        showPassword: false,
+                        checkAgree: false,
+                        errorMsg: ""
+                    }
+                } else {
+                    this.registerParams.errorMsg = res.data.error;
+                }
+            });
+        },
         signout: function() {
             this.loggedUser = {};
             localStorage.removeItem("token");
             localStorage.removeItem("username");
-            localStorage.removeItem("password");
             localStorage.removeItem("avatar");
             this.openLogDropdown = false;
             window.location.href = "/";
+        },
+        close (e) {
+            if(e.target.parentNode != null && e.target.parentNode.parentNode != null) {
+                if(!e.target.parentNode.parentNode.classList.contains('dropdow-nmenu')) {
+                    this.openLogDropdown = false;
+                }
+            }
         }
     },
     mounted: function () {
         window.addEventListener('scroll', this.scrollListener)
+        document.addEventListener('click', this.close)
     },
     beforeDestroy: function () {
         window.removeEventListener('scroll', this.scrollListener)
+        document.removeEventListener('click',this.close)
     },
     computed: {
         selectedMenu() {
             var list = navbarList._rawValue;
-            return list.filter(item => window.location.pathname.startsWith(item.path)).length > 0 ? 
+            return list.filter(item => window.location.pathname.startsWith(item.path)).length > 0 ?
                     list.filter(item => window.location.pathname.startsWith(item.path))[0].name : "";
         }
     }
