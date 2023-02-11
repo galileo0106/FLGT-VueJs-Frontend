@@ -1,13 +1,3 @@
-<script setup>
-import 'vue3-carousel/dist/carousel.css'
-import Banner from '../../components/Home/Banner.vue';
-import Banner2 from '../../components/Home/Banner2.vue';
-import Banner3 from '../../components/Home/Banner3.vue';
-
-const slides = [{slide: Banner3, id: "1"}, {slide: Banner, id: "2"}, {slide: Banner2, id: "3"}]
-
-</script>
-
 <template>
   <div class="w-full font-normal_font">
     <Carousel :wrap-around="true" :breakpoints="breakpoints" :autoplay="3000999">
@@ -31,6 +21,13 @@ const slides = [{slide: Banner3, id: "1"}, {slide: Banner, id: "2"}, {slide: Ban
 </template>
 
 <script>
+  import 'vue3-carousel/dist/carousel.css'
+  import Banner from '../../components/Home/Banner.vue';
+  import Banner2 from '../../components/Home/Banner2.vue';
+  import Banner3 from '../../components/Home/Banner3.vue';
+
+  const slides = [{slide: Banner3, id: "1"}, {slide: Banner, id: "2"}, {slide: Banner2, id: "3"}]
+
   import FastVue from '../../components/Home/FastVue.vue';
   import Community from './Community.vue';
   import WhatCommunity from './WhatCommunity.vue';

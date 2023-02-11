@@ -75,17 +75,17 @@
                                             class="border-none text-[#666] lg:text-[14px] md:text-[10px] lg:leading-[19.6px] md:leading-[14px]
                                                 lg:py-[10px] md:py-[5px] w-full outline-none" />
                                         <div class="absolute right-0 top-[10px] text-[#666] cursor-pointer text-[16px] leading-[22.4px]"
-                                            @click="() => { this.showPassword = !this.showPassword }" v-if="showPassword">
+                                            @click="() => { showPassword = !showPassword }" v-if="showPassword">
                                             <i class="fa fa-eye"></i>
                                         </div>
                                         <div class="absolute right-0 top-[10px] text-[#666] cursor-pointer text-[16px] leading-[22.4px]"
-                                            @click="() => { this.showPassword = !this.showPassword }" v-else>
+                                            @click="() => { showPassword = !showPassword }" v-else>
                                             <i class="fa fa-eye-slash"></i>
                                         </div>
                                     </div>
                                     <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
                                     <div class="pt-3 text-[#F02148] text-[12px] text-left">
-                                        {{ this.passwordLogin.errorMsg }}
+                                        {{ passwordLogin.errorMsg }}
                                     </div>
                                     <div class="mt-[15px]">
                                         <div class="grid grid-cols-2">
@@ -104,8 +104,8 @@
                                         </div>
                                     </div>
                                     <div class="flex flex-row cursor-pointer"
-                                        :class="this.passwordLogin.errorMsg ? 'lg:mt-[14px] md:mt-[5px]' : 'lg:mt-[30px] md:mt-[15px]'"
-                                        @click="() => { this.passwordLogin.checkAgreePwd = !this.passwordLogin.checkAgreePwd }">
+                                        :class="passwordLogin.errorMsg ? 'lg:mt-[14px] md:mt-[5px]' : 'lg:mt-[30px] md:mt-[15px]'"
+                                        @click="() => { passwordLogin.checkAgreePwd = !passwordLogin.checkAgreePwd }">
                                         <input type="checkbox" class="mr-1 cursor-pointer" v-model="passwordLogin.checkAgreePwd" />
                                         <p class="lg:text-[12px] md:text-[9px] leading-[20px] text-[#333] text-left">
                                             {{ $t("login.agreeText") }}<a class="text-[#0057FF]">{{ $t("login.userAgree") }}</a>{{ $t("login.agreeAndText") }}<a class="text-[#0057FF]">{{ $t("login.privacyAgree") }}</a></p>
@@ -122,13 +122,12 @@
                                     :class="selectedTab == 'message' ? 'show active block' : 'hidden'"
                                     id="tabs-message" role="tabpanel" aria-labelledby="tabs-message-tab">
                                     <div class="flex flex-row">
-                                        <div>
-                                            <select class="bg-transparent text-[#666] lg:text-[14px] md:text-[10px] text-medium leading-[19.6px]
-                                                lg:py-[10px] md:py-[5px] lg:mr-[10px] md:mr-[5px] outline-none">
-                                                <option v-for="item in countryList" :key="item.id" :value="item.value">
-                                                    {{ item.name }}
-                                                </option>
-                                            </select>
+                                        <div class="w-3/5">
+                                            <Vue3CountryIntl v-model="phoneCountry" :useChinese="lang == 'zh' ? true : false" 
+                                                onlyValue selectedText=""
+                                                :placeholder="$t('login.selectCountry')"
+                                                type="phone" iso2="86" @onChange="getSelected">
+                                            </Vue3CountryIntl>
                                         </div>
                                         <div class="w-[2px] h-[20px] bg-[#D9D9D9] m-auto"></div>
                                         <div>
@@ -148,8 +147,8 @@
                                         </a>
                                     </div>
                                     <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
-                                    <div class="lg:mt-[60px] md:mt-[40px] flex flex-row cursor-pointer" @click="() => { this.checkAgreeMsg = !this.checkAgreeMsg }">
-                                        <input type="checkbox" class="mr-1 cursor-pointer" v-model="checkAgreeMsg" @change="() => { this.checkAgreeMsg = !this.checkAgreeMsg }" />
+                                    <div class="lg:mt-[60px] md:mt-[40px] flex flex-row cursor-pointer" @click="() => { checkAgreeMsg = !checkAgreeMsg }">
+                                        <input type="checkbox" class="mr-1 cursor-pointer" v-model="checkAgreeMsg" @change="() => { checkAgreeMsg = !checkAgreeMsg }" />
                                         <p class="lg:text-[12px] md:text-[9px] leading-[20px] text-[#333] text-left">
                                             {{ $t("login.agreeText") }}<a class="text-[#0057FF]">{{ $t("login.userAgree") }}</a>{{ $t("login.agreeAndText") }}<a class="text-[#0057FF]">{{ $t("login.privacyAgree") }}</a></p>
                                     </div>
@@ -183,6 +182,7 @@
 </template>
 
 <script>
+const API_URL = import.meta.env.VITE_API_URL;
 export default {
     name: 'Login',
     data() {
@@ -190,19 +190,7 @@ export default {
             selectedTab: "password",
             checkAgreeMsg: false,
             showPassword: false,
-            countryList: [
-                { id: 1, name: "中国大陆+86", value: "86" },
-                { id: 2, name: "中国台湾+886", value: "886" },
-                { id: 3, name: "中国香港+852", value: "852" },
-                { id: 4, name: "中国澳门+853", value: "853" },
-                { id: 5, name: "美国+1", value: "1" },
-                { id: 6, name: "英国+44", value: "44" },
-                { id: 7, name: "澳大利亚+61", value: "61" },
-                { id: 8, name: "俄罗斯+7", value: "7" },
-                { id: 9, name: "南非+27", value: "27" },
-                { id: 10, name: "荷兰+31", value: "31" },
-                { id: 11, name: "比利时+32", value: "32" },
-            ],
+            phoneCountry: "",
             passwordLogin: {
                 checkAgreePwd: false,
                 username: "",
@@ -211,6 +199,7 @@ export default {
             },
             smsLogin: {
                 username: "",
+                code: "",
                 verifyCode: "",
             },
             qrLogin: {
@@ -218,6 +207,9 @@ export default {
             }
 
         }
+    },
+    mounted() {
+        window.scrollTo(0,0);
     },
     methods: {
         handleTab: function(tab) {
@@ -228,7 +220,8 @@ export default {
                 username: this.passwordLogin.username,
                 password: this.passwordLogin.password
             }
-            this.axios.post("http://10.10.10.29:8000/v1/user/login", params).then((res) => {
+            var url = API_URL + "/v1/user/login";
+            this.axios.post(url, params).then((res) => {
                 if(res.data.error) {
                     this.passwordLogin.errorMsg = res.data.error;
                 } else {
@@ -240,7 +233,9 @@ export default {
             });
         },
         smsLogin: function() {
-            console.log("here");
+        },
+        getSelected: function(selected) {
+            this.smsLogin.code = selected.dialCode;
         }
     }
 }

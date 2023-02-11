@@ -26,6 +26,9 @@ export default {
   name: 'Blog',
   components: {
     BlogList
+  },
+  mounted() {
+    window.scrollTo(0,0);
   }
 }
 </script>

@@ -1,3 +1,5 @@
+<script setup>
+</script>
 <template>
     <div class="w-full font-normal_font">
         <div class="lg:bg-blog_bg_pc md:bg-blog_bg_pc bg-blog_bg_mobile bg-no-repeat
@@ -23,7 +25,7 @@
                 </a>
                 <span class="text-[#C9CDD4] px-[15px]">/</span>
                 <a class="text-[20px] leading-[30px] text-[#333] font-medium">
-                    {{ $t("blog.phoenixMorningPost") }}
+                    {{ detail?.title }}
                 </a>
             </div>
 
@@ -31,31 +33,21 @@
                 lg:text-center md:text-center text-left">
                 <h3 class="lg:text-[40px] md:text-[30px] text-[20px] leading-[30px] font-bold
                     lg:text-black md:text-black text-[#141414] blog_overflow_title h-[50px]">
-                    {{ $t("blog.blogItemTitle1") }}
+                    {{ detail?.title }}
                 </h3>
                 <p class="lg:text-[#666] md:text-[#666] text-[#696969] font-medium
                     lg:text-[18px] md:text-[16px] text-[14px] leading-[26px] lg:my-[30px] md:my-[20px] my-[10px]">
-                    2023-01-13
+                    {{ detail?.createdAt }}
                 </p>
 
                 <div>
-                    <p class="lg:block md:block hidden text-[20px] text-black leading-[40px] indent-[32px]
-                        text-left">
-                        {{ $t("blog.blogDetailDesc1") }}
-                    </p>
-                    <img class="lg:block md:block hidden mx-auto my-[30px]" alt="blog detail img"
-                        src="../../assets/chinese_pc/blog/blog_detail_img_pc.png"/>
-                    <img class="lg:hidden md:hidden block mx-auto mt-[10px] mb-[30px]" alt="blog detail img"
-                        src="../../assets/chinese_mobile/blog/blog_detail_img_mobile.png"/>
+                    <img class="mx-auto my-[30px]" alt="blog detail img"
+                        :src="IMG_URL + detail?.coverUrl"/>
 
                     <div class="lg:mb-[120px] md:mb-[75px] mb-[30px]">
-                        <p class="lg:hidden md:hidden block text-[16px] text-black leading-[30px] indent-[32px]
-                            text-left">
-                            {{ $t("blog.blogDetailDesc1") }}
-                        </p>
                         <p class="text-black font-medium lg:text-[20px] md:text-[18px] text-[16px] text-left
-                            lg:leading-[40px] md:leading-[35px] leading-[30px] lg:indent-[32px] md:indent-[32px]">
-                            {{ $t("blog.blogDetailDesc2") }}
+                            lg:leading-[40px] md:leading-[35px] leading-[30px] lg:indent-[32px] md:indent-[32px]"
+                            v-html="detail?.content">
                         </p>
                     </div>
                 </div>
@@ -65,10 +57,32 @@
 </template>
 
 <script>
+const API_URL = import.meta.env.VITE_API_URL;
+const IMG_URL = import.meta.env.VITE_IMG_URL;
 export default {
-  name: 'BlogDetail',
-  components: {
-  }
+    name: 'BlogDetail',
+    data() {
+        return {
+            detail: null
+        }
+    },
+    mounted() {
+        this.getBlogDetail(this.$route.params.id);
+    },
+    methods: {
+        getBlogDetail(id) {
+            var token = localStorage.getItem("token");
+            const config = {
+                headers: { Authorization: `Bearer ${token}` }
+            };
+            var url = API_URL + "/api/v1/blog/info";
+            this.axios.post(url, { id: parseInt(id) }, config).then((res) => {
+                if(res.status == 200) {
+                    this.detail = res.data.data;
+                }
+            });
+        },
+    }
 }
 </script>
 <style scoped>

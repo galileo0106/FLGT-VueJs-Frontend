@@ -1,7 +1,3 @@
-<script setup>
-import { ref } from "vue";
-</script>
-
 <template>
   <div class="lg:bg-chinese_pc_banner_1 md:lg:bg-chinese_pc_banner_1 
           bg-chinese_mobile_banner_1 bg-no-repeat lg:h-[638px] md:h-[380px] 
@@ -17,20 +13,20 @@ import { ref } from "vue";
       <div class="px-[23px] lg:mt-[40px] md:mt-[40px] mt-[10px]">
         <div class="flex items-center">
           <div class="flex items-center">
-            <img src="../../assets/icons/eth.svg" alt="eth" class="lg:flex md:flex hidden" />
-            <img src="../../assets/chinese_mobile/Polygon.svg" alt="eth" class="lg:hidden md:hidden flex" />
+            <img src="../../assets/chinese_pc/home/icons/eth.svg" alt="eth" class="lg:flex md:flex hidden" />
+            <img src="../../assets/chinese_mobile/home/Polygon.svg" alt="eth" class="lg:hidden md:hidden flex" />
             <p class="ml-0.5 lg:text-themeGreyText1 md:text-themeGreyText1 text-themeDarkPurpleText
               lg:text-[18px] md:text-[13px] text-[10px]">{{ $t("home.watchMoviesForFree") }}</p>
           </div>
           <div class="flex items-center lg:ml-10 md:ml-10 ml-5">
-            <img src="../../assets/icons/eth.svg" alt="eth" class="lg:flex md:flex hidden" />
-            <img src="../../assets/chinese_mobile/Polygon.svg" alt="eth" class="lg:hidden md:hidden flex" />
+            <img src="../../assets/chinese_pc/home/icons/eth.svg" alt="eth" class="lg:flex md:flex hidden" />
+            <img src="../../assets/chinese_mobile/home/Polygon.svg" alt="eth" class="lg:hidden md:hidden flex" />
             <p class="ml-0.5 lg:text-themeGreyText1 md:text-themeGreyText1 text-themeDarkPurpleText
               lg:text-[18px] md:text-[13px] text-[10px]">{{ $t("home.unlimitedTrafficForBloggers") }}</p>
           </div>
           <div class="flex items-center lg:ml-10 md:ml-10 ml-5">
-            <img src="../../assets/icons/eth.svg" alt="eth" class="lg:flex md:flex hidden" />
-            <img src="../../assets/chinese_mobile/Polygon.svg" alt="eth" class="lg:hidden md:hidden flex" />
+            <img src="../../assets/chinese_pc/home/icons/eth.svg" alt="eth" class="lg:flex md:flex hidden" />
+            <img src="../../assets/chinese_mobile/home/Polygon.svg" alt="eth" class="lg:hidden md:hidden flex" />
             <p class="ml-0.5 lg:text-themeGreyText1 md:text-themeGreyText1 text-themeDarkPurpleText
               lg:text-[18px] md:text-[13px] text-[10px]">{{ $t("home.miningWithZeroInvestment") }}</p>
           </div>

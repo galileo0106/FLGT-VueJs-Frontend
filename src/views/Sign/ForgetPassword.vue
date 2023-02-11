@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
     <div class="w-full font-normal_font">
         <div class="bg-sign_bg_pc bg-[length:100%_100%] w-full h-[695px] pt-[156px] p-[10px]">
@@ -75,14 +72,12 @@
                                 </div>
                                 <div class="lg:px-[20px] md:px-[15px] px-[10px] inline-block border border-[#D9D9D9]">
                                     <div class="flex flex-row">
-                                        <div>
-                                            <select class="bg-transparent text-[#666] 
-                                                lg:text-[14px] md:text-[12px] text-[10px] lg:leading-[19.6px] md:leading-[14px]
-                                                lg:py-[10px] md:py-[5px] mr-[10px] outline-none">
-                                                <option v-for="item in countryList" :key="item.id" :value="item.value">
-                                                    {{ item.name }}
-                                                </option>
-                                            </select>
+                                        <div class="w-3/5">
+                                            <Vue3CountryIntl v-model="phoneCountry" :useChinese="lang == 'zh' ? true : false" 
+                                                onlyValue selectedText=""
+                                                :placeholder="$t('login.selectCountry')"
+                                                type="phone" iso2="86" @onChange="getSelected">
+                                            </Vue3CountryIntl>
                                         </div>
                                         <div class="w-[2px] h-[20px] bg-[#D9D9D9] m-auto"></div>
                                         <div>
@@ -195,20 +190,11 @@ export default {
             code: "",
             loginPassword: "",
             confirmLoginPassword: "",
-            countryList: [
-                { id: 1, name: "中国大陆+86", value: "中国大陆+86" },
-                { id: 2, name: "中国台湾+886", value: "中国台湾+886" },
-                { id: 3, name: "中国香港+852", value: "中国香港+852" },
-                { id: 4, name: "中国澳门+853", value: "中国澳门+853" },
-                { id: 5, name: "美国+1", value: "美国+1" },
-                { id: 6, name: "英国+44", value: "英国+44" },
-                { id: 7, name: "澳大利亚+61", value: "澳大利亚+61" },
-                { id: 8, name: "俄罗斯+7", value: "俄罗斯+7" },
-                { id: 9, name: "南非+27", value: "南非+27" },
-                { id: 10, name: "荷兰+31", value: "荷兰+31" },
-                { id: 11, name: "比利时+32", value: "比利时+32" },
-            ]
+            phoneCountry: "",
         }
+    },
+    mounted() {
+        window.scrollTo(0,0);
     },
     methods: {
         selectStep: function(step) {
@@ -222,6 +208,9 @@ export default {
         },
         setLoginPassword: function() {
             this.step = 4;
+        },
+        getSelected: function(selected) {
+            this.code = selected.dialCode;
         }
     }
 }

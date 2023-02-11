@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
     <div class="lg:bg-[#121829] md:bg-[#121829] bg-transparent relative
             bg-[length:100%_100%] lg:h-[400px] md:h-[260px] h-[150px] w-full">
@@ -28,6 +25,6 @@
     </div>
 </template>
 
-<style scoped></style>
 <script>
 </script>
+<style scoped></style>

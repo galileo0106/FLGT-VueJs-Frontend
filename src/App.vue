@@ -1,6 +1,6 @@
 <script setup>
-    import Navbar from "./components/Layouts/Navbar.vue";
-    import Footer from "./components/Layouts/Footer.vue";
+import Navbar from "./components/Layouts/Navbar.vue";
+import Footer from "./components/Layouts/Footer.vue";
 </script>
 
 <template>
@@ -74,5 +74,20 @@ import zh from './assets/lang/zh.json';
         background-color: #00000040;
         border: 0px solid transparent;
         box-shadow: none;
+    }
+
+    @media (max-width: 1023px) {
+        .vue-country-intl-input .country-intl-input,
+        .vue-country-intl-input .country-intl-label,
+        .country-intl-label span {
+            padding: 2px 0 !important;
+            font-size: 10px !important;
+        }
+        .vue-country-intl-input .country-intl-input {
+            height: 26px !important;
+        }
+        .vue-country-item {
+            font-size: 10px !important;
+        }
     }
 </style>

@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
   <div class="lg:bg-diagram_page md:bg-diagram_page bg-[#150550] bg-no-repeat w-full bg-[length:100%_100%] 
     pb-[30px]">
@@ -16,6 +13,9 @@
     <div class="bg-diagram_mobile h-[775px] bg-[length:100%_100%] lg:hidden md:hidden block"></div>
   </div>
 </template>
+
+<script>
+</script>
  
 <style scoped>
 .title-border{

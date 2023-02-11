@@ -1,16 +1,3 @@
-<script setup>
-import { ref } from "vue";
-import { useElementHover } from '@vueuse/core'
-
-const myHoverableElement1 = ref()
-const myHoverableElement2 = ref()
-const myHoverableElement3 = ref()
-const isHovered1 = useElementHover(myHoverableElement1)
-const isHovered2 = useElementHover(myHoverableElement2)
-const isHovered3 = useElementHover(myHoverableElement3)
-
-</script>
-
 <template>
     <div class="bg-white relative"
         :class="lang == 'en' ? 'lg:h-[804px] md:h-[650px] h-[475px]' : 'lg:h-[804px] md:h-[650px] h-[387px]'">
@@ -92,6 +79,16 @@ const isHovered3 = useElementHover(myHoverableElement3)
 </template>
 
 <script>
+import { ref } from "vue";
+import { useElementHover } from '@vueuse/core'
+
+const myHoverableElement1 = ref()
+const myHoverableElement2 = ref()
+const myHoverableElement3 = ref()
+const isHovered1 = useElementHover(myHoverableElement1)
+const isHovered2 = useElementHover(myHoverableElement2)
+const isHovered3 = useElementHover(myHoverableElement3)
+
 export default {
     name: "TokensMining",
     data() {

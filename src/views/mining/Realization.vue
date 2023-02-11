@@ -1,7 +1,3 @@
-<script setup>
-
-</script>
-
 <template>
     <div class="bg-white lg:h-[700px] h-[500px]">
         <div class="container mx-auto lg:w-[932px] md:w-full w-full">

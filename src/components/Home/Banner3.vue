@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
   <div class="lg:bg-chinese_pc_banner_3 md:bg-chinese_pc_banner_3 bg-chinese_mobile_banner_3
         bg-no-repeat lg:h-[638px] md:h-[380px] w-full bg-[length:100%_100%] z-[-2]"

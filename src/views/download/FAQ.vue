@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
     <div class="lg:pt-[60px] md:pt-[40px] pt-[20px] text-center bg-[#F4F7FA]">
         <div class="container mx-auto lg:pb-[200px] md:pb-[100px] pb-10">
@@ -64,6 +61,9 @@
         </div>
     </div>
 </template>
+
+<script>
+</script>
 
 <style scoped>
 .card {

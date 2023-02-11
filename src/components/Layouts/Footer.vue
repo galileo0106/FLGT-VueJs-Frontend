@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
     <div class="bg-footer lg:pt-[56px] md:pt-[43px] pt-[30px]">
         <div class="grid lg:grid-cols-2 grid-cols-1 gap-1 container mx-auto">
@@ -32,32 +29,32 @@
             <div class="px-[20px]">
                 <div>
                     <div class="text-center">
-                        <img src="../../assets/chinese_pc/fenghuang_icon.svg" alt="fenghuang" class="inline"/>
+                        <img src="../../assets/chinese_pc/home/fenghuang_icon.svg" alt="fenghuang" class="inline"/>
                         <span class="lg:text-[20px] md:text-[18px] text-[16px] 
                             icon_title lg:ml-1 md:ml-2 ml-[13px]">{{ $t("footer.phoenixCommunity") }}</span>
                     </div>
                     <div class="footer_border_bottom lg:my-[20px] md:my-[18px] my-[15px] mx-auto"></div>
                     <div class="text-center lg:block md:block hidden">
-                        <img src="../../assets/chinese_pc/discord.svg" alt="discord" class="mr-2 inline" />
-                        <img src="../../assets/chinese_pc/ins.svg" alt="ins" class="mr-2 inline"  />
-                        <img src="../../assets/chinese_pc/facebook.svg" alt="facebook" class="mr-2 inline"  />
-                        <img src="../../assets/chinese_pc/telegram.svg" alt="telegram" class="mr-2 inline"  />
-                        <img src="../../assets/chinese_pc/skype.svg" alt="skype" class="mr-2 inline"  />
-                        <img src="../../assets/chinese_pc/twitter.svg" alt="twitter" class="mr-2 inline"  />
-                        <img src="../../assets/chinese_pc/weixin.svg" alt="weixin" class="mr-2 inline" />
-                        <img src="../../assets/chinese_pc/weibo.svg" alt="weibo" class="mr-2 inline"  />
-                        <img src="../../assets/chinese_pc/youjian.svg" alt="youjian" class="mr-2 inline"  />
+                        <img src="../../assets/chinese_pc/home/discord.svg" alt="discord" class="mr-2 inline" />
+                        <img src="../../assets/chinese_pc/home/ins.svg" alt="ins" class="mr-2 inline"  />
+                        <img src="../../assets/chinese_pc/home/facebook.svg" alt="facebook" class="mr-2 inline"  />
+                        <img src="../../assets/chinese_pc/home/telegram.svg" alt="telegram" class="mr-2 inline"  />
+                        <img src="../../assets/chinese_pc/home/skype.svg" alt="skype" class="mr-2 inline"  />
+                        <img src="../../assets/chinese_pc/home/twitter.svg" alt="twitter" class="mr-2 inline"  />
+                        <img src="../../assets/chinese_pc/home/weixin.svg" alt="weixin" class="mr-2 inline" />
+                        <img src="../../assets/chinese_pc/home/weibo.svg" alt="weibo" class="mr-2 inline"  />
+                        <img src="../../assets/chinese_pc/home/youjian.svg" alt="youjian" class="mr-2 inline"  />
                     </div>
                     <div class="text-center lg:hidden md:hidden block">
-                        <img src="../../assets/chinese_mobile/discord.svg" alt="discord" class="mr-2 inline" />
-                        <img src="../../assets/chinese_mobile/ins.svg" alt="ins" class="mr-2 inline"  />
-                        <img src="../../assets/chinese_mobile/facebook.svg" alt="facebook" class="mr-2 inline"  />
-                        <img src="../../assets/chinese_mobile/telegram.svg" alt="telegram" class="mr-2 inline"  />
-                        <img src="../../assets/chinese_mobile/skype.svg" alt="skype" class="mr-2 inline"  />
-                        <img src="../../assets/chinese_mobile/twitter.svg" alt="twitter" class="mr-2 inline"  />
-                        <img src="../../assets/chinese_mobile/weixin.svg" alt="weixin" class="mr-2 inline" />
-                        <img src="../../assets/chinese_mobile/weibo.svg" alt="weibo" class="mr-2 inline"  />
-                        <img src="../../assets/chinese_mobile/youjian.svg" alt="youjian" class="mr-2 inline"  />
+                        <img src="../../assets/chinese_mobile/home/discord.svg" alt="discord" class="mr-2 inline" />
+                        <img src="../../assets/chinese_mobile/home/ins.svg" alt="ins" class="mr-2 inline"  />
+                        <img src="../../assets/chinese_mobile/home/facebook.svg" alt="facebook" class="mr-2 inline"  />
+                        <img src="../../assets/chinese_mobile/home/telegram.svg" alt="telegram" class="mr-2 inline"  />
+                        <img src="../../assets/chinese_mobile/home/skype.svg" alt="skype" class="mr-2 inline"  />
+                        <img src="../../assets/chinese_mobile/home/twitter.svg" alt="twitter" class="mr-2 inline"  />
+                        <img src="../../assets/chinese_mobile/home/weixin.svg" alt="weixin" class="mr-2 inline" />
+                        <img src="../../assets/chinese_mobile/home/weibo.svg" alt="weibo" class="mr-2 inline"  />
+                        <img src="../../assets/chinese_mobile/home/youjian.svg" alt="youjian" class="mr-2 inline"  />
                     </div>
                 </div>
                 <div class="lg:pt-[100px] md:pt-[60px] pt-[20px] lg:pb-[60px] md:pb-[40px] pb-[20px] text-center">

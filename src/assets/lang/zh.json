@@ -128,7 +128,14 @@
         "assetChainDesc2": "运行用户身份体系",
         "assetChainDesc3": "运行资产合约",
         "phoenixCommunityCompetitiveness": "凤凰社区竞争力",
-        "routeMap": "路线图"
+        "routeMap": "路线图",
+        "ecology": "全应用生态",
+        "publicChain": "公链",
+        "downloadWallet": "钱包",
+        "downloadExchange": "交易所",
+        "socialFi": "SOCIALFI",
+        "gameFi": "GAMELFI",
+        "tradingCenter": "NFT交易中心"
     },
     "download": {
         "phoenixCommunityClientDownload": "凤凰社区客户端下载",
@@ -152,6 +159,38 @@
         "faq3Title": "为什么手机网络开了，APP却登录不上去？",
         "faq3Desc1": " 系统首先还是要检查网络信号好坏",
         "faq3Desc2": " 检查手机上是否安装了手机卫士、360卫士等相关软件，检查是否对我们的APP软件进行了上网限制"
+    },
+    "movie": {
+        "noData": "暂时没有数据",
+        "share": "分享",
+        "intro": "简介",
+        "discuss": "讨论",
+        "expand": "展开",
+        "shrink": "收起",
+        "publish": "发布",
+        "reply": "回复",
+        "episode": "剧集",
+        "detail": "详情",
+        "volumn": "集",
+        "director": "导演：",
+        "actor": "主演：",
+        "kind": "类型：",
+        "region": "制片地区：",
+        "language": "语言：",
+        "grade": "评分：",
+        "point": "分",
+        "times": "上映时间：",
+        "duration": "影片时长：",
+        "minutes": "分钟",
+        "recommend": "推荐",
+        "all": "全",
+        "skip": "3秒后跳过",
+        "select": "选集",
+        "advertise": "广告",
+        "youLike": "猜你喜欢",
+        "movie": "电影",
+        "more": "加载更多",
+        "filter": "筛选"
     },
     "mining": {
         "tokensAndMining": "代币与挖矿",
@@ -242,7 +281,7 @@
         "blogTitle": "博客Blog",
         "blogDesc": "通过我们的博客，您可以了解到我们实时动态、⼤事件、研发与运营进展和价值观。凝聚全球共识，推动社区的繁荣。您也可以关注我们Facebook，Twitter，TikTok、Discord、和Telegram频道等了解最新动态。",
         "allTypes": "所有类型",
-        "search": "搜素",
+        "search": "搜索",
         "blog": "博客",
         "phoenixMorningPost": "凤凰早报",
         "blogItemTitle1": "凤凰早报 | 展望2023年世界趋势动态最新报道",
@@ -256,8 +295,8 @@
     },
     "help": {
         "helpTitle": "嗨！有什么需要帮忙的吗？",
-        "searchHelpContent": "搜素帮助内容",
-        "search": "搜素",
+        "searchHelpContent": "搜索帮助内容",
+        "search": "搜索",
         "helpDesc": "找不到需要的答案？请下载凤凰社区app，在app内联系在线客服！",
         "commonProblem": "常见问题",
         "commonProblemSmall": "帮你快速找到解决方案",
@@ -329,6 +368,7 @@
         "retryAgain": "60秒后重新获取",
         "next": "下一步",
         "resetPasswordSuccess": "新密码设置成功，请牢记您的新密码",
-        "toLogin": "去登陆"
+        "toLogin": "去登陆",
+        "selectCountry": "请选择国家"
     }
 }

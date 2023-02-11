@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
     <div>
         <div class="lg:h-[638px] md:h-[380px] h-[240px] w-full lg:bg-team_bg_pc md:bg-team_bg_pc bg-none
@@ -13,7 +10,7 @@
                             :class="lang == 'en' ? 'text-[30px] leading-[48px]' : 'text-[32px] leading-[56px] '">Team Work</p>
                         <p class="text-[#25277A] font-bold
                             lg:text-[64px] md:text-[48px] text-left"
-                            :class="lang == 'en' ? 'text-[30px] leading-[48px]' : 'text-[38px] leading-[56px] '">
+                            :class="lang == 'en' ? 'text-[30px]' : 'text-[38px]'">
                             {{ $t("team.team") }}
                         </p>
                         <p class="text-[#25277A] font-bold lg:text-[80px] md:text-[60px] lg:block md:block hidden

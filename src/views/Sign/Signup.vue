@@ -35,20 +35,18 @@
                                     class="inline mr-[6px]" />
                                 {{ $t("login.phoenixCommunity") }}
                             </p>
-                            <p class="lg:mt-2 md:mt-[15px] lg:mb-[10px] md:mb-[10px] text-[#333] lg:text-[18px] md:text-[14px]
+                            <p class="lg:mt-2 md:mt-2 lg:mb-[10px] md:mb-[10px] text-[#333] lg:text-[18px] md:text-[14px]
                                 lg:leading-[23.8px] md:leading-[15px] font-medium text-left">
                                 {{ $t("login.welcomeRegister") }}
                             </p>
                             <div class="text-white" >
                                 <div class="flex flex-row">
-                                    <div>
-                                        <select class="bg-transparent text-[#666]
-                                            lg:text-[14px] md:text-[10px] text-medium lg:leading-[19.6px] md:leading-[14px]
-                                            lg:py-[10px] md:py-[5px] lg:mr-[10px] md:mr-[5px] outline-none">
-                                            <option v-for="item in countryList" :key="item.id" :value="item.value">
-                                                {{ item.name }}
-                                            </option>
-                                        </select>
+                                    <div class="w-2/5">
+                                        <Vue3CountryIntl v-model="phoneCountry" :useChinese="lang == 'zh' ? true : false" 
+                                            onlyValue selectedText=""
+                                            :placeholder="$t('login.selectCountry')"
+                                            type="phone" iso2="86" @onChange="getSelected">
+                                        </Vue3CountryIntl>
                                     </div>
                                     <div class="w-[2px] h-[20px] bg-[#D9D9D9] m-auto"></div>
                                     <div>
@@ -68,11 +66,11 @@
                                         class="border-none text-[#666] lg:text-[14px] md:text-[10px] lg:leading-[19.6px] md:leading-[14px]
                                                 lg:py-[10px] md:py-[5px] w-full outline-none" />
                                     <div class="absolute right-0 top-[10px] text-[#666] cursor-pointer text-[16px] leading-[22.4px]"
-                                        @click="() => { this.showPassword = !this.showPassword }" v-if="showPassword">
+                                        @click="() => { showPassword = !showPassword }" v-if="showPassword">
                                         <i class="fa fa-eye"></i>
                                     </div>
                                     <div class="absolute right-0 top-[10px] text-[#666] cursor-pointer text-[16px] leading-[22.4px]"
-                                        @click="() => { this.showPassword = !this.showPassword }" v-else>
+                                        @click="() => { showPassword = !showPassword }" v-else>
                                         <i class="fa fa-eye-slash"></i>
                                     </div>
                                 </div>
@@ -95,10 +93,10 @@
                                 </div>
                                 <div class="w-full h-[1px] bg-[#D9D9D9]"></div>
                                 <div class="pt-2 text-[#F02148] lg:text-[12px] md:text-[10px] text-left">
-                                    {{ this.registerData.errorMsg == "enterPhoneNumber" ? $t("login.phoneNumber") : this.registerData.errorMsg }}
+                                    {{ registerData.errorMsg == "enterPhoneNumber" ? $t("login.phoneNumber") : registerData.errorMsg }}
                                 </div>
                                 <div class="lg:mt-[20px] md:mt-[10px] text-left flex flex-row cursor-pointer"
-                                    @click="() => { this.checkAgree = !this.checkAgree }">
+                                    @click="() => { checkAgree = !checkAgree }">
                                     <input type="checkbox" class="mr-1 cursor-pointer" v-model="checkAgree" />
                                     <p class="lg:text-[12px] md:text-[9px] leading-[20px] text-[#333] text-left">
                                             {{ $t("login.agreeText") }}<a class="text-[#0057FF]">{{ $t("login.userAgree") }}</a>{{ $t("login.agreeAndText") }}<a class="text-[#0057FF]">{{ $t("login.privacyAgree") }}</a></p>
@@ -122,6 +120,7 @@
 </template>
 
 <script>
+const API_URL = import.meta.env.VITE_API_URL;
 export default {
     name: 'Login',
     data() {
@@ -129,19 +128,7 @@ export default {
             showPassword: false,
             showConfirmPassword: false,
             isLogin: false,
-            countryList: [
-                { id: 1, name: "中国大陆+86", value: "中国大陆+86" },
-                { id: 2, name: "中国台湾+886", value: "中国台湾+886" },
-                { id: 3, name: "中国香港+852", value: "中国香港+852" },
-                { id: 4, name: "中国澳门+853", value: "中国澳门+853" },
-                { id: 5, name: "美国+1", value: "美国+1" },
-                { id: 6, name: "英国+44", value: "英国+44" },
-                { id: 7, name: "澳大利亚+61", value: "澳大利亚+61" },
-                { id: 8, name: "俄罗斯+7", value: "俄罗斯+7" },
-                { id: 9, name: "南非+27", value: "南非+27" },
-                { id: 10, name: "荷兰+31", value: "荷兰+31" },
-                { id: 11, name: "比利时+32", value: "比利时+32" },
-            ],
+            phoneCountry: "",
             registerData: {
                 username: "",
                 password: "",
@@ -150,7 +137,11 @@ export default {
                 errorMsg: "",
             },
             checkAgree: false,
+            lang: localStorage.getItem("lang")
         }
+    },
+    mounted() {
+        window.scrollTo(0,0);
     },
     methods: {
         handlePassword: function() {
@@ -165,7 +156,8 @@ export default {
                 var param = {
                     tel: username,
                 }
-                this.axios.post("http://10.10.10.29:8000/v1/user/sms", param).then((res) => {
+                var url = API_URL + "/v1/user/sms";
+                this.axios.post(url, param).then((res) => {
                     if(res.data.error) {
                         this.registerData.errorMsg = res.data.error;
                     }
@@ -175,7 +167,8 @@ export default {
             }
         },
         register: function() {
-            this.axios.post("http://10.10.10.29:8000/v1/user/tel-register", this.registerData).then((res) => {
+            var url = API_URL + "/v1/user/tel-register";
+            this.axios.post(url, this.registerData).then((res) => {
                 if(res.data.message == "success") {
                     this.isLogin = true;
                 } else {
@@ -185,8 +178,11 @@ export default {
         },
         gotoLogin: function() {
             window.location.href = "/login";
+        },
+        getSelected: function(selected) {
+            this.registerData.code = selected.dialCode;
         }
-    }
+    },
 }
 </script>
 

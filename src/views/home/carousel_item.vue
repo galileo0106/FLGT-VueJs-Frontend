@@ -1,11 +1,8 @@
-<script setup>
-</script>
-
 <template>
   <div class="gradient_box relative lg:mt-[51px] md:mt-[40px] mt-[34px] m-auto">
-    <div class="absolute left-[25%] top-[-23%]">
+    <div class="absolute left-[12%] top-[-23%]">
       <div class="icon_box w-[124px] h-[124px] m-auto">
-        <img src="../../assets/chinese_pc/short_video.svg" alt="short video" class="m-auto mt-4" />
+        <img src="../../assets/chinese_pc/home/short_video.svg" alt="short video" class="m-auto mt-4" />
       </div>
     </div>
     <div class="relative lg:mt-[72px] md:mt-[61px] mt-[50px]">
@@ -19,4 +16,6 @@
   </div>
 </template>
 
+<script setup>
+</script>
 <style scoped></style>

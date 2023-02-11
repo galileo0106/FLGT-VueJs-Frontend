@@ -1,5 +1,4 @@
 <script setup>
-
 const contactInfos = [
     {
         id: 1,
@@ -39,9 +38,6 @@ const contactInfos = [
     },
 ]
 </script>
-
-<style>
-</style>
 <template>
     <div class="w-full font-normal_font">
         <div class="lg:bg-help_bg_pc md:bg-help_bg_pc bg-white bg-no-repeat
@@ -60,7 +56,7 @@ const contactInfos = [
                     <div class="flex flex-row">
                         <input :placeholder="$t('help.searchHelpContent')"
                             class="py-[7px] px-[12px] text-[14px] text-[#86909C]
-                                border border-[#C4C4C4] border-r-0 w-full"/>
+                                border border-[#C4C4C4] border-r-0 w-full outline-none"/>
                         <button class="text-[14px] text-[#86909C] bg-white w-1/4
                             border border-[#C4C4C4] border-l-0 font-bold">
                             {{ $t("help.search") }}
@@ -75,7 +71,7 @@ const contactInfos = [
                     <div class="grid grid-cols-3 gap-2">
                         <div class="col-span-2">
                             <input type="text" class="form-control border border-[#ccc] px-[12px] py-[5px]
-                                text-[14px] text-[#666] w-full"
+                                text-[14px] text-[#666] w-full outline-[#F02148]"
                                 :placeholder="$t('help.searchHelpContent')" />
                         </div>
                         <div class="col-span-1">
@@ -196,6 +192,16 @@ const contactInfos = [
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    name: "Help",
+    mounted() {
+        window.scrollTo(0,0);
+    }
+}
+</script>
+
 
 <style scoped>
 .text-gradient {

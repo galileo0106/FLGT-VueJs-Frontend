@@ -5,7 +5,6 @@ import Banner2 from '../components/Home/Banner2.vue';
 import Banner3 from '../components/Home/Banner3.vue';
 
 const slides = [{slide: Banner, id: "1"}, {slide: Banner2, id: "2"}, {slide: Banner3, id: "3"}]
-
 </script>
 
 <template>
@@ -54,6 +53,9 @@ export default {
     CustomScenes,
     Competitiveness,
     Diagram,
+  },
+  mounted() {
+    window.scrollTo(0,0);
   }
 }
 </script>

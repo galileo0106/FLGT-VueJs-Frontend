@@ -43,7 +43,6 @@ const supportMembers = [
         description: "teamDesc6"
     },
 ]
-
 </script>
 
 <template>
@@ -85,6 +84,7 @@ const supportMembers = [
         </div>
     </div>
 </template>
+
 <script>
 export default {
     name: "OperationsTeam",

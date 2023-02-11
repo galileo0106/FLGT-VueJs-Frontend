@@ -18,7 +18,6 @@ export default function handlePagination(list) {
   const nextPage = () => {
     if (page.value !== Math.ceil(totalPage / perPage)) {
       page.value += 1;
-      console.log(page.value)
     }
   };
 

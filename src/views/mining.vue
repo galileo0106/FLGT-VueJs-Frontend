@@ -20,6 +20,9 @@ export default {
     Issuance,
     TokenMiningRatio,
     Realization
+  },
+  mounted() {
+    window.scrollTo(0,0);
   }
 }
 </script>

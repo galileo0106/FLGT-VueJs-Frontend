@@ -23,6 +23,9 @@ export default {
     NodePartner,
     ContentPartner,
     OperationsTeam,
+  },
+  mounted() {
+    window.scrollTo(0,0);
   }
 }
 </script>

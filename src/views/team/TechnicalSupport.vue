@@ -43,7 +43,6 @@ const supportMembers = [
         description: "supportDesc6"
     },
 ]
-
 </script>
 
 <template>

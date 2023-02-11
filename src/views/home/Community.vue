@@ -1,9 +1,9 @@
 <script setup>
 const datas = [
-  { id: "1", name: "storageAndDistributionNodes", value: 2800, unit: "plus", icon: new URL("/src/assets/chinese_pc/btn-node.svg", import.meta.url).href},
-  {id: "2", name: "community", value: 2500, unit: "million", icon: new URL("/src/assets/chinese_pc/btn-community.svg", import.meta.url).href},
-  {id: "3", name: "internetCelebrityBlogger", value: 800, unit: "moreThan", icon: new URL("/src/assets/chinese_pc/btn-internet.svg", import.meta.url).href},
-  {id: "4", name: "copyrightPartner", value: 1500, unit: "many", icon: new URL("/src/assets/chinese_pc/btn-copyright.svg", import.meta.url).href},
+  { id: "1", name: "storageAndDistributionNodes", value: 2800, unit: "plus", icon: new URL("/src/assets/chinese_pc/home/btn-node.svg", import.meta.url).href},
+  {id: "2", name: "community", value: 2500, unit: "million", icon: new URL("/src/assets/chinese_pc/home/btn-community.svg", import.meta.url).href},
+  {id: "3", name: "internetCelebrityBlogger", value: 800, unit: "moreThan", icon: new URL("/src/assets/chinese_pc/home/btn-internet.svg", import.meta.url).href},
+  {id: "4", name: "copyrightPartner", value: 1500, unit: "many", icon: new URL("/src/assets/chinese_pc/home/btn-copyright.svg", import.meta.url).href},
 ]
 </script>
 

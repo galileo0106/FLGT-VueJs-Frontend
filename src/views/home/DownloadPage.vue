@@ -1,11 +1,10 @@
 <script setup>
 const datas = [
-  {qrCode: new URL("/src/assets/chinese_mobile/qr_code_mobile.svg", import.meta.url).href, id: "1", name: "androidVersion", url: "下载网址: https://www.fenghuang.com"},
-  {qrCode: new URL("/src/assets/chinese_mobile/qr_code_mobile.svg", import.meta.url).href, id: "2", name: "iosVersion", url: "下载网址: https://www.fenghuang.com"},
-  {qrCode: new URL("/src/assets/chinese_mobile/qr_code_mobile.svg", import.meta.url).href, id: "3", name: "googlePlay", url: "下载网址: https://www.fenghuang.com"},
-  {qrCode: new URL("/src/assets/chinese_mobile/qr_code_mobile.svg", import.meta.url).href, id: "4", name: "testflinght", url: "下载网址: https://www.fenghuang.com"},
+  {qrCode: new URL("/src/assets/chinese_mobile/home/qr_code_mobile.svg", import.meta.url).href, id: "1", name: "androidVersion", url: "下载网址: https://www.fenghuang.com"},
+  {qrCode: new URL("/src/assets/chinese_mobile/home/qr_code_mobile.svg", import.meta.url).href, id: "2", name: "iosVersion", url: "下载网址: https://www.fenghuang.com"},
+  {qrCode: new URL("/src/assets/chinese_mobile/home/qr_code_mobile.svg", import.meta.url).href, id: "3", name: "googlePlay", url: "下载网址: https://www.fenghuang.com"},
+  {qrCode: new URL("/src/assets/chinese_mobile/home/qr_code_mobile.svg", import.meta.url).href, id: "4", name: "testflinght", url: "下载网址: https://www.fenghuang.com"},
 ]
-
 </script>
 
 <template>
@@ -24,7 +23,7 @@ const datas = [
             <div class="text-right">
               <div class="flex justify-end">
                 <div class="lg:block md:flex hidden w-30px">
-                  <img src="../../assets/chinese_pc/red_dot.svg" />
+                  <img src="../../assets/chinese_pc/home/red_dot.svg" />
                 </div>
               </div>
               <p class="lg:text-[24px] md:text-[18px] text-[12px] font-bold text-themeGreyText1 ">
@@ -33,7 +32,7 @@ const datas = [
               <div class=" flex justify-end">
                 <div class="">
                   <div class="flex justify-end">
-                    <img src="../../assets/chinese_pc/qr_code_pc.svg" alt="qr code" class="qr_code_img" />
+                    <img src="../../assets/chinese_pc/home/qr_code_pc.svg" alt="qr code" class="qr_code_img" />
                   </div>
                   <p class="mt-[7px] text-[#666] font-[14px] text-center">{{ $t("home.scanCodeToDownload") }}</p>
                 </div>
@@ -44,14 +43,14 @@ const datas = [
             <div class="text-right mt-[30px]">
               <div class="flex justify-end">
                 <div class="lg:block md:flex hidden w-30px">
-                  <img src="../../assets/chinese_pc/red_dot.svg" />
+                  <img src="../../assets/chinese_pc/home/red_dot.svg" />
                 </div>
               </div>
               <p class="lg:text-[24px] md:text-[18px] text-[12px] font-bold text-themeGreyText1 ">Google Play</p>
               <div class=" flex justify-end">
                 <div class="">
                   <div class="flex justify-end">
-                    <img src="../../assets/chinese_pc/qr_code_pc.svg" alt="qr code" class="qr_code_img" />
+                    <img src="../../assets/chinese_pc/home/qr_code_pc.svg" alt="qr code" class="qr_code_img" />
                   </div>
                   <p class="mt-[7px] text-[#666] font-[14px] text-center">{{ $t("home.scanCodeToDownload") }}</p>
                 </div>
@@ -60,19 +59,19 @@ const datas = [
             </div>
           </div>
           <div class="lg:col-span-1 md:col-span-2 col-span-2">
-            <img src="../../assets/chinese_pc/phone_pc.png" alt="phone" class="mx-auto qr_code_img" />
+            <img src="../../assets/chinese_pc/home/phone_pc.png" alt="phone" class="mx-auto qr_code_img" />
           </div>
           <div class="lg:col-span-2 md:col-span-1 col-span-1 float-left block">
             <div class="text-left">
               <div class="flex justify-start">
                 <div class="lg:block md:flex hidden w-30px">
-                  <img src="../../assets/chinese_pc/red_dot.svg" />
+                  <img src="../../assets/chinese_pc/home/red_dot.svg" />
                 </div>
               </div>
               <p class="lg:text-[24px] md:text-[18px] text-[12px] font-bold text-themeGreyText1 ">{{ $t("home.iosVersion") }}</p>
               <div class=" flex justify-start">
                 <div class="">
-                  <img src="../../assets/chinese_pc/qr_code_pc.svg" alt="qr code" class="qr_code_img" />
+                  <img src="../../assets/chinese_pc/home/qr_code_pc.svg" alt="qr code" class="qr_code_img" />
                   <p class="mt-[7px] text-[#666] font-[14px] text-center">{{ $t("home.scanCodeToDownload") }}</p>
                 </div>
               </div>
@@ -81,13 +80,13 @@ const datas = [
             <div class="text-left mt-[30px]">
               <div class="flex justify-start">
                 <div class="lg:block md:flex hidden w-30px">
-                  <img src="../../assets/chinese_pc/red_dot.svg" />
+                  <img src="../../assets/chinese_pc/home/red_dot.svg" />
                 </div>
               </div>
               <p class="lg:text-[24px] md:text-[18px] text-[12px] font-bold text-themeGreyText1 ">Testflinght</p>
               <div class=" flex justify-start">
                 <div class="">
-                  <img src="../../assets/chinese_pc/qr_code_pc.svg" alt="qr code" class="qr_code_img" />
+                  <img src="../../assets/chinese_pc/home/qr_code_pc.svg" alt="qr code" class="qr_code_img" />
                   <p class="mt-[7px] text-[#666] font-[14px] text-center">{{ $t("home.scanCodeToDownload") }}</p>
                 </div>
               </div>
@@ -99,7 +98,7 @@ const datas = [
       <div class="lg:hidden md:hidden block">
         <div class="grid grid-cols-3 mt-[34px]">
           <div class="pl-[12px]">
-            <img src="../../assets/chinese_mobile/phone_mobile.png" alt="phone" class="mx-auto qr_code_img" />
+            <img src="../../assets/chinese_mobile/home/phone_mobile.png" alt="phone" class="mx-auto qr_code_img" />
           </div>
           <div class="col-span-2">
             <div class="grid grid-cols-2">

@@ -1,7 +1,3 @@
-<script setup>
-
-</script>
-
 <template>
     <div class="lg:bg-issuance_bg_pc md:bg-issuance_bg_pc bg-[#0A1F71] bg-no-repeat 
         bg-[length:100%_100%] issuance_bg"

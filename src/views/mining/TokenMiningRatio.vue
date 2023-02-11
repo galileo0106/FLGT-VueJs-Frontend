@@ -1,7 +1,3 @@
-<script setup>
-
-</script>
-
 <template>
     <div class="bg-chinese_pc_banner_1 lg:h-[700px] h-[600px]">
         <div class="container mx-auto lg:w-[932px] md:w-full w-full">

@@ -37,7 +37,6 @@ const nodePartners = [
     },
 ]
 </script>
-
 <template>
     <div>
         <div class="h-full w-full lg:bg-white md:bg-white node_partner_bg

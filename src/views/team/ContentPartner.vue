@@ -58,7 +58,6 @@ const contentPartners = [
     },
 ]
 </script>
-
 <template>
     <div>
         <div class="h-full w-full content_partner_bg bg-white

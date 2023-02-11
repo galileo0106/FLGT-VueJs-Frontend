@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue'
 </script>
-
 <template>
     <header class="sticky top-0 z-30 w-full px-2 bg-white shadow-xl">
         <div class="lg:flex md:flex flex-row lg:justify-between justify-center 2xl:px-[16%] xl:px-[12%] px-[2%] items-center h-[60px] lg:bg-white bg-white hidden">
@@ -24,17 +23,16 @@ import { ref } from 'vue'
                 </div>
             </div>
             <div class="items-center lg:justify-center justify-end lg:w-fit md:w-1/4 w-full lg:flex md:flex hidden ">
-                <a class="bg-gradient-to-r from-[#F02148] to-[#FC4E2B] h-6 text-white lg:px-[22px] md:px-2 rounded-[4px]"
-                    href="/login" v-if="!this.loggedUser.accessToken">
+                <router-link class="bg-gradient-to-r from-[#F02148] to-[#FC4E2B] h-6 text-white lg:px-[22px] md:px-2 rounded-[4px]
+                    login_btn"
+                    to="/login" v-if="!loggedUser.accessToken">
                     {{ $t("menu.login") }}
-                </a>
+                </router-link>
                 <div class="px-3 dropdow-nmenu">
-                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdownInformation" v-if="this.loggedUser.accessToken"
+                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdownInformation" v-if="loggedUser.accessToken"
                         class="text-white focus:outline-none text-center inline-flex items-center" type="button"
-                        @click="() => { this.openLogDropdown = !this.openLogDropdown }">
-                        <!-- <img :src="CONSTANT.API_URL + loggedUser.avatar" width="30" height="30" alt="avatar"
-                            class="border border-[#7d7c7c] rounded-full mt-2" /> -->
-                        <img src="../../assets/profile_icon.png" width="30" height="30" alt="avatar"
+                        @click="() => { openLogDropdown = !openLogDropdown }">
+                        <img :src="IMG_URL + '/upload' + loggedUser.avatar" width="30" height="30" alt="avatar"
                             class="border border-[#7d7c7c] rounded-full mt-2" />
                     </button>
                     <!-- Dropdown menu -->
@@ -43,7 +41,7 @@ import { ref } from 'vue'
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                             <li>
                                 <p class="block px-4 py-2 cursor-pointer">
-                                    {{ this.loggedUser.username }}
+                                    {{ loggedUser.username }}
                                 </p>
                             </li>
                         </ul>
@@ -92,7 +90,7 @@ import { ref } from 'vue'
             <li class="border-b border-[#ffffff1a] pb-[20px]">
                 <div class="flex justify-between">
                     <div v-if="loggedUser.accessToken">
-                        <img alt="avatar" :src="loggedUser.avatar" class="w-[25px] h-[25px] inline-block" />
+                        <img alt="avatar" :src="IMG_URL + '/upload' + loggedUser.avatar" class="w-[25px] h-[25px] inline-block" />
                         <span class="ml-1 text-[14px] leading-[22px]">
                             {{ loggedUser.username }}
                         </span>
@@ -182,12 +180,12 @@ import { ref } from 'vue'
                     v-else
                     class="border-none text-[#999] text-[16px] leading-[22.4px] py-2 w-full outline-none" />
                 <div class="absolute right-0 top-[10px] text-[#666] cursor-pointer text-[16px] leading-[22.4px]"
-                    @click="() => { this.loginParams.showPassword = !this.loginParams.showPassword }" 
+                    @click="() => { loginParams.showPassword = !loginParams.showPassword }"
                     v-if="loginParams.showPassword">
                     <i class="fa fa-eye"></i>
                 </div>
                 <div class="absolute right-0 top-[10px] text-[#666] cursor-pointer text-[16px] leading-[22.4px]"
-                    @click="() => { this.loginParams.showPassword = !this.loginParams.showPassword }" v-else>
+                    @click="() => { loginParams.showPassword = !loginParams.showPassword }" v-else>
                     <i class="fa fa-eye-slash"></i>
                 </div>
             </div>
@@ -196,12 +194,12 @@ import { ref } from 'vue'
                 {{ loginParams.errorMsg }}
             </div>
             <div class="mt-[15px]">
-                <p class="text-[#333] text-[14px] leading-[15.24px] cursor-pointer" 
-                    @click="() => { this.openRegister = !this.openRegister }">
+                <p class="text-[#333] text-[14px] leading-[15.24px] cursor-pointer"
+                    @click="() => { openRegister = !openRegister }">
                     {{ $t("login.registerAccount") }}
                 </p>
             </div>
-            <div class="mt-[30px] flex flex-row" @click="() => { this.loginParams.checkAgree = !this.loginParams.checkAgree }">
+            <div class="mt-[30px] flex flex-row" @click="() => { loginParams.checkAgree = !loginParams.checkAgree }">
                 <p v-if="!loginParams.checkAgree" class="border rounded-full text-[#999] w-[18px] h-[18px] mr-2"></p>
                 <img v-if="loginParams.checkAgree" src="../../assets/chinese_mobile/checkbox_input.svg" alt="checkbox"
                     class="mr-2 w-[18px] h-[18px]" />
@@ -233,12 +231,12 @@ import { ref } from 'vue'
                     v-else
                     class="border-none text-[#999] text-[16px] leading-[22.4px] py-2 w-full outline-none" />
                 <div class="absolute right-0 top-[10px] text-[#666] cursor-pointer text-[16px] leading-[22.4px]"
-                    @click="() => { this.registerParams.showPassword = !this.registerParams.showPassword }" 
+                    @click="() => { registerParams.showPassword = !registerParams.showPassword }"
                     v-if="registerParams.showPassword">
                     <i class="fa fa-eye"></i>
                 </div>
                 <div class="absolute right-0 top-[10px] text-[#666] cursor-pointer text-[16px] leading-[22.4px]"
-                    @click="() => { this.registerParams.showPassword = !this.registerParams.showPassword }" v-else>
+                    @click="() => { registerParams.showPassword = !registerParams.showPassword }" v-else>
                     <i class="fa fa-eye-slash"></i>
                 </div>
             </div>
@@ -263,18 +261,18 @@ import { ref } from 'vue'
             <div class="mt-1 grid grid-cols-2">
                 <div class="text-left">
                     <div class="pt-2 text-[#F02148] text-[14px] text-left">
-                        {{ this.registerParams.errorMsg == "enterPhoneNumber" ? $t("login.phoneNumber") : this.registerParams.errorMsg }}
+                        {{ registerParams.errorMsg == "enterPhoneNumber" ? $t("login.phoneNumber") : registerParams.errorMsg }}
                     </div>
                 </div>
                 <div class="text-right">
-                    <p class="text-[#333] text-[14px] leading-[15.24px] pt-2 cursor-pointer" 
-                        @click="() => { this.openRegister = !this.openRegister }">
+                    <p class="text-[#333] text-[14px] leading-[15.24px] pt-2 cursor-pointer"
+                        @click="() => { openRegister = !openRegister }">
                         {{ $t("login.loginNow") }}
                     </p>
                 </div>
             </div>
-            <div class="mt-[15px] flex flex-row" 
-                @click="() => { this.registerParams.checkAgree = !this.registerParams.checkAgree }">
+            <div class="mt-[15px] flex flex-row"
+                @click="() => { registerParams.checkAgree = !registerParams.checkAgree }">
                 <p v-if="!registerParams.checkAgree" class="border rounded-full text-[#999] w-[18px] h-[18px] mr-2"></p>
                 <img v-if="registerParams.checkAgree" src="../../assets/chinese_mobile/checkbox_input.svg" alt="checkbox"
                     class="mr-2 w-[18px] h-[18px]" />
@@ -370,7 +368,8 @@ const navbarList = ref([
         name: 'help',
     },
 ]);
-
+const API_URL = import.meta.env.VITE_API_URL;
+const IMG_URL = import.meta.env.VITE_IMG_URL;
 export default {
     components: {
         LanguageSelect
@@ -427,7 +426,8 @@ export default {
                 username: this.loginParams.phoneNumber,
                 password: this.loginParams.password
             }
-            this.axios.post("http://10.10.10.29:8000/v1/user/login", params).then((res) => {
+            var url = API_URL + "/v1/user/login";
+            this.axios.post(url, params).then((res) => {
                 if(res.data.error) {
                     this.loginParams.errorMsg = res.data.error;
                 } else {
@@ -477,7 +477,8 @@ export default {
                 var param = {
                     tel: username,
                 }
-                this.axios.post("http://10.10.10.29:8000/v1/user/sms", param).then((res) => {
+                var url = API_URL + "/v1/user/sms";
+                this.axios.post(url, param).then((res) => {
                     if(res.data.error) {
                         this.registerParams.errorMsg = res.data.error;
                     }
@@ -493,7 +494,8 @@ export default {
                 referrer: this.registerParams.referrer,
                 code: this.registerParams.code,
             }
-            this.axios.post("http://10.10.10.29:8000/v1/user/tel-register", params).then((res) => {
+            var url = API_URL + "/v1/user/tel-register";
+            this.axios.post(url, params).then((res) => {
                 if(res.data.message == "success") {
                     this.openRegister = false;
                     this.isRegister = true;
@@ -547,11 +549,14 @@ export default {
 </script>
 
 <style scoped>
+.login_btn {
+    color: white !important;
+}
 .link:hover {
     background: rgba(246, 96, 47, 0.1);
 }
 .router-link-active {
-    color: #F02148 !important;
+    color: #F02148;
     display: inline-block;
     border-bottom: 1px solid #F02148;
     padding-bottom: 2px;

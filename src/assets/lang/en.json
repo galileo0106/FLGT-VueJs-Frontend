@@ -128,7 +128,14 @@
         "assetChainDesc2": "Run as user system",
         "assetChainDesc3": "Run the asset contract",
         "phoenixCommunityCompetitiveness": "Phoenix Community Competitiveness",
-        "routeMap": "Route Map"
+        "routeMap": "Route Map",
+        "ecology": "Full Application Ecology",
+        "publicChain": "Public Chain",
+        "downloadWallet": "Wallet",
+        "downloadExchange": "Exchange",
+        "socialFi": "SOCIALFI",
+        "gameFi": "GAMELFI",
+        "tradingCenter": "NFT Trading Center"
     },
     "download": {
         "phoenixCommunityClientDownload": "Phoenix Community Client Download",
@@ -152,6 +159,38 @@
         "faq3Title": "Why can't I log in to the APP when the phone network is turned on?",
         "faq3Desc1": " The system must first check whether the network signal is good or bad",
         "faq3Desc2": " Check whether mobile guard, 360 guard and other related software are installed on the mobile phone, and check whether our APP software is restricted from accessing the Internet"
+    },
+    "movie": {
+        "noData": "No Data",
+        "share": "Share",
+        "intro": "Introduction",
+        "discuss": "Discuss",
+        "expand": "Expand",
+        "shrink": "Shrink",
+        "publish": "Publish",
+        "reply": "Reply",
+        "episode": "Episode",
+        "detail": "Detail",
+        "volumn": "",
+        "director": "Director: ",
+        "actor": "Actor: ",
+        "kind": "Kind: ",
+        "region": "Region: ",
+        "language": "Language: ",
+        "grade": "Grade: ",
+        "point": "Point",
+        "times": "Times: ",
+        "duration": "Duration: ",
+        "minutes": "Minutes",
+        "recommend": "Recommend",
+        "all": "All",
+        "skip": "Skip",
+        "select": "Select",
+        "advertise": "Advertise",
+        "youLike": "You likes ",
+        "movie": "Movie",
+        "more": "View More",
+        "filter": "Filter"
     },
     "mining": {
         "tokensAndMining": "Tokens and mining",
@@ -329,6 +368,7 @@
         "retryAgain": "Reacquire after 60 sec",
         "next": "Next Step",
         "resetPasswordSuccess": "The new password is successfully set, please remember your new password",
-        "toLogin": "To Sign In"
+        "toLogin": "To Sign In",
+        "selectCountry": "Select Country"
     }
 }
