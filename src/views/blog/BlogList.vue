@@ -32,7 +32,7 @@ import { ref } from "vue";
         </div>
         <div>
             <div class="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-2 lg:gap-10 md:gap-6 gap-3
-            lg:mb-[30px] md:mb-[45px] mb-[70px] lg:mt-[40px] md:mt-[30px] mt-[20px] mx-[10px]">
+            lg:mb-[30px] md:mb-[45px] mb-[35px] lg:mt-[40px] md:mt-[30px] mt-[20px] mx-[10px]">
                 <div v-for="item in blogList" :key="item.index"
                     class="col-span-1 lg:mb-[30px] md:mb-[25px] mb-[20px]">
                     <router-link :to="'/blog/' + item.id ">
@@ -55,18 +55,23 @@ import { ref } from "vue";
                     </router-link>
                 </div>
             </div>
+            <div v-if="totalSize == 0" 
+                class="lg:text-[15px] md:text-[13px] text-[10px] text-[#141414] text-center mb-[30px]">
+                {{ $t("movie.noData") }}
+            </div>
             <div class="text-center mb-[60px] lg:block md:block hidden">
-                <a class="text-[#666] px-3 text-[24px] leading-[47px] cursor-pointer" :class="page == 1 ? 'hidden': ''"
+                <a class="text-[#666] px-3 text-[24px] leading-[47px] cursor-pointer" 
+                    :class="(page == 1 || totalSize < 9) ? 'hidden': ''"
                     @click="() => goPage(page - 1)">
                     <i class="fa-solid fa-angle-left"></i>
                 </a>
                 <a class="text-[#666] px-3 text-[24px] leading-[47px] font-medium cursor-pointer"
                     :class="page == item ? 'text-[#F02148] font-bold': ''"
-                    v-for="item in Math.ceil(totalSize / perPage)" :key="item" @click="() => goPage(item)">
+                    v-for="item in (totalSize / perPage > 0 ? Math.ceil(totalSize / perPage) : 0)" :key="item" @click="() => goPage(item)">
                     {{ item }}
                 </a>
                 <a class="text-[#666] px-3 text-[24px] leading-[47px] cursor-pointer"
-                    :class="page >= (totalSize / perPage) ? 'hidden': ''"
+                    :class="(page >= (totalSize / perPage) || totalSize < 9) ? 'hidden': ''"
                     @click="() => goPage(page + 1)">
                     <i class="fa-solid fa-angle-right"></i>
                 </a>
@@ -103,8 +108,12 @@ export default {
                 category: this.category,
                 id: 3,
                 blogname: this.searchKey,
-                pagenum: this.page,
-                limit: this.perPage
+                page_num: this.page
+            }
+            if(window.innerWidth < 767) {
+                Object.assign(params, { limit: 8 });
+            } else {
+                Object.assign(params, { limit: this.perPage });
             }
             var token = localStorage.getItem("token");
             const config = {
@@ -113,8 +122,14 @@ export default {
             var url = API_URL + "/api/v1/blog/search";
             this.axios.post(url, params, config).then((res) => {
                 if(res.status == 200) {
-                    this.blogList = res.data?.data;
-                    this.totalSize = res.data?.data ? res.data.data.length : 0;
+                    var tempList = this.blogList;
+                    tempList.push.apply(tempList, res?.data?.data? res.data.data.blogs : []);
+                    if(this.page === 1) {
+                        this.blogList = res.data?.data?.blogs ? res.data.data.blogs : [];
+                    } else {
+                        this.blogList = tempList;
+                    }
+                    this.totalSize = res.data?.data?.count ? res.data.data.count : 0;
                 }
             });
         },
@@ -125,13 +140,14 @@ export default {
         },
         handleCategory: function(e) {
             this.category = e.target.value;
+            this.page = 1;
             this.getBlogList();
         },
         scrollListener: function() {
             if((document.documentElement.scrollTop + window.innerHeight ===
                 document.documentElement.offsetHeight) && window.innerWidth < 767) {
                 this.page += 1;
-                this.page = 8;
+                this.perPage = 8;
                 this.getBlogList();
             }
         }
